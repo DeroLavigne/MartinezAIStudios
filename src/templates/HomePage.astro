@@ -109,19 +109,17 @@ const c = t(lang);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: min(var(--max-width), 92vw);
     margin-inline: auto;
-    padding: 2rem 0 3rem;
-    gap: clamp(1.75rem, 4vh, 2.75rem);
-    /* Optical lift: text below the logo adds visual weight downward */
-    transform: translateY(clamp(-2.5rem, -4vh, -1rem));
+    padding: 1rem 0 2.5rem;
   }
 
   .hero-copy {
     margin-top: 0;
     padding-top: 0;
     width: min(42rem, 100%);
+    position: relative;
+    z-index: 2;
   }
 
   .hero-copy .tagline {
