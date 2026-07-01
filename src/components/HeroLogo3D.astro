@@ -13,14 +13,17 @@
     position: relative;
     width: min(440px, 88vw);
     height: min(440px, 88vw);
-    margin: 3.5rem auto 0;
+    margin: 0 auto;
     z-index: 1;
+    display: grid;
+    place-items: center;
   }
 
   .hero-logo-3d canvas {
     display: block;
     width: 100% !important;
     height: 100% !important;
+    margin: 0 auto;
   }
 
   .hero-logo-fallback {
@@ -108,7 +111,6 @@
     const scale = targetSize / maxDim;
     model.scale.setScalar(scale);
     model.position.sub(center.multiplyScalar(scale));
-    model.position.y += 0.12;
   }
 
   function initHeroLogo() {
