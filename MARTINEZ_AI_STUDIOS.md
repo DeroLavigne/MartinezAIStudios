@@ -335,17 +335,51 @@ Texto para sección «What we create»:
 
 ## J. Datos legales y prensa (fact sheet)
 
+### J.1 — Versión pública (esto es lo que va en `/press`)
+
 ```
-Nombre comercial:     Martinez AI Studios
-Publisher Steam:      Martinez AI Studios
-Developer (juego):    Dero Lavigne
-Steam App:            Contraband: Edge of the Fold — 4901100
-Steam Group (sello):  46190141 — steamcommunity.com/groups/MartinezAIStudios
-Steam Group (autor):  46190105 — steamcommunity.com/groups/DeroLavigne
-Ubicación:            Dallas, Texas, USA
-Obras flagship:       Kaela Inferna (41 tracks) · CONTRABAND (300+ scenes, 140 achievements)
-Sitios hermanos:      kaelainferna.com · edgeofthefold.com · derolavigne.com
+Fact Sheet
+
+Trade Name:        Martinez AI Studios
+Steam Publisher:   Martinez AI Studios
+Developer:         Dero Lavigne
+Location:          Dallas, Texas, USA
+
+Featured Works:
+  Kaela Inferna
+  Contraband: Edge of the Fold
+
+Creator Portfolio:
+  derolavigne.com
+
+Official Sites:
+  kaelainferna.com
+  edgeofthefold.com
+  derolavigne.com
+
+Steam Presence:
+  Martinez AI Studios — Publisher / Curator
+  Dero Lavigne — Author / Curator
 ```
+
+### J.2 — Referencia privada / interna (NUNCA publicar en la web pública)
+
+```
+Private/Internal Reference
+
+Legal Steamworks Name:     David J Martinez
+Steam Partner ID:          410350
+Steam App ID:              4901100
+Steam Group / Curator IDs: 46190141 (Martinez AI Studios), 46190105 (Dero Lavigne)
+Internal production notes: achievement count, scene count, unreleased project
+                            details, administrative Steamworks data
+```
+
+> Mantener esta sección solo en este documento interno (no versionar en páginas públicas,
+> no citar en `/press`, `/faq`, `/legal` ni en el footer). Si se necesita el App ID en
+> contexto de producto (ej. link de wishlist o respuesta de FAQ sobre "¿dónde juego"),
+> puede citarse porque ya es público en la store page de Steam — pero el Partner ID y
+> el nombre legal Steamworks nunca deben aparecer en el sitio.
 
 ---
 

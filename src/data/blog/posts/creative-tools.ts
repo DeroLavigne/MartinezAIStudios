@@ -60,7 +60,7 @@ export const creativeToolsPost: BlogPost = {
       {
         heading: 'What we document publicly versus what stays internal',
         paragraphs: [
-          'Graphs, prompts, and experiment logs that could mislead competitors about unfinished features stay in the workshop. Principles, tool names, and ethical boundaries ship publicly so press does not have to guess. Start at derolavigne.com for living documentation; return here for what is actually released — Kaela Inferna, CONTRABAND App 4901100, Steam groups 46190141 and curator pages for both label and author.',
+          'Graphs, prompts, and experiment logs that could mislead competitors about unfinished features stay in the workshop. Principles, tool names, and ethical boundaries ship publicly so press does not have to guess. Start at derolavigne.com for living documentation; return here for what is actually released — Kaela Inferna, CONTRABAND App 4901100, and Steam groups and curator pages for both label and author.',
         ],
       },
     ],
@@ -121,7 +121,7 @@ export const creativeToolsPost: BlogPost = {
       {
         heading: 'Qué documentamos público versus interno',
         paragraphs: [
-          'Grafos y logs que confundirían sobre features unfinished permanecen en taller. Principios, nombres de herramientas y límites éticos se publican para que prensa no adivine. Empieza en derolavigne.com; vuelve aquí por lo released — Kaela Inferna, CONTRABAND App 4901100, grupos Steam 46190141 y curator pages de sello y autor.',
+          'Grafos y logs que confundirían sobre features unfinished permanecen en taller. Principios, nombres de herramientas y límites éticos se publican para que prensa no adivine. Empieza en derolavigne.com; vuelve aquí por lo released — Kaela Inferna, CONTRABAND App 4901100, y grupos Steam y curator pages de sello y autor.',
         ],
       },
     ],

@@ -11,12 +11,11 @@
 <style>
   .hero-logo-3d {
     position: relative;
-    width: min(440px, 88vw);
-    height: min(440px, 88vw);
-    margin-inline: auto;
-    margin-bottom: clamp(2.5rem, 6vh, 4rem);
+    width: min(484px, 90vw);
+    height: min(484px, 90vw);
+    margin: 0 auto;
+    margin-bottom: clamp(4rem, 9vh, 6rem);
     z-index: 3;
-    flex-shrink: 0;
     display: grid;
     place-items: center;
   }
@@ -105,8 +104,8 @@
     });
   }
 
-  function fitModelToView(model: THREE.Object3D, targetSize = 2.1) {
-    const box = new THREE.Box3().setFromObject(model);
+  function fitModelToView(model: THREE.Object3D, targetSize = 2.31) {
+    const box = new THREE.Box3().setFromObject(model, true);
     const size = box.getSize(new THREE.Vector3());
     const center = box.getCenter(new THREE.Vector3());
     const maxDim = Math.max(size.x, size.y, size.z);

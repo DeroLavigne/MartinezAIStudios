@@ -21,7 +21,7 @@ export const publisherNotesPost: BlogPost = {
       {
         heading: 'Steam presence — groups, curators, wishlists',
         paragraphs: [
-          'Martinez AI Studios maintains Steam community group 46190141 and a curator page at store.steampowered.com/curator/46190141-Martinez-AI-Studios. Dero Lavigne maintains parallel group 46190105 and curator 46190105-Dero-Lavigne for author-focused recommendations. Curator feeds are editorial — games, tools, and media we think deserve attention — not paid placement.',
+          'Martinez AI Studios maintains a Steam community group and curator page. Dero Lavigne maintains a parallel group and curator page for author-focused recommendations. Curator feeds are editorial — games, tools, and media we think deserve attention — not paid placement.',
           'CONTRABAND: Edge of the Fold ships as App ID 4901100. Wishlisting remains the highest-signal way to support a PC launch before reviews land. Cloud saves and 140 achievements are part of the publishing contract with players: finishable scope with replayable branches, not endless grind mandate.',
         ],
       },
@@ -71,7 +71,7 @@ export const publisherNotesPost: BlogPost = {
       {
         heading: 'Presencia Steam — grupos, curators, wishlists',
         paragraphs: [
-          'Martinez AI Studios mantiene grupo Steam 46190141 y curator store.steampowered.com/curator/46190141-Martinez-AI-Studios. Dero Lavigne mantiene grupo 46190105 y curator 46190105-Dero-Lavigne. Feeds curator son editoriales — juegos, herramientas y media que merecen atención — no placement pagado.',
+          'Martinez AI Studios mantiene un grupo Steam y una página curator. Dero Lavigne mantiene un grupo y curator paralelos para recomendaciones enfocadas en el autor. Feeds curator son editoriales — juegos, herramientas y media que merecen atención — no placement pagado.',
           'CONTRABAND: Edge of the Fold es App ID 4901100. Wishlist sigue siendo señal más alta de apoyo pre-launch. Cloud saves y 140 logros son contrato con jugadores: scope terminable con ramas replayables.',
         ],
       },
