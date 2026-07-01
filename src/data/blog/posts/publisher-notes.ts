@@ -7,14 +7,14 @@ export const publisherNotesPost: BlogPost = {
   en: {
     title: 'Publisher Notes — Steam Curation, Transmedia Releases, and the Fold Universe',
     description:
-      'What Martinez AI Studios actually does as a publisher — Steam Partner 410350, curator pages, transmedia strategy, and how CONTRABAND and Kaela Inferna connect.',
+      'What Martinez AI Studios actually does as a publisher — Steam curator pages, transmedia strategy, and how CONTRABAND and Kaela Inferna connect.',
     excerpt:
       'Publishing is not a logo slapped at boot. It is store clarity, community home, curator voice, and keeping creator and label roles legible to players.',
     sections: [
       {
         heading: 'Publisher versus creator — why the distinction matters',
         paragraphs: [
-          'Players deserve to know who built the game and who ships it. Developer: Dero Lavigne. Publisher: Martinez AI Studios. That line appears on CONTRABAND’s Steam page, in press facts, and in footer credits across this site. Dero creates music, code, narrative, and web systems at derolavigne.com. Martinez AI Studios publishes — Steamworks Partner ID 410350, store capsules, achievements integration, community groups, and the bilingual brand surface you are reading.',
+          'Players deserve to know who built the game and who ships it. Developer: Dero Lavigne. Publisher: Martinez AI Studios. That line appears on CONTRABAND’s Steam page, in press facts, and in footer credits across this site. Dero creates music, code, narrative, and web systems at derolavigne.com. Martinez AI Studios publishes — store capsules, achievements integration, community groups, and the bilingual brand surface you are reading.',
           'Confusing the two roles helps nobody: journalists misattribute tooling experiments; players wonder who to email for bugs versus press. We keep the lanes painted.',
         ],
       },
@@ -42,7 +42,7 @@ export const publisherNotesPost: BlogPost = {
       {
         heading: 'Press, facts, and verifiable numbers',
         paragraphs: [
-          'Press page lists legal entity, partner ID, flagship stats — 300+ scenes, 140 achievements, 41 Kaela tracks — and contact email Dero.Lavigne@gmail.com for inquiries with outlet name and deadline. We prefer verifiable numbers to adjectives. Dallas, Texas is home base; audience is global.',
+          'Press page lists trade name, publisher, developer, flagship stats — 300+ scenes, 140 achievements, 41 Kaela tracks — and contact email Dero.Lavigne@gmail.com for inquiries with outlet name and deadline. We prefer verifiable numbers to adjectives. Dallas, Texas is home base; audience is global.',
         ],
       },
       {
@@ -57,14 +57,14 @@ export const publisherNotesPost: BlogPost = {
   es: {
     title: 'Notas de Publisher — Curación Steam, Releases Transmedia y Universo del Pliegue',
     description:
-      'Qué hace Martinez AI Studios como publisher — Steam Partner 410350, páginas curator, estrategia transmedia y conexión entre CONTRABAND y Kaela Inferna.',
+      'Qué hace Martinez AI Studios como publisher — páginas curator Steam, estrategia transmedia y conexión entre CONTRABAND y Kaela Inferna.',
     excerpt:
       'Publicar no es un logo al arrancar. Es claridad de store, hogar comunitario, voz curator y roles creador/sello legibles para jugadores.',
     sections: [
       {
         heading: 'Publisher versus creador — por qué importa la distinción',
         paragraphs: [
-          'Jugadores merecen saber quién construyó el juego y quién lo lanza. Developer: Dero Lavigne. Publisher: Martinez AI Studios. Esa línea aparece en Steam de CONTRABAND, datos de prensa y créditos del sitio. Dero crea en derolavigne.com. Martinez AI Studios publica — Steamworks Partner ID 410350, cápsulas, logros, grupos comunitarios y marca bilingüe.',
+          'Jugadores merecen saber quién construyó el juego y quién lo lanza. Developer: Dero Lavigne. Publisher: Martinez AI Studios. Esa línea aparece en Steam de CONTRABAND, datos de prensa y créditos del sitio. Dero crea en derolavigne.com. Martinez AI Studios publica — cápsulas, logros, grupos comunitarios y marca bilingüe.',
           'Confundir roles no ayuda: prensa misatribuye experimentos; jugadores no saben a quién escribir. Mantenemos carriles pintados.',
         ],
       },
@@ -91,7 +91,7 @@ export const publisherNotesPost: BlogPost = {
       {
         heading: 'Prensa, datos y cifras verificables',
         paragraphs: [
-          'Press page lista entidad legal, partner ID, stats flagship — 300+ escenas, 140 logros, 41 pistas Kaela — y email Dero.Lavigne@gmail.com con medio y deadline. Preferimos números verificables a adjetivos. Dallas, Texas; audiencia global.',
+          'Press page lista nombre comercial, publisher, developer, stats flagship — 300+ escenas, 140 logros, 41 pistas Kaela — y email Dero.Lavigne@gmail.com con medio y deadline. Preferimos números verificables a adjetivos. Dallas, Texas; audiencia global.',
         ],
       },
       {

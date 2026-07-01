@@ -78,4 +78,4 @@ Content follows `MARTINEZ_AI_STUDIOS.md` in the repo root. Do not contradict rol
 
 ---
 
-© Martinez AI Studios / David J Martinez
+© Martinez AI Studios

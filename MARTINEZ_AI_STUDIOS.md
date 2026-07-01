@@ -5,7 +5,7 @@
 >
 > **Dominio objetivo sugerido:** `martinezaistudios.com` (o subdominio acordado)  
 > **Autor humano:** Dero Lavigne · Dallas, Texas  
-> **Legal Steamworks:** David J Martinez · Partner ID **410350**  
+> **Nota privacidad:** datos legales/administrativos de Steamworks no van en la web pública — solo trade name y publisher.  
 > **Última revisión:** 2026-06-28
 
 ---
@@ -140,8 +140,8 @@ ENTREGABLES
    └───────────────┘      └───────────────┘      └─────────────────┘
                                    │
                     ┌──────────────┴──────────────┐
-                    │ David J Martinez (legal)    │
-                    │ Steamworks Partner 410350   │
+                    │ Martinez AI Studios (sello) │
+                    │ Publisher · Steam · marca   │
                     └─────────────────────────────┘
 ```
 
@@ -151,7 +151,6 @@ ENTREGABLES
 |---------|-----|----------|
 | **Martinez AI Studios** | Publisher Steam, sello de Kaela, identidad editorial | Grupo Steam **46190141** · [MartinezAIStudios](https://steamcommunity.com/groups/MartinezAIStudios) |
 | **Dero Lavigne** | Developer, dirección creativa, código | Grupo Steam **46190105** · [DeroLavigne](https://steamcommunity.com/groups/DeroLavigne) · [derolavigne.com](https://derolavigne.com/) |
-| **David J Martinez** | Titular legal Steamworks | Partner ID **410350** |
 | **Kaela Inferna** | Artista (41 tracks, 4 álbumes) + IA de nave en el juego | [kaelainferna.com](https://www.kaelainferna.com/) |
 | **CONTRABAND: Edge of the Fold** | Juego insignia | Steam App **4901100** · [edgeofthefold.com](https://edgeofthefold.com/) |
 
@@ -317,7 +316,7 @@ Texto para sección «What we create»:
 | Works | Kaela Inferna, CONTRABAND, Soundtrack |
 | Community | Steam Group Martinez (46190141), Steam Group Dero (46190105) |
 | Sister sites | kaelainferna.com, edgeofthefold.com, derolavigne.com |
-| Legal | © Martinez AI Studios / David J Martinez · Privacy |
+| Legal | © Martinez AI Studios · Privacy |
 
 ---
 
@@ -340,8 +339,6 @@ Texto para sección «What we create»:
 Nombre comercial:     Martinez AI Studios
 Publisher Steam:      Martinez AI Studios
 Developer (juego):    Dero Lavigne
-Legal (Steamworks):   David J Martinez
-Partner ID:           410350
 Steam App:            Contraband: Edge of the Fold — 4901100
 Steam Group (sello):  46190141 — steamcommunity.com/groups/MartinezAIStudios
 Steam Group (autor):  46190105 — steamcommunity.com/groups/DeroLavigne

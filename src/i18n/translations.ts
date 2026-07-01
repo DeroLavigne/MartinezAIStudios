@@ -12,7 +12,6 @@ export const OFFICIAL = {
   steamAppId: 4901100,
   steamGroupMartinezId: '46190141',
   steamGroupDeroId: '46190105',
-  partnerId: '410350',
   email: 'Dero.Lavigne@gmail.com',
 } as const;
 
@@ -181,13 +180,13 @@ export const pages: Record<string, Record<Lang, PageMeta>> = {
     en: {
       title: 'Press & Facts — Martinez AI Studios',
       description:
-        'Press kit, verifiable facts, Steam Partner ID 410350, contact for media inquiries. Dallas, Texas.',
+        'Press kit and verifiable public facts — trade name, Steam publisher, developer, and contact for media inquiries. Dallas, Texas.',
       h1: 'Press & Facts',
     },
     es: {
       title: 'Prensa y Datos — Martinez AI Studios',
       description:
-        'Kit de prensa, cifras verificables, Steam Partner ID 410350, contacto para medios. Dallas, Texas.',
+        'Kit de prensa y datos públicos verificables — nombre comercial, publisher Steam, developer y contacto para medios. Dallas, Texas.',
       h1: 'Prensa y Datos',
     },
   },
@@ -237,13 +236,13 @@ export const pages: Record<string, Record<Lang, PageMeta>> = {
     en: {
       title: 'Legal & Privacy — Martinez AI Studios',
       description:
-        'Privacy policy placeholder. © Martinez AI Studios / David J Martinez. Steamworks Partner 410350.',
+        'Privacy policy placeholder. Martinez AI Studios respects visitor privacy. Analytics, if added, will be disclosed here.',
       h1: 'Legal & Privacy',
     },
     es: {
       title: 'Legal y Privacidad — Martinez AI Studios',
       description:
-        'Política de privacidad provisional. © Martinez AI Studios / David J Martinez. Steamworks Partner 410350.',
+        'Política de privacidad provisional. Martinez AI Studios respeta la privacidad del visitante. Analytics, si se añaden, se divulgarán aquí.',
       h1: 'Legal y Privacidad',
     },
   },
@@ -374,7 +373,7 @@ export const content = {
         'Martinez AI Studios publishes commercial PC games on Steam. Games are developed by Dero Lavigne; the label handles publishing, store presence, and community. Flagship title: CONTRABAND: Edge of the Fold.',
       publishingTitle: 'Steam publishing',
       publishing:
-        'As Steamworks Partner (ID 410350), Martinez AI Studios handles publishing, store presence, and community. Developer: Dero Lavigne. Publisher: Martinez AI Studios — as credited on every Steam release.',
+        'Martinez AI Studios handles Steam publishing, store presence, and community. Developer: Dero Lavigne. Publisher: Martinez AI Studios — as credited on every Steam release.',
       narrativeTitle: 'Branching Narrative',
       narrative:
         '300+ narrative scenes, faction-driven dialogue, and the Rift system let players revisit and branch decisions while ghost timelines persist — narrative design built for replayability and consequence.',
@@ -413,8 +412,6 @@ export const content = {
         ['Trade name', 'Martinez AI Studios'],
         ['Steam Publisher', 'Martinez AI Studios'],
         ['Developer (game)', 'Dero Lavigne'],
-        ['Legal (Steamworks)', 'David J Martinez'],
-        ['Partner ID', '410350'],
         ['Steam App', 'Contraband: Edge of the Fold — 4901100'],
         ['Steam Group (label)', '46190141 — MartinezAIStudios'],
         ['Steam Curator (label)', '46190141 — store.steampowered.com/curator/46190141-Martinez-AI-Studios'],
@@ -499,7 +496,7 @@ export const content = {
         },
         {
           q: 'Where are press assets and fact sheets?',
-          a: 'The Press page lists verifiable stats, Steam Partner ID 410350, legal entity, and contact email Dero.Lavigne@gmail.com — include outlet name and deadline for media requests.',
+          a: 'The Press page lists public trade name, publisher, developer, flagship stats, and contact email Dero.Lavigne@gmail.com — include outlet name and deadline for media requests.',
         },
         {
           q: 'Is CONTRABAND a live-service game?',
@@ -507,7 +504,7 @@ export const content = {
         },
         {
           q: 'Why Dallas, Texas?',
-          a: 'Martinez AI Studios is headquartered in Dallas with global distribution via Steam and streaming. Location grounds the legal entity; audience is worldwide.',
+          a: 'Martinez AI Studios is headquartered in Dallas with global distribution via Steam and streaming. Texas is home base; audience is worldwide.',
         },
       ],
     },
@@ -522,7 +519,7 @@ export const content = {
     legal: {
       privacy:
         'This privacy policy is a placeholder. Martinez AI Studios respects visitor privacy. Analytics, if added, will be disclosed here. For data requests, contact the email on the contact page.',
-      copyright: '© Martinez AI Studios / David J Martinez. All rights reserved.',
+      copyright: '© Martinez AI Studios. All rights reserved.',
     },
     footer: {
       studio: 'Studio',
@@ -668,7 +665,7 @@ export const content = {
         'Martinez AI Studios publica videojuegos comerciales PC en Steam. Los juegos los desarrolla Dero Lavigne; el sello gestiona publicación, store y comunidad. Título insignia: CONTRABAND: Edge of the Fold.',
       publishingTitle: 'Publicación Steam',
       publishing:
-        'Como Steamworks Partner (ID 410350), Martinez AI Studios gestiona publicación, store y comunidad. Developer: Dero Lavigne. Publisher: Martinez AI Studios — como figura en cada release de Steam.',
+        'Martinez AI Studios gestiona publicación Steam, store y comunidad. Developer: Dero Lavigne. Publisher: Martinez AI Studios — como figura en cada release de Steam.',
       narrativeTitle: 'Narrativa Ramificada',
       narrative:
         '300+ escenas narrativas, diálogo por facciones y el sistema Rift permiten revisitar y ramificar decisiones mientras persisten timelines fantasma — diseño narrativo para rejugar y consecuencias.',
@@ -707,8 +704,6 @@ export const content = {
         ['Nombre comercial', 'Martinez AI Studios'],
         ['Publisher Steam', 'Martinez AI Studios'],
         ['Developer (juego)', 'Dero Lavigne'],
-        ['Legal (Steamworks)', 'David J Martinez'],
-        ['Partner ID', '410350'],
         ['Steam App', 'Contraband: Edge of the Fold — 4901100'],
         ['Grupo Steam (sello)', '46190141 — MartinezAIStudios'],
         ['Steam Curator (sello)', '46190141 — store.steampowered.com/curator/46190141-Martinez-AI-Studios'],
@@ -793,7 +788,7 @@ export const content = {
         },
         {
           q: '¿Dónde están assets de prensa y fact sheets?',
-          a: 'La página Press lista stats verificables, Steam Partner ID 410350, entidad legal y email Dero.Lavigne@gmail.com — incluye medio y deadline para solicitudes.',
+          a: 'La página Press lista nombre comercial, publisher, developer, stats flagship y email Dero.Lavigne@gmail.com — incluye medio y deadline para solicitudes.',
         },
         {
           q: '¿CONTRABAND es juego live-service?',
@@ -801,7 +796,7 @@ export const content = {
         },
         {
           q: '¿Por qué Dallas, Texas?',
-          a: 'Martinez AI Studios tiene sede en Dallas con distribución global vía Steam y streaming. La ubicación ancla la entidad legal; la audiencia es mundial.',
+          a: 'Martinez AI Studios tiene sede en Dallas con distribución global vía Steam y streaming. Texas es base del sello; la audiencia es mundial.',
         },
       ],
     },
@@ -816,7 +811,7 @@ export const content = {
     legal: {
       privacy:
         'Esta política de privacidad es provisional. Martinez AI Studios respeta la privacidad del visitante. Analytics, si se añaden, se divulgarán aquí. Para solicitudes de datos, contacta el email en la página de contacto.',
-      copyright: '© Martinez AI Studios / David J Martinez. Todos los derechos reservados.',
+      copyright: '© Martinez AI Studios. Todos los derechos reservados.',
     },
     footer: {
       studio: 'Estudio',
