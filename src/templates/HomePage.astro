@@ -21,13 +21,15 @@ const c = t(lang);
     <HeroFold />
     <div class="container hero-content">
       <HeroLogo3D />
-      <p class="tagline">{siteMeta[lang].tagline}</p>
-      <h1>{meta.h1}</h1>
-      <p class="lead hero-sub">{c.hero.subtitle}</p>
-      <div class="hero-ctas">
-        <a href={localizedPath('/works', lang)} class="btn btn-primary">{c.hero.ctaWorks}</a>
-        <a href={OFFICIAL.steamApp} class="btn btn-gold" target="_blank" rel="noopener noreferrer">{c.hero.ctaSteam}</a>
-        <a href={OFFICIAL.kaela} class="btn" target="_blank" rel="noopener noreferrer">{c.hero.ctaKaela}</a>
+      <div class="hero-copy">
+        <p class="tagline">{siteMeta[lang].tagline}</p>
+        <h1>{meta.h1}</h1>
+        <p class="lead hero-sub">{c.hero.subtitle}</p>
+        <div class="hero-ctas">
+          <a href={localizedPath('/works', lang)} class="btn btn-primary">{c.hero.ctaWorks}</a>
+          <a href={OFFICIAL.steamApp} class="btn btn-gold" target="_blank" rel="noopener noreferrer">{c.hero.ctaSteam}</a>
+          <a href={OFFICIAL.kaela} class="btn" target="_blank" rel="noopener noreferrer">{c.hero.ctaKaela}</a>
+        </div>
       </div>
     </div>
   </section>
@@ -104,7 +106,19 @@ const c = t(lang);
   .hero-content {
     position: relative;
     z-index: 2;
-    padding: 2rem 0 4rem;
+    padding: 1.5rem 0 4rem;
+  }
+
+  .hero-copy {
+    margin-top: 0.5rem;
+  }
+
+  .hero-copy .tagline {
+    margin-top: 0;
+  }
+
+  .hero-copy h1 {
+    margin-top: 0.75rem;
   }
 
   .hero-sub {

@@ -11,9 +11,9 @@
 <style>
   .hero-logo-3d {
     position: relative;
-    width: min(440px, 88vw);
-    height: min(440px, 88vw);
-    margin: 0 auto 0.5rem;
+    width: min(320px, 78vw);
+    height: min(240px, 58vw);
+    margin: 0 auto 2rem;
     z-index: 1;
   }
 
@@ -100,7 +100,7 @@
     });
   }
 
-  function fitModelToView(model: THREE.Object3D, targetSize = 2.6) {
+  function fitModelToView(model: THREE.Object3D, targetSize = 1.85) {
     const box = new THREE.Box3().setFromObject(model);
     const size = box.getSize(new THREE.Vector3());
     const center = box.getCenter(new THREE.Vector3());
@@ -108,6 +108,7 @@
     const scale = targetSize / maxDim;
     model.scale.setScalar(scale);
     model.position.sub(center.multiplyScalar(scale));
+    model.position.y += 0.22;
   }
 
   function initHeroLogo() {
@@ -120,7 +121,7 @@
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    camera.position.set(0, 0, 4.5);
+    camera.position.set(0, 0.05, 5);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
