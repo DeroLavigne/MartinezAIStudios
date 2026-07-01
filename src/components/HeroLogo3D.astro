@@ -1,0 +1,237 @@
+<div class="hero-logo-3d" id="hero-logo-3d">
+  <img
+    src="/logo-hero-transparent.png"
+    alt="Martinez AI Studios"
+    class="hero-logo-fallback"
+    width="320"
+    height="320"
+  />
+</div>
+
+<style>
+  .hero-logo-3d {
+    position: relative;
+    width: min(440px, 88vw);
+    height: min(440px, 88vw);
+    margin: 0 auto 0.5rem;
+    z-index: 1;
+  }
+
+  .hero-logo-3d canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero-logo-fallback {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 32px rgba(176, 133, 255, 0.55))
+      drop-shadow(0 0 64px rgba(94, 215, 255, 0.25));
+    pointer-events: none;
+  }
+
+  .hero-logo-3d.is-ready .hero-logo-fallback {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-logo-3d canvas {
+      display: none !important;
+    }
+
+    .hero-logo-fallback {
+      opacity: 1 !important;
+      visibility: visible !important;
+      position: relative;
+    }
+  }
+</style>
+
+<script>
+  import * as THREE from 'three';
+
+  interface LogoState {
+    raf: number;
+    renderer: THREE.WebGLRenderer;
+    resizeObserver: ResizeObserver;
+  }
+
+  const instances = new WeakMap<HTMLElement, LogoState>();
+
+  function disposeLogo(container: HTMLElement) {
+    const state = instances.get(container);
+    if (!state) return;
+    cancelAnimationFrame(state.raf);
+    state.resizeObserver.disconnect();
+    state.renderer.dispose();
+    container.querySelector('canvas')?.remove();
+    container.classList.remove('is-ready');
+    instances.delete(container);
+  }
+
+  function initHeroLogo() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const container = document.getElementById('hero-logo-3d');
+    if (!container || instances.has(container)) return;
+
+    disposeLogo(container);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 50);
+    camera.position.set(0, 0, 4.2);
+
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance',
+    });
+    renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.35;
+    container.prepend(renderer.domElement);
+
+    const logoGroup = new THREE.Group();
+    scene.add(logoGroup);
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
+    keyLight.position.set(3, 4, 6);
+    scene.add(keyLight);
+
+    const rimViolet = new THREE.DirectionalLight(0xb085ff, 1.8);
+    rimViolet.position.set(-4, 1, 3);
+    scene.add(rimViolet);
+
+    const rimCyan = new THREE.DirectionalLight(0x5ed7ff, 1.2);
+    rimCyan.position.set(4, -2, 2);
+    scene.add(rimCyan);
+
+    const goldFill = new THREE.PointLight(0xf8d878, 1.6, 12);
+    goldFill.position.set(0, -1.5, 3);
+    scene.add(goldFill);
+
+    scene.add(new THREE.AmbientLight(0x1a1030, 0.45));
+
+    const textureLoader = new THREE.TextureLoader();
+    textureLoader.load('/logo-hero-transparent.png', (texture) => {
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+      const aspect = texture.image.width / texture.image.height;
+      const planeHeight = 2.35;
+      const planeWidth = planeHeight * aspect;
+      const layerCount = 14;
+      const totalDepth = 0.14;
+
+      for (let i = 0; i < layerCount; i++) {
+        const isFront = i === layerCount - 1;
+        const geometry = new THREE.PlaneGeometry(planeWidth, planeHeight);
+        const material = new THREE.MeshPhysicalMaterial({
+          map: texture,
+          transparent: true,
+          alphaTest: 0.02,
+          metalness: isFront ? 0.92 : 0.75,
+          roughness: isFront ? 0.08 : 0.18,
+          emissive: new THREE.Color(isFront ? 0xd4c4ff : 0x8060cc),
+          emissiveIntensity: isFront ? 0.42 : 0.12,
+          clearcoat: 1,
+          clearcoatRoughness: 0.06,
+          reflectivity: 1,
+          side: THREE.DoubleSide,
+          depthWrite: isFront,
+        });
+        const layer = new THREE.Mesh(geometry, material);
+        layer.position.z = -i * (totalDepth / layerCount);
+        logoGroup.add(layer);
+      }
+
+      // Volumetric edge — subtle side planes for thickness read
+      const edgeMat = new THREE.MeshPhysicalMaterial({
+        color: 0xc8b8ff,
+        metalness: 1,
+        roughness: 0.05,
+        emissive: 0x9070ff,
+        emissiveIntensity: 0.25,
+        transparent: true,
+        opacity: 0.35,
+      });
+      const edgeGeo = new THREE.BoxGeometry(0.025, planeHeight * 0.92, totalDepth);
+      const edgeL = new THREE.Mesh(edgeGeo, edgeMat);
+      edgeL.position.x = -planeWidth * 0.48;
+      const edgeR = edgeL.clone();
+      edgeR.position.x = planeWidth * 0.48;
+      logoGroup.add(edgeL, edgeR);
+
+      // Back glow bloom
+      const glowGeo = new THREE.PlaneGeometry(planeWidth * 1.35, planeHeight * 1.35);
+      const glowMat = new THREE.MeshBasicMaterial({
+        color: 0xb085ff,
+        transparent: true,
+        opacity: 0.22,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+      });
+      const glow = new THREE.Mesh(glowGeo, glowMat);
+      glow.position.z = -totalDepth - 0.08;
+      logoGroup.add(glow);
+
+      // Front specular highlight pass
+      const shineGeo = new THREE.PlaneGeometry(planeWidth, planeHeight);
+      const shineMat = new THREE.MeshBasicMaterial({
+        map: texture,
+        transparent: true,
+        alphaTest: 0.02,
+        blending: THREE.AdditiveBlending,
+        opacity: 0.18,
+        depthWrite: false,
+      });
+      const shine = new THREE.Mesh(shineGeo, shineMat);
+      shine.position.z = 0.02;
+      logoGroup.add(shine);
+
+      container.classList.add('is-ready');
+    });
+
+    let time = 0;
+    let raf = 0;
+
+    function resize() {
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      if (w === 0 || h === 0) return;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    }
+
+    function animate() {
+      time += 0.014;
+      // Slow oscillation: ±45° on Y (left ↔ right) and return
+      logoGroup.rotation.y = Math.sin(time) * (Math.PI / 4);
+      logoGroup.rotation.x = Math.sin(time * 0.45) * 0.04;
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(animate);
+    }
+
+    resize();
+    animate();
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(container);
+    instances.set(container, { raf, renderer, resizeObserver });
+  }
+
+  initHeroLogo();
+  document.addEventListener('astro:page-load', initHeroLogo);
+  document.addEventListener('astro:before-swap', () => {
+    const container = document.getElementById('hero-logo-3d');
+    if (container) disposeLogo(container);
+  });
+</script>
