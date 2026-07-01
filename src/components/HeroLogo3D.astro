@@ -14,10 +14,9 @@
     width: min(440px, 88vw);
     height: min(440px, 88vw);
     margin-inline: auto;
-    margin-bottom: clamp(5.5rem, 14vh, 8.75rem);
-    z-index: 1;
+    margin-bottom: clamp(2.5rem, 6vh, 4rem);
+    z-index: 3;
     flex-shrink: 0;
-    overflow: hidden;
     display: grid;
     place-items: center;
   }
@@ -106,7 +105,7 @@
     });
   }
 
-  function fitModelToView(model: THREE.Object3D, targetSize = 2.35) {
+  function fitModelToView(model: THREE.Object3D, targetSize = 2.1) {
     const box = new THREE.Box3().setFromObject(model);
     const size = box.getSize(new THREE.Vector3());
     const center = box.getCenter(new THREE.Vector3());
@@ -114,8 +113,6 @@
     const scale = targetSize / maxDim;
     model.scale.setScalar(scale);
     model.position.sub(center.multiplyScalar(scale));
-    // Lift slightly so the base plate does not bleed into the headline below
-    model.position.y += 0.1;
   }
 
   function initHeroLogo() {
@@ -131,8 +128,8 @@
     disposeLogo(container);
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    camera.position.set(0, 0, 4.5);
+    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+    camera.position.set(0, 0, 5.2);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
