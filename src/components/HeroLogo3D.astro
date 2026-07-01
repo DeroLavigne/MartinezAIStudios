@@ -55,7 +55,6 @@
 <script>
   import * as THREE from 'three';
   import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-  import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
   interface LogoState {
     raf: number;
@@ -118,10 +117,7 @@
     const container = document.getElementById('hero-logo-3d');
     if (!container || instances.has(container)) return;
 
-    void MeshoptDecoder.ready.then(() => {
-      if (!document.getElementById('hero-logo-3d')) return;
-      startHeroLogo(container);
-    });
+    startHeroLogo(container);
   }
 
   function startHeroLogo(container: HTMLElement) {
@@ -164,7 +160,6 @@
     scene.add(new THREE.AmbientLight(0x1a1030, 0.5));
 
     const loader = new GLTFLoader();
-    loader.setMeshoptDecoder(MeshoptDecoder);
     loader.load(
       GLB_PATH,
       (gltf) => {
