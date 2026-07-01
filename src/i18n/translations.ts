@@ -11,6 +11,7 @@ export const OFFICIAL = {
   steamGroupMartinezId: '46190141',
   steamGroupDeroId: '46190105',
   partnerId: '410350',
+  email: 'Dero.Lavigne@gmail.com',
 } as const;
 
 export const nav = {
@@ -40,16 +41,16 @@ export const siteMeta = {
   en: {
     tagline: 'AI-born. Human in message.',
     description:
-      'Martinez AI Studios — Texas-based creative label publishing AI-augmented music and branching narrative games. AI-born. Human in message.',
+      'Martinez AI Studios — Texas publisher and creative label. We release music, games, and transmedia created by Dero Lavigne. AI-born. Human in message.',
     orgDescription:
-      'Creative label and Steam publisher based in Dallas, Texas. Home of Kaela Inferna and CONTRABAND: Edge of the Fold.',
+      'Publisher and creative label based in Dallas, Texas. Releases works created by Dero Lavigne, including Kaela Inferna and CONTRABAND: Edge of the Fold.',
   },
   es: {
     tagline: 'Nacido de IA. Humano en el mensaje.',
     description:
-      'Martinez AI Studios — sello creativo en Texas. Publicamos música y videojuegos narrativos con IA al servicio del mensaje humano. Nacido de IA. Humano en el mensaje.',
+      'Martinez AI Studios — publisher y sello creativo en Texas. Publicamos música, juegos y transmedia creados por Dero Lavigne. Nacido de IA. Humano en el mensaje.',
     orgDescription:
-      'Sello creativo y publisher Steam con sede en Dallas, Texas. Casa de Kaela Inferna y CONTRABAND: Edge of the Fold.',
+      'Publisher y sello creativo con sede en Dallas, Texas. Publica obras creadas por Dero Lavigne, incluyendo Kaela Inferna y CONTRABAND: Edge of the Fold.',
   },
 } as const;
 
@@ -64,42 +65,42 @@ export const pages: Record<string, Record<Lang, PageMeta>> = {
     en: {
       title: 'Martinez AI Studios — AI Music & Narrative Games',
       description:
-        'Texas creative label publishing Kaela Inferna and CONTRABAND: Edge of the Fold on Steam. AI-born. Human in message.',
+        'Texas publisher and label releasing works created by Dero Lavigne — Kaela Inferna, CONTRABAND on Steam, and the Fold universe.',
       h1: 'Martinez AI Studios',
     },
     es: {
       title: 'Martinez AI Studios — Música IA y Juegos Narrativos',
       description:
-        'Sello creativo de Texas. Kaela Inferna y CONTRABAND: Edge of the Fold en Steam. Nacido de IA. Humano en el mensaje.',
+        'Publisher y sello de Texas. Publicamos obras creadas por Dero Lavigne — Kaela Inferna, CONTRABAND en Steam y el universo del Pliegue.',
       h1: 'Martinez AI Studios',
     },
   },
   studio: {
     en: {
-      title: 'The Studio — Martinez AI Studios',
+      title: 'The Studio — Publisher & Label | Martinez AI Studios',
       description:
-        'Human-directed AI production in Dallas, Texas. Philosophy, manifesto, and the vessel approach to transmedia creation.',
+        'Martinez AI Studios is a publisher and creative label in Dallas, Texas. Works are created by Dero Lavigne and released under the Martinez AI Studios imprint.',
       h1: 'The Studio',
     },
     es: {
-      title: 'El Estudio — Martinez AI Studios',
+      title: 'El Estudio — Publisher y Sello | Martinez AI Studios',
       description:
-        'Producción con IA dirigida por humanos en Dallas, Texas. Filosofía, manifiesto y el enfoque vessel en creación transmedia.',
+        'Martinez AI Studios es publisher y sello creativo en Dallas, Texas. Las obras las crea Dero Lavigne y se publican bajo el sello Martinez AI Studios.',
       h1: 'El Estudio',
     },
   },
   works: {
     en: {
-      title: 'Works — Kaela Inferna & CONTRABAND',
+      title: 'Published Works — Martinez AI Studios',
       description:
-        'Transmedia catalog: dark electronic music, branching narrative space RPG, and future Martinez AI Studios releases.',
-      h1: 'Works',
+        'Flagship releases published by Martinez AI Studios and created by Dero Lavigne — Kaela Inferna, CONTRABAND, and more at derolavigne.com.',
+      h1: 'Published Works',
     },
     es: {
-      title: 'Obras — Kaela Inferna y CONTRABAND',
+      title: 'Obras Publicadas — Martinez AI Studios',
       description:
-        'Catálogo transmedia: dark electronic, RPG espacial narrativo ramificado y futuros lanzamientos de Martinez AI Studios.',
-      h1: 'Obras',
+        'Lanzamientos insignia publicados por Martinez AI Studios y creados por Dero Lavigne — Kaela Inferna, CONTRABAND y más en derolavigne.com.',
+      h1: 'Obras Publicadas',
     },
   },
   kaela: {
@@ -232,38 +233,51 @@ export const pages: Record<string, Record<Lang, PageMeta>> = {
 
 export const content = {
   en: {
+    creditLine: 'Created by Dero Lavigne · Published by Martinez AI Studios',
     hero: {
       subtitle:
-        'Texas-based creative label publishing AI-augmented music and branching narrative games.',
-      ctaWorks: 'Explore Works',
+        'Texas-based publisher and creative label. We release music, games, and transmedia created by Dero Lavigne.',
+      ctaWorks: 'Explore Published Works',
       ctaSteam: 'CONTRABAND on Steam',
       ctaKaela: 'Listen to Kaela',
     },
     home: {
-      manifestoTitle: 'The editorial home of a transmedia universe',
+      manifestoTitle: 'The publisher behind the Fold universe',
       manifesto:
-        'Martinez AI Studios is the label, publisher, and production house where music, games, and narrative share one identity. We publish Kaela Inferna on streaming platforms and CONTRABAND: Edge of the Fold on Steam — not as disconnected projects, but as branches of the same fold.',
-      featuredTitle: 'Flagship Works',
-      capabilitiesTitle: 'What We Create',
+        'Martinez AI Studios is the label and publisher — not the development studio. Dero Lavigne creates the music, games, websites, and narrative. Martinez AI Studios publishes and distributes those works on Steam, streaming platforms, and across the brand. Kaela Inferna and CONTRABAND are flagship releases under one editorial identity.',
+      featuredTitle: 'Flagship Published Works',
+      capabilitiesTitle: 'What We Publish',
       capabilities: [
-        'AI-directed music and lyrics — label releases, game OST, ElevenLabs voices per character',
-        'Commercial PC games on Steam — achievements, cloud saves, branching narrative',
-        'High-traffic bilingual websites, lore hubs, and wikis',
-        'Video, clips, and transmedia storytelling',
+        'Steam releases — store presence, achievements, cloud saves, community',
+        'Music label — Kaela Inferna catalog, game OST, official streaming distribution',
+        'Brand and editorial identity — transmedia under one publisher imprint',
+        'Official distribution — bilingual sites, lore hubs, and public-facing releases',
       ],
+      ecosystemTitle: 'How the roles connect',
+      ecosystemCreator: 'Dero Lavigne — creates',
+      ecosystemPublisher: 'Martinez AI Studios — publishes',
     },
     studio: {
       intro:
-        'Martinez AI Studios exists because an author in Texas decided not to fragment music, games, and narrative into disconnected brands. Kaela sings balance. Kaela guides the ship. Dero builds the code. The label publishes without lying about how it was made.',
-      philosophyTitle: 'Philosophy',
+        'Martinez AI Studios is a publisher and creative label based in Dallas, Texas. Every work on this site is created by Dero Lavigne and published under the Martinez AI Studios imprint — on Steam, streaming, and across the transmedia universe.',
+      rolesTitle: 'Two roles, one universe',
+      rolesIntro:
+        'The creative portfolio lives at derolavigne.com. This site is the publisher\'s home — the label that releases and presents those works to the world.',
+      rolesHeaders: ['', 'Dero Lavigne', 'Martinez AI Studios'],
+      rolesRows: [
+        ['Role', 'Developer · Author · Creative direction', 'Publisher · Label · Producer'],
+        ['Creates / Does', 'Music, games, code, narrative, websites', 'Steam publishing, label, brand, distribution'],
+        ['Home site', 'derolavigne.com', 'martinezaistudios.com'],
+      ],
+      philosophyTitle: 'Label philosophy',
       philosophy:
-        'We publish works where AI is a vessel — a container for human message — not the author. Directed AI under creative leadership. Transparent about tools. No "100% generated" claims. No AAA team fiction.',
+        'We publish works where AI is a vessel — a container for human message — not the author. Dero Lavigne directs creation; Martinez AI Studios handles publishing with transparency. No "100% generated" claims. No AAA team fiction.',
       quote:
         'My music is not made to confront anyone; it is a call to restore balance. True equality is born from listening to one another, not silencing each other. Authentic strength comes from unity, never from dominance.',
       quoteAttr: '— Kaela Inferna',
       texasTitle: 'Rooted in Texas',
       texas:
-        'Based in Dallas, Texas, USA. A independent creative label with global reach through Steam, streaming platforms, and the open lore of the Fold.',
+        'Publisher and creative label based in Dallas, Texas, USA — global reach through Steam, streaming platforms, and the open lore of the Fold.',
       tableTitle: 'Themes Across the Ecosystem',
       tableHeaders: ['Kaela (Music)', 'CONTRABAND (Game)', 'The Label (Web)'],
       tableRows: [
@@ -281,16 +295,22 @@ export const content = {
     },
     works: {
       intro:
-        'Every release from Martinez AI Studios connects to the same universe — music that echoes in-game, characters that exist on streaming and in Operations Mode, narratives that branch and fold.',
+        'These are flagship works published by Martinez AI Studios. Each was created by Dero Lavigne and released under the label — on streaming, Steam, and across the Fold universe.',
+      flagshipTitle: 'Flagship releases',
+      catalogTitle: 'Full creative catalog',
+      catalogBody:
+        'Dero Lavigne develops music, games, websites, and transmedia narrative. Martinez AI Studios publishes and distributes those works. For the complete, always-updated portfolio of everything created — visit derolavigne.com.',
+      catalogCta: 'View full catalog at derolavigne.com',
     },
     kaela: {
+      credits: 'Created by Dero Lavigne · Published by Martinez AI Studios',
       genre: 'Dark electronic pop',
       stats: '4 albums · 41 tracks',
       albums: 'Crown of Fire, Phoenix Era, Digital Rebellion, Aurora Rising',
       tagline: 'AI-born. Human in message.',
       transmediaTitle: 'Transmedia Identity',
       transmedia:
-        'Kaela Inferna is a real streaming artist and the in-game AI navigator in CONTRABAND. After escaping Verge Station, she accepts her primary directive: keep Lyra alive, keep the ship intact. Operations Mode in Haven handles contracts, threats, and crew analysis.',
+        'Kaela Inferna was created by Dero Lavigne and is published by Martinez AI Studios. She is a streaming artist and the in-game AI navigator in CONTRABAND. After escaping Verge Station, she accepts her primary directive: keep Lyra alive, keep the ship intact. Operations Mode in Haven handles contracts, threats, and crew analysis.',
       directive: 'Primary directive accepted: keep Lyra alive.',
       cta: 'Visit kaelainferna.com',
     },
@@ -321,22 +341,22 @@ export const content = {
     },
     music: {
       intro:
-        'Music at Martinez AI Studios spans the Kaela Inferna label catalog and original game soundtracks. AI augments composition, lyrics, and vocal production — always under human creative direction.',
-      labelTitle: 'The Label',
+        'Martinez AI Studios is the releasing label for music created by Dero Lavigne — the Kaela Inferna catalog and original game soundtracks. AI augments composition, lyrics, and vocal production under Dero\'s creative direction.',
+      labelTitle: 'The label',
       label:
-        'Kaela Inferna · Martinez AI Studios — 41 tracks across four albums of dark electronic pop with a humanist core.',
+        'Kaela Inferna — created by Dero Lavigne, published by Martinez AI Studios. 41 tracks across four albums of dark electronic pop with a humanist core.',
       ostTitle: 'CONTRABAND Original Soundtrack',
       ost: '21 original tracks score the Fold — from Haven operations to Rift combat. Available through the game and official channels.',
       pipelineTitle: 'Voice Pipeline',
       pipeline:
-        'Character voices use ElevenLabs with per-character voice profiles. Kaela speaks in-game and on album — same identity, different mediums.',
+        'Character voices in published works use ElevenLabs with per-character profiles — developed by Dero Lavigne, released under the Martinez AI Studios label.',
     },
     games: {
       intro:
-        'Martinez AI Studios publishes commercial PC games on Steam. Our flagship, CONTRABAND: Edge of the Fold, delivers branching narrative, achievements, and cloud saves.',
-      publishingTitle: 'Steam Publishing',
+        'Martinez AI Studios publishes commercial PC games on Steam. Games are developed by Dero Lavigne; the label handles publishing, store presence, and community. Flagship title: CONTRABAND: Edge of the Fold.',
+      publishingTitle: 'Steam publishing',
       publishing:
-        'As Steamworks Partner (ID 410350), we handle publishing, store presence, and community for Martinez AI Studios releases. Developer credit stays with Dero Lavigne; publisher credit with the label.',
+        'As Steamworks Partner (ID 410350), Martinez AI Studios handles publishing, store presence, and community. Developer: Dero Lavigne. Publisher: Martinez AI Studios — as credited on every Steam release.',
       narrativeTitle: 'Branching Narrative',
       narrative:
         '300+ narrative scenes, faction-driven dialogue, and the Rift system let players revisit and branch decisions while ghost timelines persist — narrative design built for replayability and consequence.',
@@ -344,27 +364,27 @@ export const content = {
     },
     technology: {
       intro:
-        'We describe our stack honestly. AI is a production tool directed by humans — not a marketing gimmick.',
+        'Published works are developed by Dero Lavigne using the tools below. Martinez AI Studios publishes the results — we describe the production stack honestly, without marketing hype.',
       items: [
         {
           title: 'Directed AI',
-          body: 'Large language models and generative tools assist writing, iteration, and world-building under author supervision. AI-born, human in message.',
+          body: 'Dero Lavigne uses large language models and generative tools for writing, iteration, and world-building under author supervision. Published by Martinez AI Studios. AI-born, human in message.',
         },
         {
-          title: 'ElevenLabs Voice Pipeline',
-          body: 'Per-character voice profiles for in-game dialogue and narrative scenes. Consistent identity across music and Operations Mode.',
+          title: 'ElevenLabs voice pipeline',
+          body: 'Per-character voice profiles for in-game dialogue and narrative — created by Dero Lavigne, released under the label.',
         },
         {
-          title: 'Three.js & Web Graphics',
-          body: 'Real-time 3D for web experiences, lore sites, and visual systems. Performance-first rendering for high-traffic pages.',
+          title: 'Three.js & web graphics',
+          body: 'Real-time 3D for web experiences, lore sites, and visual systems — developed by Dero Lavigne for published works.',
         },
         {
-          title: 'Procedural & Reactive Audio',
-          body: 'Dynamic music layers and combat-reactive sound design in CONTRABAND. OST production integrated with gameplay states.',
+          title: 'Procedural & reactive audio',
+          body: 'Dynamic music layers and combat-reactive sound design in CONTRABAND — created by Dero Lavigne, published by Martinez AI Studios.',
         },
         {
-          title: 'Bilingual Content Systems',
-          body: 'Native EN/ES content pipelines for narrative, web, and store copy — not machine-translated afterthoughts.',
+          title: 'Bilingual content systems',
+          body: 'Native EN/ES content pipelines for narrative, web, and store copy — developed by Dero Lavigne, distributed by the label.',
         },
       ],
       avoid: 'We avoid: "Revolutionary AI", "ChatGPT powered", stock robot imagery, and claims of fully automated authorship.',
@@ -382,6 +402,7 @@ export const content = {
         ['Steam Group (author)', '46190105 — DeroLavigne'],
         ['Location', 'Dallas, Texas, USA'],
         ['Flagship works', 'Kaela Inferna (41 tracks) · CONTRABAND (300+ scenes, 140 achievements)'],
+        ['Creator portfolio', 'derolavigne.com — full catalog of works created by Dero Lavigne'],
         ['Sister sites', 'kaelainferna.com · edgeofthefold.com · derolavigne.com'],
       ],
       contactNote: 'For press inquiries, use the contact page. Include outlet name and deadline.',
@@ -390,15 +411,23 @@ export const content = {
       items: [
         {
           q: 'What is Martinez AI Studios?',
-          a: 'A creative label and Steam publisher based in Dallas, Texas. We publish AI-augmented music (Kaela Inferna) and branching narrative games (CONTRABAND). AI-born. Human in message.',
+          a: 'A publisher and creative label based in Dallas, Texas. We publish and distribute works created by Dero Lavigne — including Kaela Inferna on streaming and CONTRABAND on Steam. AI-born. Human in message.',
+        },
+        {
+          q: 'Who creates the content?',
+          a: 'Dero Lavigne — developer, author, and creative director. He creates the music, games, websites, and narrative. Martinez AI Studios publishes and releases those works under the label.',
         },
         {
           q: 'Is it the same as Dero Lavigne?',
-          a: 'No. Dero Lavigne is the developer and creative director. Martinez AI Studios is the publisher and brand hub that groups music, games, and narrative under one identity.',
+          a: 'No. Dero Lavigne is the creator (derolavigne.com). Martinez AI Studios is the publisher and label (this site). Created by Dero · Published by Martinez AI Studios.',
+        },
+        {
+          q: 'Why two websites?',
+          a: 'derolavigne.com is the creative portfolio — everything Dero builds. martinezaistudios.com is the publisher\'s home — what the label releases on Steam, streaming, and under the brand.',
         },
         {
           q: 'Is Kaela Inferna real?',
-          a: 'Kaela is both a streaming artist identity and a transmedia character — the in-game AI navigator in CONTRABAND. Music and voice use AI tools under human direction.',
+          a: 'Kaela was created by Dero Lavigne and is published by Martinez AI Studios. She is both a streaming artist and the in-game AI navigator in CONTRABAND. Music and voice use AI tools under Dero\'s direction.',
         },
         {
           q: 'Where do I play CONTRABAND?',
@@ -406,10 +435,10 @@ export const content = {
         },
         {
           q: 'Do you use AI for everything?',
-          a: 'AI is a production vessel under author direction — for music, voices, iteration, and tooling. The creative message and final curation are human.',
+          a: 'AI is a production vessel under Dero Lavigne\'s direction — for music, voices, iteration, and tooling. Martinez AI Studios publishes the results transparently. The creative message is human.',
         },
         {
-          q: 'Where is the studio located?',
+          q: 'Where is the label based?',
           a: 'Dallas, Texas, USA.',
         },
         {
@@ -419,10 +448,10 @@ export const content = {
       ],
     },
     contact: {
-      intro: 'Reach the label, join the community, or explore sister sites.',
+      intro: 'Reach the publisher, join the community, or explore sister sites.',
       location: 'Dallas, Texas, USA',
-      email: 'contact@martinezaistudios.com',
-      emailNote: 'General inquiries and press',
+      email: OFFICIAL.email,
+      emailNote: 'General inquiries, press, and publishing',
       communityTitle: 'Steam Community',
       sisterTitle: 'Sister Sites',
     },
@@ -442,7 +471,8 @@ export const content = {
       privacy: 'Privacy',
     },
     glossary: [
-      { term: 'Martinez AI Studios', def: 'Creative label, Steam publisher, brand hub' },
+      { term: 'Martinez AI Studios', def: 'Publisher, sello creativo, hub de marca — publica obras creadas por Dero Lavigne' },
+      { term: 'Dero Lavigne', def: 'Developer, autor, director creativo — crea todo el contenido' },
       { term: 'The Fold', def: 'Universe metaphor — reality that bends and branches' },
       { term: 'Rift branches', def: 'Branching decisions and revisit system in CONTRABAND' },
       { term: 'Vessel', def: 'AI as container for human message' },
@@ -451,38 +481,51 @@ export const content = {
     ],
   },
   es: {
+    creditLine: 'Creado por Dero Lavigne · Publicado por Martinez AI Studios',
     hero: {
       subtitle:
-        'Sello creativo en Texas. Publicamos música y videojuegos narrativos con IA al servicio del mensaje humano.',
-      ctaWorks: 'Explorar Obras',
+        'Publisher y sello creativo en Texas. Publicamos música, juegos y transmedia creados por Dero Lavigne.',
+      ctaWorks: 'Explorar Obras Publicadas',
       ctaSteam: 'CONTRABAND en Steam',
       ctaKaela: 'Escuchar a Kaela',
     },
     home: {
-      manifestoTitle: 'La casa editorial de un universo transmedia',
+      manifestoTitle: 'El publisher detrás del universo del Pliegue',
       manifesto:
-        'Martinez AI Studios es el sello, publisher y productora donde música, juegos y narrativa comparten una identidad. Publicamos a Kaela Inferna en streaming y CONTRABAND: Edge of the Fold en Steam — no como proyectos desconectados, sino como ramas del mismo pliegue.',
-      featuredTitle: 'Obras Insignia',
-      capabilitiesTitle: 'Qué Creamos',
+        'Martinez AI Studios es el sello y publisher — no el estudio de desarrollo. Dero Lavigne crea la música, los juegos, las webs y la narrativa. Martinez AI Studios publica y distribuye esas obras en Steam, streaming y bajo la marca. Kaela Inferna y CONTRABAND son lanzamientos insignia bajo una identidad editorial común.',
+      featuredTitle: 'Obras Insignia Publicadas',
+      capabilitiesTitle: 'Qué Publicamos',
       capabilities: [
-        'Música y letras con IA dirigida — sello, OST de juegos, voces ElevenLabs por personaje',
-        'Videojuegos comerciales PC en Steam — logros, cloud, narrativa ramificada',
-        'Webs de alto tráfico, lore y wikis bilingües',
-        'Vídeo, clips y narrativa transmedia',
+        'Lanzamientos Steam — presencia en store, logros, cloud saves, comunidad',
+        'Sello musical — catálogo Kaela Inferna, OST de juegos, distribución en streaming',
+        'Marca e identidad editorial — transmedia bajo un sello',
+        'Distribución oficial — webs bilingües, lore hubs y releases públicos',
       ],
+      ecosystemTitle: 'Cómo se conectan los roles',
+      ecosystemCreator: 'Dero Lavigne — crea',
+      ecosystemPublisher: 'Martinez AI Studios — publica',
     },
     studio: {
       intro:
-        'Martinez AI Studios existe porque un autor en Texas decidió no fragmentar música, juego y narrativa en marcas inconexas. Kaela canta el equilibrio. Kaela guía la nave. Dero construye el código. El sello publica sin mentir sobre cómo se hizo.',
-      philosophyTitle: 'Filosofía',
+        'Martinez AI Studios es publisher y sello creativo con sede en Dallas, Texas. Cada obra en este sitio es creada por Dero Lavigne y publicada bajo el sello Martinez AI Studios — en Steam, streaming y el universo transmedia.',
+      rolesTitle: 'Dos roles, un universo',
+      rolesIntro:
+        'El portfolio creativo vive en derolavigne.com. Este sitio es la casa del publisher — el sello que publica y presenta esas obras al mundo.',
+      rolesHeaders: ['', 'Dero Lavigne', 'Martinez AI Studios'],
+      rolesRows: [
+        ['Rol', 'Developer · Autor · Dirección creativa', 'Publisher · Sello · Productora'],
+        ['Crea / Hace', 'Música, juegos, código, narrativa, webs', 'Publicación Steam, sello, marca, distribución'],
+        ['Sitio web', 'derolavigne.com', 'martinezaistudios.com'],
+      ],
+      philosophyTitle: 'Filosofía del sello',
       philosophy:
-        'Publicamos obras donde la IA es vessel (recipiente) del mensaje humano, no el autor. IA dirigida bajo liderazgo creativo. Transparentes sobre las herramientas. Sin claims de «100% generado». Sin ficción de equipo AAA.',
+        'Publicamos obras donde la IA es vessel (recipiente) del mensaje humano, no el autor. Dero Lavigne dirige la creación; Martinez AI Studios publica con transparencia. Sin claims de «100% generado». Sin ficción de equipo AAA.',
       quote:
         'Mi música no está hecha para confrontar a nadie; es un llamado a restaurar el equilibrio. La verdadera igualdad nace de escucharnos unos a otros, no de silenciarnos. La fuerza auténtica surge de la unidad, nunca del dominio.',
       quoteAttr: '— Kaela Inferna',
       texasTitle: 'Arraigados en Texas',
       texas:
-        'Con sede en Dallas, Texas, EE.UU. Sello creativo independiente con alcance global vía Steam, plataformas de streaming y el lore abierto del Pliegue.',
+        'Publisher y sello creativo con sede en Dallas, Texas, EE.UU. — alcance global vía Steam, streaming y el lore abierto del Pliegue.',
       tableTitle: 'Temas en el Ecosistema',
       tableHeaders: ['Kaela (Música)', 'CONTRABAND (Juego)', 'El Sello (Web)'],
       tableRows: [
@@ -500,16 +543,22 @@ export const content = {
     },
     works: {
       intro:
-        'Cada lanzamiento de Martinez AI Studios conecta con el mismo universo — música que resuena in-game, personajes que existen en streaming y en Operations Mode, narrativas que ramifican y se pliegan.',
+        'Estas son obras insignia publicadas por Martinez AI Studios. Cada una fue creada por Dero Lavigne y lanzada bajo el sello — en streaming, Steam y el universo del Pliegue.',
+      flagshipTitle: 'Lanzamientos insignia',
+      catalogTitle: 'Catálogo creativo completo',
+      catalogBody:
+        'Dero Lavigne desarrolla música, juegos, webs y narrativa transmedia. Martinez AI Studios publica y distribuye esas obras. Para el portfolio completo y siempre actualizado — visita derolavigne.com.',
+      catalogCta: 'Ver catálogo completo en derolavigne.com',
     },
     kaela: {
+      credits: 'Creado por Dero Lavigne · Publicado por Martinez AI Studios',
       genre: 'Dark electronic pop',
       stats: '4 álbumes · 41 pistas',
       albums: 'Crown of Fire, Phoenix Era, Digital Rebellion, Aurora Rising',
       tagline: 'Nacido de IA. Humano en el mensaje.',
       transmediaTitle: 'Identidad Transmedia',
       transmedia:
-        'Kaela Inferna es artista real en streaming y nave IA dentro de CONTRABAND. Tras escapar de Verge Station, acepta su directiva principal: mantener viva a Lyra, mantener la nave intacta. Operations Mode en Haven gestiona contratos, amenazas y análisis de tripulación.',
+        'Kaela Inferna fue creada por Dero Lavigne y publicada por Martinez AI Studios. Es artista en streaming y nave IA dentro de CONTRABAND. Tras escapar de Verge Station, acepta su directiva principal: mantener viva a Lyra, mantener la nave intacta. Operations Mode en Haven gestiona contratos, amenazas y análisis de tripulación.',
       directive: 'Directiva principal aceptada: mantener viva a Lyra.',
       cta: 'Visitar kaelainferna.com',
     },
@@ -540,22 +589,22 @@ export const content = {
     },
     music: {
       intro:
-        'La música en Martinez AI Studios abarca el catálogo del sello Kaela Inferna y bandas sonoras originales. La IA augmenta composición, letras y producción vocal — siempre bajo dirección creativa humana.',
-      labelTitle: 'El Sello',
+        'Martinez AI Studios es el sello que publica la música creada por Dero Lavigne — el catálogo Kaela Inferna y bandas sonoras originales. La IA augmenta composición, letras y producción vocal bajo la dirección creativa de Dero.',
+      labelTitle: 'El sello',
       label:
-        'Kaela Inferna · Martinez AI Studios — 41 pistas en cuatro álbumes de dark electronic pop con núcleo humanista.',
+        'Kaela Inferna — creada por Dero Lavigne, publicada por Martinez AI Studios. 41 pistas en cuatro álbumes de dark electronic pop con núcleo humanista.',
       ostTitle: 'Banda Sonora Original de CONTRABAND',
       ost: '21 temas originales puntean el Pliegue — desde operaciones en Haven hasta combate en el Rift. Disponible con el juego y canales oficiales.',
       pipelineTitle: 'Pipeline de Voces',
       pipeline:
-        'Las voces de personajes usan ElevenLabs con perfiles por personaje. Kaela habla in-game y en álbum — misma identidad, distintos medios.',
+        'Las voces de personajes en obras publicadas usan ElevenLabs con perfiles por personaje — desarrolladas por Dero Lavigne, publicadas bajo el sello Martinez AI Studios.',
     },
     games: {
       intro:
-        'Martinez AI Studios publica videojuegos comerciales PC en Steam. Nuestro flagship, CONTRABAND: Edge of the Fold, ofrece narrativa ramificada, logros y cloud saves.',
+        'Martinez AI Studios publica videojuegos comerciales PC en Steam. Los juegos los desarrolla Dero Lavigne; el sello gestiona publicación, store y comunidad. Título insignia: CONTRABAND: Edge of the Fold.',
       publishingTitle: 'Publicación Steam',
       publishing:
-        'Como Steamworks Partner (ID 410350), gestionamos publicación, presencia en store y comunidad. Crédito de developer: Dero Lavigne; publisher: el sello.',
+        'Como Steamworks Partner (ID 410350), Martinez AI Studios gestiona publicación, store y comunidad. Developer: Dero Lavigne. Publisher: Martinez AI Studios — como figura en cada release de Steam.',
       narrativeTitle: 'Narrativa Ramificada',
       narrative:
         '300+ escenas narrativas, diálogo por facciones y el sistema Rift permiten revisitar y ramificar decisiones mientras persisten timelines fantasma — diseño narrativo para rejugar y consecuencias.',
@@ -563,27 +612,27 @@ export const content = {
     },
     technology: {
       intro:
-        'Describimos nuestro stack con honestidad. La IA es herramienta de producción dirigida por humanos — no gimmick de marketing.',
+        'Las obras publicadas las desarrolla Dero Lavigne con las herramientas siguientes. Martinez AI Studios publica los resultados — describimos el stack con honestidad, sin hype de marketing.',
       items: [
         {
-          title: 'IA Dirigida',
-          body: 'Modelos de lenguaje y herramientas generativas asisten escritura, iteración y world-building bajo supervisión autoral. Nacido de IA. Humano en el mensaje.',
+          title: 'IA dirigida',
+          body: 'Dero Lavigne usa modelos de lenguaje y herramientas generativas para escritura, iteración y world-building bajo supervisión autoral. Publicado por Martinez AI Studios. Nacido de IA. Humano en el mensaje.',
         },
         {
-          title: 'Pipeline de Voces ElevenLabs',
-          body: 'Perfiles de voz por personaje para diálogo in-game y escenas narrativas. Identidad consistente entre música y Operations Mode.',
+          title: 'Pipeline de voces ElevenLabs',
+          body: 'Perfiles de voz por personaje para diálogo in-game y narrativa — creados por Dero Lavigne, publicados bajo el sello.',
         },
         {
-          title: 'Three.js y Gráficos Web',
-          body: '3D en tiempo real para experiencias web, sitios de lore y sistemas visuales. Renderizado performance-first para páginas de alto tráfico.',
+          title: 'Three.js y gráficos web',
+          body: '3D en tiempo real para experiencias web, sitios de lore y sistemas visuales — desarrollados por Dero Lavigne para obras publicadas.',
         },
         {
-          title: 'Audio Procedural y Reactivo',
-          body: 'Capas musicales dinámicas y diseño de sonido reactivo al combate en CONTRABAND. Producción OST integrada con estados de gameplay.',
+          title: 'Audio procedural y reactivo',
+          body: 'Capas musicales dinámicas y diseño de sonido reactivo al combate en CONTRABAND — creado por Dero Lavigne, publicado por Martinez AI Studios.',
         },
         {
-          title: 'Sistemas de Contenido Bilingüe',
-          body: 'Pipelines nativos EN/ES para narrativa, web y copy de store — no traducciones automáticas como afterthought.',
+          title: 'Sistemas de contenido bilingüe',
+          body: 'Pipelines nativos EN/ES para narrativa, web y copy de store — desarrollados por Dero Lavigne, distribuidos por el sello.',
         },
       ],
       avoid: 'Evitamos: «Revolutionary AI», «ChatGPT powered», stock de robots, y claims de autoría totalmente automatizada.',
@@ -601,6 +650,7 @@ export const content = {
         ['Grupo Steam (autor)', '46190105 — DeroLavigne'],
         ['Ubicación', 'Dallas, Texas, EE.UU.'],
         ['Obras flagship', 'Kaela Inferna (41 pistas) · CONTRABAND (300+ escenas, 140 logros)'],
+        ['Portfolio del creador', 'derolavigne.com — catálogo completo de obras creadas por Dero Lavigne'],
         ['Sitios hermanos', 'kaelainferna.com · edgeofthefold.com · derolavigne.com'],
       ],
       contactNote: 'Para prensa, usa la página de contacto. Incluye medio y deadline.',
@@ -609,15 +659,23 @@ export const content = {
       items: [
         {
           q: '¿Qué es Martinez AI Studios?',
-          a: 'Sello creativo y publisher Steam con sede en Dallas, Texas. Publicamos música con IA (Kaela Inferna) y juegos narrativos ramificados (CONTRABAND). Nacido de IA. Humano en el mensaje.',
+          a: 'Publisher y sello creativo con sede en Dallas, Texas. Publicamos y distribuimos obras creadas por Dero Lavigne — incluyendo Kaela Inferna en streaming y CONTRABAND en Steam. Nacido de IA. Humano en el mensaje.',
+        },
+        {
+          q: '¿Quién crea el contenido?',
+          a: 'Dero Lavigne — developer, autor y director creativo. Crea la música, juegos, webs y narrativa. Martinez AI Studios publica y lanza esas obras bajo el sello.',
         },
         {
           q: '¿Es lo mismo que Dero Lavigne?',
-          a: 'No. Dero Lavigne es developer y director creativo. Martinez AI Studios es el publisher y hub de marca que agrupa música, juegos y narrativa bajo una identidad.',
+          a: 'No. Dero Lavigne es el creador (derolavigne.com). Martinez AI Studios es el publisher y sello (este sitio). Creado por Dero · Publicado por Martinez AI Studios.',
+        },
+        {
+          q: '¿Por qué dos sitios web?',
+          a: 'derolavigne.com es el portfolio creativo — todo lo que Dero construye. martinezaistudios.com es la casa del publisher — lo que el sello publica en Steam, streaming y bajo la marca.',
         },
         {
           q: '¿Kaela Inferna es real?',
-          a: 'Kaela es identidad artística en streaming y personaje transmedia — la nave IA en CONTRABAND. Música y voz usan herramientas IA bajo dirección humana.',
+          a: 'Kaela fue creada por Dero Lavigne y publicada por Martinez AI Studios. Es artista en streaming y nave IA en CONTRABAND. Música y voz usan herramientas IA bajo la dirección de Dero.',
         },
         {
           q: '¿Dónde juego CONTRABAND?',
@@ -625,10 +683,10 @@ export const content = {
         },
         {
           q: '¿Usáis IA para todo?',
-          a: 'La IA es vessel de producción bajo dirección autoral — música, voces, iteración y tooling. El mensaje creativo y la curación final son humanos.',
+          a: 'La IA es vessel de producción bajo la dirección de Dero Lavigne — música, voces, iteración y tooling. Martinez AI Studios publica los resultados con transparencia. El mensaje creativo es humano.',
         },
         {
-          q: '¿Dónde está el estudio?',
+          q: '¿Dónde está el sello?',
           a: 'Dallas, Texas, EE.UU.',
         },
         {
@@ -638,10 +696,10 @@ export const content = {
       ],
     },
     contact: {
-      intro: 'Contacta con el sello, únete a la comunidad o explora sitios hermanos.',
+      intro: 'Contacta con el publisher, únete a la comunidad o explora sitios hermanos.',
       location: 'Dallas, Texas, EE.UU.',
-      email: 'contact@martinezaistudios.com',
-      emailNote: 'Consultas generales y prensa',
+      email: OFFICIAL.email,
+      emailNote: 'Consultas generales, prensa y publicación',
       communityTitle: 'Comunidad Steam',
       sisterTitle: 'Sitios Hermanos',
     },
@@ -661,7 +719,8 @@ export const content = {
       privacy: 'Privacidad',
     },
     glossary: [
-      { term: 'Martinez AI Studios', def: 'Sello creativo, publisher Steam, hub de marca' },
+      { term: 'Martinez AI Studios', def: 'Publisher, sello creativo, hub de marca — publica obras creadas por Dero Lavigne' },
+      { term: 'Dero Lavigne', def: 'Developer, autor, director creativo — crea todo el contenido' },
       { term: 'El Pliegue / The Fold', def: 'Metáfora del universo — realidad que se dobla' },
       { term: 'Rift branches', def: 'Decisiones ramificadas y revisit en CONTRABAND' },
       { term: 'Vessel', def: 'IA como recipiente del mensaje humano' },

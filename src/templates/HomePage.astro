@@ -41,7 +41,8 @@ const c = t(lang);
   <section class="section section-alt">
     <div class="container">
       <h2>{c.home.featuredTitle}</h2>
-      <div class="grid-2" style="margin-top: 2rem;">
+      <p class="credit-line">{c.creditLine}</p>
+      <div class="grid-2" style="margin-top: 1.5rem;">
         <WorkCard
           title="Kaela Inferna"
           subtitle={lang === 'en' ? 'Dark electronic pop · 41 tracks · AI-born artist' : 'Dark electronic pop · 41 pistas · Artista nacida de IA'}
@@ -71,13 +72,17 @@ const c = t(lang);
 
   <section class="section section-alt ecosystem">
     <div class="container">
-      <h2>{lang === 'en' ? 'The Ecosystem' : 'El Ecosistema'}</h2>
-      <div class="eco-diagram" role="img" aria-label="Martinez AI Studios ecosystem diagram">
-        <div class="eco-hub">Martinez AI Studios</div>
+      <h2>{c.home.ecosystemTitle}</h2>
+      <div class="eco-diagram" role="img" aria-label="Martinez AI Studios ecosystem — Dero Lavigne creates, Martinez AI Studios publishes">
+        <a href={OFFICIAL.author} class="eco-creator" target="_blank" rel="noopener noreferrer">
+          {c.home.ecosystemCreator}
+        </a>
+        <div class="eco-arrow" aria-hidden="true">→</div>
+        <div class="eco-hub">{c.home.ecosystemPublisher}</div>
         <div class="eco-branches">
           <a href={localizedPath('/works/kaela-inferna', lang)}>Kaela Inferna</a>
           <a href={localizedPath('/works/contraband', lang)}>CONTRABAND</a>
-          <a href={OFFICIAL.author} target="_blank" rel="noopener noreferrer">Dero Lavigne</a>
+          <a href={OFFICIAL.author} target="_blank" rel="noopener noreferrer">derolavigne.com</a>
         </div>
       </div>
     </div>
@@ -131,9 +136,34 @@ const c = t(lang);
     opacity: 0.9;
   }
 
+  .credit-line {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--accent-gold);
+    margin-top: 0.5rem;
+  }
+
   .eco-diagram {
     margin-top: 2rem;
     text-align: center;
+  }
+
+  .eco-creator {
+    display: inline-block;
+    padding: 0.85rem 1.75rem;
+    border: 1px solid var(--accent-cyan);
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    text-shadow: none;
+  }
+
+  .eco-arrow {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    margin: 1rem 0;
   }
 
   .eco-hub {

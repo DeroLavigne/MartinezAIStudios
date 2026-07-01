@@ -18,6 +18,23 @@ const c = t(lang).studio;
 
   <section class="section">
     <div class="container">
+      <h2>{c.rolesTitle}</h2>
+      <p>{c.rolesIntro}</p>
+      <table style="margin-top: 1.5rem;">
+        <thead>
+          <tr>{c.rolesHeaders.map((h) => <th>{h}</th>)}</tr>
+        </thead>
+        <tbody>
+          {c.rolesRows.map((row) => (
+            <tr>{row.map((cell) => <td>{cell}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
       <h2>{c.philosophyTitle}</h2>
       <p>{c.philosophy}</p>
       <blockquote>
@@ -27,7 +44,7 @@ const c = t(lang).studio;
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section">
     <div class="container">
       <h2>{c.texasTitle}</h2>
       <p>{c.texas}</p>
@@ -54,7 +71,7 @@ const c = t(lang).studio;
     <div class="container epilogue">
       <h2>{c.epilogueTitle}</h2>
       {c.epilogue.map((line) => <p class="epilogue-line">{line}</p>)}
-      <p><a href={localizedPath('/works', lang)} class="btn btn-primary">{lang === 'en' ? 'Explore Works' : 'Explorar Obras'}</a></p>
+      <p><a href={localizedPath('/works', lang)} class="btn btn-primary">{lang === 'en' ? 'Explore Published Works' : 'Explorar Obras Publicadas'}</a></p>
     </div>
   </section>
 </BaseLayout>
