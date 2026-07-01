@@ -27,13 +27,25 @@ npm run preview
 
 Output: `dist/` — deploy to any static host (Netlify, Vercel, Cloudflare Pages, GitHub Pages, S3, etc.).
 
-## Deploy checklist
+## Deploy (GitHub Pages + GoDaddy)
 
-1. Point DNS `martinezaistudios.com` to your host
-2. Set `site` in `astro.config.mjs` if domain differs
-3. Enable HTTPS
-4. Verify `/sitemap-index.xml` and `/robots.txt` after deploy
-5. Submit sitemap in Google Search Console (EN + ES)
+Push to `main` triggers [.github/workflows/deploy.yml](.github/workflows/deploy.yml) — build Astro and publish to GitHub Pages.
+
+**GitHub (one time):** Repo → Settings → Pages → Source: **GitHub Actions**.
+
+**GoDaddy DNS** for `martinezaistudios.com`:
+
+| Type | Name | Value |
+|------|------|-------|
+| A | @ | `185.199.108.153` |
+| A | @ | `185.199.109.153` |
+| A | @ | `185.199.110.153` |
+| A | @ | `185.199.111.153` |
+| CNAME | www | `derolavigne.github.io` |
+
+Then in GitHub Pages settings, set custom domain to `martinezaistudios.com` and enable **Enforce HTTPS** when available.
+
+DNS can take 15 minutes to 48 hours. Verify `/sitemap-index.xml` and submit to Google Search Console.
 
 ## Project structure
 
