@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { getPageMeta } from '../i18n/translations';
+import { blogPosts } from '../data/blog/posts';
+import { getPostContent, getCategoryLabel } from '../data/blog/types';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('blog', lang);
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/blog">
+  <div class="page-hero container">
+    <h1>{meta.h1}</h1>
+    <p class="lead">{lang === 'en'
+      ? 'Long-form notes from Martinez AI Studios — games, AI music, production tools, and publishing perspective. Created by Dero Lavigne; editorial voice from the label.'
+      : 'Notas extensas de Martinez AI Studios — juegos, música IA, herramientas de producción y perspectiva de publisher. Creado por Dero Lavigne; voz editorial del sello.'}</p>
+  </div>
+
+  <section class="section">
+    <div class="container blog-grid">
+      {blogPosts.map((post) => {
+        const c = getPostContent(post, lang);
+        return (
+          <article class="card blog-card">
+            <p class="blog-meta">
+              <span class="blog-category">{getCategoryLabel(post.category, lang)}</span>
+              <time datetime={post.date}>{post.date}</time>
+            </p>
+            <h2><a href={localizedPath(`/blog/${post.slug}`, lang)}>{c.title}</a></h2>
+            <p>{c.excerpt}</p>
+            <a href={localizedPath(`/blog/${post.slug}`, lang)} class="read-more">
+              {lang === 'en' ? 'Read article' : 'Leer artículo'} →
+            </a>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .blog-card h2 {
+    font-size: 1.15rem;
+    margin: 0.5rem 0;
+  }
+
+  .blog-card h2 a {
+    color: var(--text-primary);
+  }
+
+  .blog-card h2 a:hover {
+    color: var(--accent-cyan);
+  }
+
+  .blog-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.75rem;
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin: 0;
+  }
+
+  .blog-category {
+    color: var(--accent-gold);
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-family: var(--font-display);
+    letter-spacing: 0.06em;
+  }
+</style>

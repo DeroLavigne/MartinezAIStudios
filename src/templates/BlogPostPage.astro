@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCatalogSection from '../components/GameCatalogSection.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { OFFICIAL } from '../i18n/translations';
+import type { BlogPost } from '../data/blog/types';
+import { getPostContent, getCategoryLabel } from '../data/blog/types';
+
+interface Props {
+  lang: Lang;
+  post: BlogPost;
+}
+
+const { lang, post } = Astro.props;
+const c = getPostContent(post, lang);
+const site = Astro.site?.href?.replace(/\/$/, '') ?? 'https://martinezaistudios.com';
+const articleUrl = `${site}/${lang}/blog/${post.slug}/`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: c.title,
+  description: c.description,
+  datePublished: post.date,
+  author: {
+    '@type': 'Person',
+    name: 'Dero Lavigne',
+    url: OFFICIAL.author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Martinez AI Studios',
+    logo: { '@type': 'ImageObject', url: `${site}/logo.png` },
+  },
+  mainEntityOfPage: articleUrl,
+  inLanguage: lang,
+};
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${c.title} | Martinez AI Studios`}
+  description={c.description}
+  currentPath={`/blog/${post.slug}`}
+  jsonLd={jsonLd}
+>
+  <article class="blog-article">
+    <div class="page-hero container">
+      <p class="blog-meta">
+        <a href={localizedPath('/blog', lang)}>{lang === 'en' ? 'Studio Log' : 'Studio Log'}</a>
+        <span aria-hidden="true"> · </span>
+        <span>{getCategoryLabel(post.category, lang)}</span>
+        <span aria-hidden="true"> · </span>
+        <time datetime={post.date}>{post.date}</time>
+      </p>
+      <h1>{c.title}</h1>
+      <p class="lead">{c.excerpt}</p>
+    </div>
+
+    <div class="section">
+      <div class="container article-body">
+        {c.sections.map((section) => (
+          <section class="article-section">
+            <h2>{section.heading}</h2>
+            {section.paragraphs.map((p) => <p>{p}</p>)}
+          </section>
+        ))}
+
+        {post.showGameCatalog && (
+          <>
+            <h2 class="catalog-heading">
+              {lang === 'en' ? 'Referenced game catalog' : 'Catálogo de juegos referenciado'}
+            </h2>
+            <GameCatalogSection lang={lang} filter={post.showGameCatalog} />
+          </>
+        )}
+
+        <aside class="article-aside">
+          <p>
+            {lang === 'en' ? 'Created by ' : 'Creado por '}
+            <a href={OFFICIAL.author} rel="noopener noreferrer" target="_blank">Dero Lavigne</a>
+            {lang === 'en' ? ' · Published by Martinez AI Studios · ' : ' · Publicado por Martinez AI Studios · '}
+            <a href={OFFICIAL.author} rel="noopener noreferrer" target="_blank">derolavigne.com</a>
+          </p>
+          <p>
+            <a href={localizedPath('/blog', lang)} class="btn">
+              {lang === 'en' ? '← All Studio Log posts' : '← Todas las entradas'}
+            </a>
+          </p>
+        </aside>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-meta {
+    font-size: 0.75rem;
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 1rem;
+  }
+
+  .article-body {
+    max-width: 72ch;
+  }
+
+  .article-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .article-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--accent-cyan);
+  }
+
+  .article-section p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .catalog-heading {
+    margin-top: 3rem;
+    font-size: 1.35rem;
+  }
+
+  .article-aside {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-subtle);
+    opacity: 0.9;
+  }
+</style>

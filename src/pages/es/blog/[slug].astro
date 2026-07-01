@@ -1,0 +1,13 @@
+---
+import BlogPostPage from '../../../templates/BlogPostPage.astro';
+import { blogPosts } from '../../../data/blog/posts';
+
+export function getStaticPaths() {
+  return blogPosts.flatMap((post) => [
+    { params: { slug: post.slug }, props: { lang: 'es' as const, post } },
+  ]);
+}
+
+const { lang, post } = Astro.props;
+---
+<BlogPostPage lang={lang} post={post} />

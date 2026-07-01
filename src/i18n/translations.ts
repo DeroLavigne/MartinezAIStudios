@@ -25,6 +25,7 @@ export const nav = {
     technology: 'Technology',
     press: 'Press',
     faq: 'FAQ',
+    blog: 'Studio Log',
     contact: 'Contact',
   },
   es: {
@@ -35,6 +36,7 @@ export const nav = {
     technology: 'Tecnología',
     press: 'Prensa',
     faq: 'FAQ',
+    blog: 'Studio Log',
     contact: 'Contacto',
   },
 } as const;
@@ -193,14 +195,28 @@ export const pages: Record<string, Record<Lang, PageMeta>> = {
     en: {
       title: 'FAQ — Martinez AI Studios',
       description:
-        'What is Martinez AI Studios? Kaela Inferna, CONTRABAND on Steam, AI approach, Dallas location, and how to support.',
+        'Publisher, creator roles, Kaela Inferna, CONTRABAND Rift branches, AI music ethics, ComfyUI stack, Steam curators, and Studio Log.',
       h1: 'Frequently Asked Questions',
     },
     es: {
       title: 'Preguntas Frecuentes — Martinez AI Studios',
       description:
-        '¿Qué es Martinez AI Studios? Kaela Inferna, CONTRABAND en Steam, enfoque IA, ubicación Dallas y cómo apoyar.',
+        'Roles publisher/creador, Kaela Inferna, Rift branches de CONTRABAND, ética música IA, stack ComfyUI, curators Steam y Studio Log.',
       h1: 'Preguntas Frecuentes',
+    },
+  },
+  blog: {
+    en: {
+      title: 'Studio Log — Games, AI Music & Tools | Martinez AI Studios',
+      description:
+        'Long-form publisher notes: 500+ referenced games, indie and AAA craft, AI music pipeline, ComfyUI and ElevenLabs stack, Steam curation.',
+      h1: 'Studio Log',
+    },
+    es: {
+      title: 'Studio Log — Juegos, Música IA y Herramientas | Martinez AI Studios',
+      description:
+        'Notas extensas del publisher: 500+ juegos referenciados, craft indie y AAA, pipeline música IA, stack ComfyUI y ElevenLabs, curación Steam.',
+      h1: 'Studio Log',
     },
   },
   contact: {
@@ -448,6 +464,50 @@ export const content = {
         {
           q: 'How can I support the project?',
           a: 'Wishlist CONTRABAND on Steam, stream Kaela Inferna, and join the Martinez AI Studios Steam community group.',
+        },
+        {
+          q: 'What is The Fold?',
+          a: 'The Fold is the universe metaphor behind CONTRABAND and related works — reality that bends, branches, and keeps ghost timelines. Lore hubs live at edgeofthefold.com; the publisher hub is here.',
+        },
+        {
+          q: 'What are Rift branches?',
+          a: 'CONTRABAND’s core narrative system: revisit any story moment, split decisions, and keep abandoned paths as ghost timelines. It is designed for replay with consequence, not cosmetic choice menus.',
+        },
+        {
+          q: 'What is the Studio Log?',
+          a: 'Our long-form blog at martinezaistudios.com/blog — publisher notes on classic and modern games, indie and AAA craft, AI music, and the ComfyUI/ElevenLabs production stack documented at derolavigne.com.',
+        },
+        {
+          q: 'Which AI tools does Dero Lavigne use?',
+          a: 'ComfyUI for visual iteration, ElevenLabs for character voice profiles, language models for outline and dialogue stress-testing under authorial veto, Three.js for web 3D, and DAW workflows for music — all directed by Dero, published by Martinez AI Studios.',
+        },
+        {
+          q: 'How is AI music different from “AI slop”?',
+          a: 'Slop is undirected volume. Our releases use AI as a production vessel under Dero Lavigne’s taste — authored lyrics, cut filler, consistent vocal identity for Kaela Inferna, and transparent credit lines. AI-born. Human in message.',
+        },
+        {
+          q: 'What are the Steam Curator pages?',
+          a: 'Editorial recommendation feeds: Martinez AI Studios (curator 46190141) and Dero Lavigne (46190105). They highlight games, media, and tools we think deserve attention — not paid placements.',
+        },
+        {
+          q: 'Does Martinez AI Studios accept game submissions?',
+          a: 'No open submission portal. The label publishes works created by Dero Lavigne. Studio Log posts explain our taste and standards for press and partners.',
+        },
+        {
+          q: 'How do Kaela Inferna and CONTRABAND connect?',
+          a: 'Kaela is a streaming artist and in-game Operations Mode aboard Haven in CONTRABAND — same creative direction by Dero Lavigne, published by Martinez AI Studios. You can enjoy either layer independently or both for transmedia depth.',
+        },
+        {
+          q: 'Where are press assets and fact sheets?',
+          a: 'The Press page lists verifiable stats, Steam Partner ID 410350, legal entity, and contact email Dero.Lavigne@gmail.com — include outlet name and deadline for media requests.',
+        },
+        {
+          q: 'Is CONTRABAND a live-service game?',
+          a: 'No. It is a finishable branching RPG with 140 Steam achievements and cloud saves — designed for complete playthroughs and Rift replays, not endless season treadmills.',
+        },
+        {
+          q: 'Why Dallas, Texas?',
+          a: 'Martinez AI Studios is headquartered in Dallas with global distribution via Steam and streaming. Location grounds the legal entity; audience is worldwide.',
         },
       ],
     },
@@ -698,6 +758,50 @@ export const content = {
         {
           q: '¿Cómo apoyo el proyecto?',
           a: 'Wishlist de CONTRABAND en Steam, streaming de Kaela Inferna, y únete al grupo Steam de Martinez AI Studios.',
+        },
+        {
+          q: '¿Qué es el Pliegue / The Fold?',
+          a: 'El Pliegue es la metáfora del universo detrás de CONTRABAND — realidad que se dobla, ramifica y guarda timelines fantasma. Lore en edgeofthefold.com; hub del publisher aquí.',
+        },
+        {
+          q: '¿Qué son los Rift branches?',
+          a: 'Sistema narrativo central de CONTRABAND: revisita cualquier momento, bifurca decisiones y mantiene rutas abandonadas como timelines fantasma. Diseñado para replay con consecuencia.',
+        },
+        {
+          q: '¿Qué es el Studio Log?',
+          a: 'Blog extensivo en martinezaistudios.com/blog — notas del publisher sobre juegos clásicos y modernos, craft indie y AAA, música IA y stack ComfyUI/ElevenLabs documentado en derolavigne.com.',
+        },
+        {
+          q: '¿Qué herramientas IA usa Dero Lavigne?',
+          a: 'ComfyUI para iteración visual, ElevenLabs para perfiles de voz, modelos de lenguaje para outlines y stress-test de diálogo bajo veto autoral, Three.js para 3D web, y workflows DAW para música — dirigido por Dero, publicado por Martinez AI Studios.',
+        },
+        {
+          q: '¿En qué se diferencia la música IA del «slop»?',
+          a: 'El slop es volumen sin dirección. Nuestros releases usan IA como vessel bajo el gusto de Dero Lavigne — letras authored, filler cortado, identidad vocal consistente para Kaela. Nacido de IA. Humano en el mensaje.',
+        },
+        {
+          q: '¿Qué son las páginas Steam Curator?',
+          a: 'Feeds editoriales de recomendación: Martinez AI Studios (curator 46190141) y Dero Lavigne (46190105). Destacan juegos, media y herramientas — no placements pagados.',
+        },
+        {
+          q: '¿Martinez AI Studios acepta submissions de juegos?',
+          a: 'No hay portal abierto. El sello publica obras creadas por Dero Lavigne. Posts del Studio Log explican gusto y estándares para prensa y partners.',
+        },
+        {
+          q: '¿Cómo se conectan Kaela Inferna y CONTRABAND?',
+          a: 'Kaela es artista streaming y Operations Mode in-game en Haven en CONTRABAND — misma dirección creativa de Dero Lavigne, publicada por Martinez AI Studios. Puedes disfrutar cada capa por separado o ambas.',
+        },
+        {
+          q: '¿Dónde están assets de prensa y fact sheets?',
+          a: 'La página Press lista stats verificables, Steam Partner ID 410350, entidad legal y email Dero.Lavigne@gmail.com — incluye medio y deadline para solicitudes.',
+        },
+        {
+          q: '¿CONTRABAND es juego live-service?',
+          a: 'No. Es RPG ramificado terminable con 140 logros Steam y cloud saves — diseñado para partidas completas y replays del Rift, no temporadas infinitas.',
+        },
+        {
+          q: '¿Por qué Dallas, Texas?',
+          a: 'Martinez AI Studios tiene sede en Dallas con distribución global vía Steam y streaming. La ubicación ancla la entidad legal; la audiencia es mundial.',
         },
       ],
     },

@@ -9,9 +9,22 @@ const { lang } = Astro.props;
 const meta = getPageMeta('faq', lang);
 const c = t(lang).faq;
 const glossary = t(lang).glossary;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: c.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
 ---
 
-<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/faq">
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/faq" jsonLd={faqJsonLd}>
   <div class="page-hero container">
     <h1>{meta.h1}</h1>
   </div>
@@ -48,6 +61,8 @@ const glossary = t(lang).glossary;
       </table>
       <p style="margin-top: 2rem;">
         <a href={localizedPath('/studio', lang)} class="btn">{lang === 'en' ? 'About the Studio' : 'Sobre el Estudio'}</a>
+        {' '}
+        <a href={localizedPath('/blog', lang)} class="btn">{lang === 'en' ? 'Studio Log' : 'Studio Log'}</a>
       </p>
     </div>
   </section>

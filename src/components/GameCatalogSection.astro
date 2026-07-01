@@ -1,0 +1,120 @@
+---
+import type { Lang } from '../i18n/utils';
+import catalogData from '../data/games/catalog.json';
+
+interface Props {
+  lang: Lang;
+  filter: 'classic' | 'indie' | 'aaa' | 'all';
+}
+
+const { lang, filter } = Astro.props;
+
+type Game = (typeof catalogData.games)[number];
+
+function filterGames(games: Game[]): Game[] {
+  if (filter === 'indie') return games.filter((g) => g.indie);
+  if (filter === 'aaa') return games.filter((g) => g.aaa);
+  if (filter === 'classic') return games.filter((g) => !g.indie && !g.aaa);
+  return games;
+}
+
+const games = filterGames(catalogData.games);
+const byEra = games.reduce<Record<string, Game[]>>((acc, game) => {
+  (acc[game.era] ??= []).push(game);
+  return acc;
+}, {});
+
+const eraOrder = [...new Set(games.map((g) => g.era))];
+---
+
+<section class="game-catalog-section">
+  <div class="catalog-summary">
+    <p>
+      {lang === 'en'
+        ? `${games.length} titles referenced in this Studio Log entry — grouped by era. Each note is unique; nothing copied from store pages.`
+        : `${games.length} títulos referenciados en esta entrada del Studio Log — agrupados por era. Cada nota es única.`}
+    </p>
+  </div>
+
+  {eraOrder.map((era) => (
+    <div class="era-block">
+      <h3 class="era-title">{era}</h3>
+      <ul class="game-list">
+        {byEra[era].map((game) => (
+          <li class="game-entry">
+            <span class="game-title">{game.title}</span>
+            <span class="game-year">{game.year}</span>
+            <p class="game-note">{lang === 'en' ? game.en : game.es}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</section>
+
+<style>
+  .game-catalog-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .catalog-summary {
+    margin-bottom: 2rem;
+    opacity: 0.85;
+    max-width: 70ch;
+  }
+
+  .era-block {
+    margin-bottom: 2.5rem;
+  }
+
+  .era-title {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin: 0 0 1rem;
+  }
+
+  .game-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .game-entry {
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 2px;
+  }
+
+  .game-title {
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+
+  .game-year {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+  }
+
+  .game-note {
+    margin: 0.4rem 0 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    opacity: 0.88;
+  }
+
+  @media (min-width: 768px) {
+    .game-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
