@@ -36,8 +36,10 @@ const c = t(lang).footer;
     <div>
       <h4>{c.community}</h4>
       <ul>
-        <li><a href={OFFICIAL.steamMartinez} rel="noopener noreferrer" target="_blank">Steam — Martinez AI Studios</a></li>
-        <li><a href={OFFICIAL.steamDero} rel="noopener noreferrer" target="_blank">Steam — Dero Lavigne</a></li>
+        <li><a href={OFFICIAL.steamMartinez} rel="noopener noreferrer" target="_blank">{lang === 'en' ? 'Martinez AI Studios — Steam Group' : 'Martinez AI Studios — Grupo Steam'}</a></li>
+        <li><a href={OFFICIAL.steamCuratorMartinez} rel="noopener noreferrer" target="_blank">{lang === 'en' ? 'Martinez AI Studios — Steam Curator' : 'Martinez AI Studios — Steam Curator'}</a></li>
+        <li><a href={OFFICIAL.steamDero} rel="noopener noreferrer" target="_blank">{lang === 'en' ? 'Dero Lavigne — Steam Group' : 'Dero Lavigne — Grupo Steam'}</a></li>
+        <li><a href={OFFICIAL.steamCuratorDero} rel="noopener noreferrer" target="_blank">{lang === 'en' ? 'Dero Lavigne — Steam Curator' : 'Dero Lavigne — Steam Curator'}</a></li>
       </ul>
     </div>
     <div>

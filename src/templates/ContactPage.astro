@@ -27,10 +27,13 @@ const c = t(lang).contact;
       <div class="card">
         <h2>{c.communityTitle}</h2>
         <ul class="link-list">
-          <li><a href={OFFICIAL.steamMartinez} target="_blank" rel="noopener noreferrer">Martinez AI Studios — Steam Group</a></li>
-          <li><a href={OFFICIAL.steamDero} target="_blank" rel="noopener noreferrer">Dero Lavigne — Steam Group</a></li>
+          <li><a href={OFFICIAL.steamMartinez} target="_blank" rel="noopener noreferrer">{lang === 'en' ? 'Martinez AI Studios — Steam Group' : 'Martinez AI Studios — Grupo Steam'}</a></li>
+          <li><a href={OFFICIAL.steamCuratorMartinez} target="_blank" rel="noopener noreferrer">{lang === 'en' ? 'Martinez AI Studios — Steam Curator' : 'Martinez AI Studios — Steam Curator'}</a></li>
+          <li><a href={OFFICIAL.steamDero} target="_blank" rel="noopener noreferrer">{lang === 'en' ? 'Dero Lavigne — Steam Group' : 'Dero Lavigne — Grupo Steam'}</a></li>
+          <li><a href={OFFICIAL.steamCuratorDero} target="_blank" rel="noopener noreferrer">{lang === 'en' ? 'Dero Lavigne — Steam Curator' : 'Dero Lavigne — Steam Curator'}</a></li>
           <li><a href={OFFICIAL.steamApp} target="_blank" rel="noopener noreferrer">CONTRABAND on Steam (App 4901100)</a></li>
         </ul>
+        <p class="note">{lang === 'en' ? 'Follow our Steam Curators for store updates and featured lists.' : 'Sigue nuestros Steam Curators para novedades en la Store y listas destacadas.'}</p>
       </div>
     </div>
   </section>
