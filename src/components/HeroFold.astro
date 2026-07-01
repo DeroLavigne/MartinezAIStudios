@@ -1,0 +1,175 @@
+<div class="hero-fold" id="hero-fold">
+  <canvas id="fold-canvas" aria-hidden="true"></canvas>
+  <div class="hero-scanlines" aria-hidden="true"></div>
+  <div class="hero-vignette" aria-hidden="true"></div>
+</div>
+
+<style>
+  .hero-fold {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, #0c0718 0%, #05040c 70%);
+  }
+
+  #fold-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    opacity: 0.5;
+  }
+
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(5, 4, 12, 0.85) 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #fold-canvas {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function initFoldCanvas() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const canvas = document.getElementById('fold-canvas') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let w = 0;
+    let h = 0;
+    let scrollY = 0;
+    let time = 0;
+    let raf = 0;
+
+    interface Particle {
+      x: number;
+      y: number;
+      z: number;
+      vx: number;
+      vy: number;
+      size: number;
+      hue: number;
+    }
+
+    const particles: Particle[] = [];
+    const COUNT = 180;
+
+    function resize() {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      w = parent.clientWidth;
+      h = parent.clientHeight;
+      canvas.width = w * devicePixelRatio;
+      canvas.height = h * devicePixelRatio;
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+    }
+
+    function seed() {
+      particles.length = 0;
+      for (let i = 0; i < COUNT; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          z: Math.random(),
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          size: Math.random() * 2 + 0.5,
+          hue: Math.random() > 0.5 ? 270 : 190,
+        });
+      }
+    }
+
+    function draw() {
+      time += 0.008;
+      const fold = scrollY * 0.0008;
+
+      ctx.fillStyle = 'rgba(5, 4, 12, 0.25)';
+      ctx.fillRect(0, 0, w, h);
+
+      const cx = w / 2;
+      const cy = h / 2 + fold * 40;
+
+      for (const p of particles) {
+        const foldOffset = Math.sin(p.x * 0.003 + time + fold * 3) * (20 + fold * 60);
+        p.x += p.vx + Math.sin(time + p.z * 10) * 0.15;
+        p.y += p.vy + foldOffset * 0.02;
+
+        if (p.x < 0) p.x = w;
+        if (p.x > w) p.x = 0;
+        if (p.y < 0) p.y = h;
+        if (p.y > h) p.y = 0;
+
+        const dx = p.x - cx;
+        const dy = p.y - cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const alpha = Math.max(0.1, 1 - dist / (Math.min(w, h) * 0.7));
+
+        const color = p.hue === 270
+          ? `rgba(176, 133, 255, ${alpha * 0.7})`
+          : `rgba(94, 215, 255, ${alpha * 0.5})`;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y + foldOffset * 0.3, p.size * (0.5 + p.z), 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+
+        if (p.size > 1.5 && alpha > 0.4) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y + foldOffset * 0.3, p.size * 3, 0, Math.PI * 2);
+          ctx.fillStyle = p.hue === 270
+            ? `rgba(176, 133, 255, ${alpha * 0.08})`
+            : `rgba(94, 215, 255, ${alpha * 0.05})`;
+          ctx.fill();
+        }
+      }
+
+      // Fold line — reality bend
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 4) {
+        const y = cy + Math.sin(x * 0.008 + time * 2) * 30 + Math.sin(x * 0.02 - time) * 15;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = `rgba(248, 216, 120, ${0.15 + fold * 0.2})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      raf = requestAnimationFrame(draw);
+    }
+
+    resize();
+    seed();
+    draw();
+
+    window.addEventListener('resize', () => { resize(); seed(); });
+    window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
+
+    document.addEventListener('astro:before-swap', () => {
+      cancelAnimationFrame(raf);
+    });
+  }
+
+  initFoldCanvas();
+  document.addEventListener('astro:page-load', initFoldCanvas);
+</script>

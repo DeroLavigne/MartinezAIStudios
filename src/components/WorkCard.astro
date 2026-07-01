@@ -1,0 +1,103 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  tag?: string;
+  accent?: 'violet' | 'gold' | 'cyan';
+  href: string;
+  external?: boolean;
+}
+
+const { title, subtitle, tag, accent = 'violet', href, external } = Astro.props;
+---
+
+<a href={href} class={`work-card accent-${accent}`} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+  {tag && <span class="work-tag">{tag}</span>}
+  <h3>{title}</h3>
+  {subtitle && <p>{subtitle}</p>}
+  <span class="work-arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+  .work-card {
+    display: block;
+    position: relative;
+    padding: 2rem;
+    background: var(--glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    color: var(--text-primary);
+    text-shadow: none;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s, border-color 0.35s;
+  }
+
+  .work-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.35s;
+    pointer-events: none;
+  }
+
+  .work-card.accent-violet::before {
+    background: radial-gradient(circle at 20% 80%, rgba(176, 133, 255, 0.12), transparent 60%);
+  }
+
+  .work-card.accent-gold::before {
+    background: radial-gradient(circle at 80% 20%, rgba(248, 216, 120, 0.1), transparent 60%);
+  }
+
+  .work-card.accent-cyan::before {
+    background: radial-gradient(circle at 50% 50%, rgba(94, 215, 255, 0.08), transparent 60%);
+  }
+
+  .work-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-violet);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      0 0 24px rgba(176, 133, 255, 0.2),
+      inset 0 0 0 1px rgba(248, 216, 120, 0.08);
+    color: var(--text-primary);
+    text-shadow: none;
+  }
+
+  .work-card:hover::before {
+    opacity: 1;
+  }
+
+  .work-tag {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+  }
+
+  .work-card h3 {
+    margin: 0.75rem 0 0.5rem;
+    font-size: 1.35rem;
+  }
+
+  .work-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  .work-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.25rem;
+    color: var(--accent-cyan);
+    transition: transform 0.3s;
+  }
+
+  .work-card:hover .work-arrow {
+    transform: translateX(4px);
+  }
+</style>

@@ -1,0 +1,126 @@
+---
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { t, OFFICIAL } from '../i18n/translations';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const c = t(lang).footer;
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="/logo.png" alt="" width="48" height="48" loading="lazy" />
+      <p class="tagline">{lang === 'en' ? 'AI-born. Human in message.' : 'Nacido de IA. Humano en el mensaje.'}</p>
+    </div>
+    <div>
+      <h4>{c.studio}</h4>
+      <ul>
+        <li><a href={localizedPath('/studio', lang)}>{c.about}</a></li>
+        <li><a href={localizedPath('/technology', lang)}>{lang === 'en' ? 'Technology' : 'Tecnología'}</a></li>
+        <li><a href={localizedPath('/contact', lang)}>{lang === 'en' ? 'Contact' : 'Contacto'}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>{c.works}</h4>
+      <ul>
+        <li><a href={localizedPath('/works/kaela-inferna', lang)}>Kaela Inferna</a></li>
+        <li><a href={localizedPath('/works/contraband', lang)}>CONTRABAND</a></li>
+        <li><a href={localizedPath('/music', lang)}>{c.soundtrack}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>{c.community}</h4>
+      <ul>
+        <li><a href={OFFICIAL.steamMartinez} rel="noopener noreferrer" target="_blank">Steam — Martinez AI Studios</a></li>
+        <li><a href={OFFICIAL.steamDero} rel="noopener noreferrer" target="_blank">Steam — Dero Lavigne</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>{c.sister}</h4>
+      <ul>
+        <li><a href={OFFICIAL.kaela} rel="noopener noreferrer" target="_blank">kaelainferna.com</a></li>
+        <li><a href={OFFICIAL.contraband} rel="noopener noreferrer" target="_blank">edgeofthefold.com</a></li>
+        <li><a href={OFFICIAL.author} rel="noopener noreferrer" target="_blank">derolavigne.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>{lang === 'en' ? '© Martinez AI Studios / David J Martinez' : '© Martinez AI Studios / David J Martinez'}</p>
+    <a href={localizedPath('/legal', lang)}>{c.privacy}</a>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 4rem;
+    padding: 4rem 0 2rem;
+    background: linear-gradient(180deg, transparent, var(--bg-space));
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-brand img {
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-brand .tagline {
+    font-size: 0.75rem;
+  }
+
+  .site-footer h4 {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin: 0 0 1rem;
+  }
+
+  .site-footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-footer li {
+    margin-bottom: 0.5rem;
+  }
+
+  .site-footer a {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

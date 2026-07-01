@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { t, getPageMeta, OFFICIAL } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('contraband', lang);
+const c = t(lang).contraband;
+const site = Astro.site?.href?.replace(/\/$/, '') ?? 'https://martinezaistudios.com';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoGame',
+  name: 'CONTRABAND: Edge of the Fold',
+  url: OFFICIAL.contraband,
+  gamePlatform: 'Steam',
+  applicationCategory: 'Game',
+  operatingSystem: 'Windows',
+  description: c.long,
+  author: { '@type': 'Person', name: 'Dero Lavigne', url: OFFICIAL.author },
+  publisher: { '@type': 'Organization', name: 'Martinez AI Studios', url: site },
+  offers: {
+    '@type': 'Offer',
+    url: OFFICIAL.steamApp,
+    availability: 'https://schema.org/PreOrder',
+  },
+};
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/works/contraband" jsonLd={jsonLd}>
+  <div class="page-hero container">
+    <p class="tagline">{c.pitch}</p>
+    <h1>{meta.h1}</h1>
+    <p class="lead">{c.devPub}</p>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <p>{c.long}</p>
+      <div class="stat-grid" style="margin: 2rem 0;">
+        {c.stats.map((s) => (
+          <div class="stat">
+            <div class="stat-value">{s.value}</div>
+            <div class="stat-label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+      <ul class="pillars">
+        {c.pillars.map((p) => <li>{p}</li>)}
+      </ul>
+      <div class="cta-row">
+        <a href={OFFICIAL.contraband} class="btn btn-primary" target="_blank" rel="noopener noreferrer">{c.ctaGame}</a>
+        <a href={OFFICIAL.steamApp} class="btn btn-gold" target="_blank" rel="noopener noreferrer">{c.ctaWishlist}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{lang === 'en' ? 'Related Works' : 'Obras Relacionadas'}</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <WorkCard
+          title="Kaela Inferna"
+          subtitle={lang === 'en' ? '21-track OST · In-game Operations Mode' : 'OST 21 temas · Operations Mode in-game'}
+          tag="Music"
+          accent="cyan"
+          href={localizedPath('/works/kaela-inferna', lang)}
+        />
+        <WorkCard
+          title={lang === 'en' ? 'Games' : 'Juegos'}
+          subtitle={lang === 'en' ? 'Steam publishing by Martinez AI Studios' : 'Publicación Steam por Martinez AI Studios'}
+          tag="Publisher"
+          accent="gold"
+          href={localizedPath('/games', lang)}
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pillars {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+
+  .pillars li {
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    border-left: 2px solid var(--accent-violet);
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>

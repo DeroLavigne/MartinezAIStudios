@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { t, getPageMeta } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('press', lang);
+const c = t(lang).press;
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/press">
+  <div class="page-hero container">
+    <h1>{meta.h1}</h1>
+    <p class="lead">{c.intro}</p>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h2>{lang === 'en' ? 'Fact Sheet' : 'Ficha de Datos'}</h2>
+      <table>
+        <tbody>
+          {c.factSheet.map(([label, value]) => (
+            <tr>
+              <th scope="row">{label}</th>
+              <td>{value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p style="margin-top: 2rem;">{c.contactNote}</p>
+      <p><a href={localizedPath('/contact', lang)} class="btn btn-primary">{lang === 'en' ? 'Contact' : 'Contacto'}</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  th[scope='row'] {
+    width: 35%;
+    font-weight: 500;
+    opacity: 0.85;
+  }
+</style>

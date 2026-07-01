@@ -1,0 +1,209 @@
+---
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { getNav } from '../i18n/translations';
+
+interface Props {
+  lang: Lang;
+  currentPath?: string;
+}
+
+const { lang, currentPath = '' } = Astro.props;
+const n = getNav(lang);
+const otherLang = lang === 'en' ? 'es' : 'en';
+const switchPath = localizedPath(currentPath, otherLang);
+
+const links = [
+  { href: localizedPath('/studio', lang), label: n.studio },
+  { href: localizedPath('/works', lang), label: n.works },
+  { href: localizedPath('/music', lang), label: n.music },
+  { href: localizedPath('/games', lang), label: n.games },
+  { href: localizedPath('/technology', lang), label: n.technology },
+  { href: localizedPath('/press', lang), label: n.press },
+  { href: localizedPath('/faq', lang), label: n.faq },
+  { href: localizedPath('/contact', lang), label: n.contact },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href={localizedPath('/', lang)} class="logo-link" aria-label="Martinez AI Studios">
+      <img src="/logo.png" alt="Martinez AI Studios logo" width="40" height="40" class="logo-mark" />
+      <span class="logo-text">
+        <span class="logo-martinez">MARTINEZ</span>
+        <span class="logo-studios">AI STUDIOS</span>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        {links.map((link) => {
+          const path = link.href.replace(`/${lang}`, '') || '/';
+          return (
+          <li>
+            <a href={link.href} class:list={[{ active: currentPath === path || (path !== '/' && currentPath.startsWith(path)) }]}>
+              {link.label}
+            </a>
+          </li>
+        );})}
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href={switchPath} class="lang-switch" hreflang={otherLang} lang={otherLang}>
+        {otherLang.toUpperCase()}
+      </a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--header-h);
+    background: rgba(5, 4, 12, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 1rem;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-primary);
+    text-shadow: none;
+  }
+
+  .logo-link:hover {
+    text-shadow: none;
+  }
+
+  .logo-mark {
+    border-radius: 2px;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-martinez {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+  }
+
+  .logo-studios {
+    font-family: var(--font-display);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    opacity: 0.75;
+  }
+
+  .main-nav ul {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.72rem;
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .main-nav a:hover,
+  .main-nav a.active {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 8px rgba(94, 215, 255, 0.4);
+  }
+
+  .lang-switch {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-primary);
+  }
+
+  @media (max-width: 960px) {
+    .main-nav {
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      right: 0;
+      background: rgba(5, 4, 12, 0.98);
+      padding: 1rem;
+      transform: translateY(-120%);
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .main-nav.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .main-nav ul {
+      flex-direction: column;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  toggle?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!!open));
+  });
+</script>

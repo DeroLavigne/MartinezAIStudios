@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { t, getPageMeta, OFFICIAL } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('music', lang);
+const c = t(lang).music;
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/music">
+  <div class="page-hero container">
+    <h1>{meta.h1}</h1>
+    <p class="lead">{c.intro}</p>
+  </div>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div class="card">
+        <h2>{c.labelTitle}</h2>
+        <p>{c.label}</p>
+        <p><a href={OFFICIAL.kaela} target="_blank" rel="noopener noreferrer">{lang === 'en' ? 'Stream Kaela Inferna →' : 'Escuchar Kaela Inferna →'}</a></p>
+      </div>
+      <div class="card">
+        <h2>{c.ostTitle}</h2>
+        <p>{c.ost}</p>
+        <p><a href={OFFICIAL.contraband} target="_blank" rel="noopener noreferrer">{lang === 'en' ? 'CONTRABAND official site →' : 'Sitio oficial CONTRABAND →'}</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.pipelineTitle}</h2>
+      <p>{c.pipeline}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{lang === 'en' ? 'Explore' : 'Explorar'}</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <WorkCard title="Kaela Inferna" subtitle="41 tracks · 4 albums" tag="Artist" accent="cyan" href={localizedPath('/works/kaela-inferna', lang)} />
+        <WorkCard title="CONTRABAND OST" subtitle="21 original tracks" tag="Soundtrack" accent="violet" href={localizedPath('/works/contraband', lang)} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

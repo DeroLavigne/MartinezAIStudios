@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroFold from '../components/HeroFold.astro';
+import GlitchIntro from '../components/GlitchIntro.astro';
+import WorkCard from '../components/WorkCard.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { t, getPageMeta, OFFICIAL, siteMeta } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+
+const { lang } = Astro.props;
+const meta = getPageMeta('home', lang);
+const c = t(lang);
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/">
+  <GlitchIntro />
+  <section class="home-hero">
+    <HeroFold />
+    <div class="container hero-content">
+      <img src="/logo.png" alt="" width="80" height="80" class="hero-logo" />
+      <p class="tagline">{siteMeta[lang].tagline}</p>
+      <h1>{meta.h1}</h1>
+      <p class="lead hero-sub">{c.hero.subtitle}</p>
+      <div class="hero-ctas">
+        <a href={localizedPath('/works', lang)} class="btn btn-primary">{c.hero.ctaWorks}</a>
+        <a href={OFFICIAL.steamApp} class="btn btn-gold" target="_blank" rel="noopener noreferrer">{c.hero.ctaSteam}</a>
+        <a href={OFFICIAL.kaela} class="btn" target="_blank" rel="noopener noreferrer">{c.hero.ctaKaela}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.home.manifestoTitle}</h2>
+      <p class="lead">{c.home.manifesto}</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.home.featuredTitle}</h2>
+      <div class="grid-2" style="margin-top: 2rem;">
+        <WorkCard
+          title="Kaela Inferna"
+          subtitle={lang === 'en' ? 'Dark electronic pop · 41 tracks · AI-born artist' : 'Dark electronic pop · 41 pistas · Artista nacida de IA'}
+          tag="Music"
+          accent="cyan"
+          href={localizedPath('/works/kaela-inferna', lang)}
+        />
+        <WorkCard
+          title="CONTRABAND: Edge of the Fold"
+          subtitle={lang === 'en' ? 'Branching space RPG · 300+ scenes · Steam PC' : 'RPG espacial ramificado · 300+ escenas · Steam PC'}
+          tag="Games"
+          accent="violet"
+          href={localizedPath('/works/contraband', lang)}
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.home.capabilitiesTitle}</h2>
+      <ul class="capability-list">
+        {c.home.capabilities.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt ecosystem">
+    <div class="container">
+      <h2>{lang === 'en' ? 'The Ecosystem' : 'El Ecosistema'}</h2>
+      <div class="eco-diagram" role="img" aria-label="Martinez AI Studios ecosystem diagram">
+        <div class="eco-hub">Martinez AI Studios</div>
+        <div class="eco-branches">
+          <a href={localizedPath('/works/kaela-inferna', lang)}>Kaela Inferna</a>
+          <a href={localizedPath('/works/contraband', lang)}>CONTRABAND</a>
+          <a href={OFFICIAL.author} target="_blank" rel="noopener noreferrer">Dero Lavigne</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .home-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: var(--header-h);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 0 4rem;
+  }
+
+  .hero-logo {
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 24px rgba(176, 133, 255, 0.4));
+  }
+
+  .hero-sub {
+    margin-inline: auto;
+    margin-bottom: 2rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .capability-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+  }
+
+  .capability-list li {
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    border-left: 2px solid var(--accent-violet);
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+  }
+
+  .eco-diagram {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .eco-hub {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 1px solid var(--accent-gold);
+    font-family: var(--font-display);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 32px rgba(248, 216, 120, 0.15);
+  }
+
+  .eco-branches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .eco-branches a {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border-subtle);
+    background: var(--glass);
+  }
+</style>

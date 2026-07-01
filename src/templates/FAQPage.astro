@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { t, getPageMeta } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('faq', lang);
+const c = t(lang).faq;
+const glossary = t(lang).glossary;
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/faq">
+  <div class="page-hero container">
+    <h1>{meta.h1}</h1>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      {c.items.map((item) => (
+        <article class="faq-item">
+          <h3>{item.q}</h3>
+          <p>{item.a}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{lang === 'en' ? 'Glossary' : 'Glosario'}</h2>
+      <table style="margin-top: 1.5rem;">
+        <thead>
+          <tr>
+            <th>{lang === 'en' ? 'Term' : 'Término'}</th>
+            <th>{lang === 'en' ? 'Definition' : 'Definición'}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {glossary.map((g) => (
+            <tr>
+              <td><strong>{g.term}</strong></td>
+              <td>{g.def}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p style="margin-top: 2rem;">
+        <a href={localizedPath('/studio', lang)} class="btn">{lang === 'en' ? 'About the Studio' : 'Sobre el Estudio'}</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

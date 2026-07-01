@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { t, getPageMeta, OFFICIAL } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('games', lang);
+const c = t(lang).games;
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/games">
+  <div class="page-hero container">
+    <h1>{meta.h1}</h1>
+    <p class="lead">{c.intro}</p>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.publishingTitle}</h2>
+      <p>{c.publishing}</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.narrativeTitle}</h2>
+      <p>{c.narrative}</p>
+      <p>{c.achievements}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <WorkCard
+        title="CONTRABAND: Edge of the Fold"
+        subtitle={lang === 'en' ? 'Flagship title · Steam App 4901100' : 'Título insignia · Steam App 4901100'}
+        tag="Steam PC"
+        accent="violet"
+        href={localizedPath('/works/contraband', lang)}
+      />
+      <p style="margin-top: 1.5rem;">
+        <a href={OFFICIAL.steamApp} class="btn btn-gold" target="_blank" rel="noopener noreferrer">
+          {lang === 'en' ? 'Wishlist on Steam' : 'Wishlist en Steam'}
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { t, getPageMeta } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('works', lang);
+const c = t(lang).works;
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/works">
+  <div class="page-hero container">
+    <h1>{meta.h1}</h1>
+    <p class="lead">{c.intro}</p>
+  </div>
+
+  <section class="section">
+    <div class="container grid-2">
+      <WorkCard
+        title="Kaela Inferna"
+        subtitle={lang === 'en' ? '4 albums · 41 tracks · Streaming artist & in-game AI' : '4 álbumes · 41 pistas · Artista streaming y nave IA'}
+        tag={lang === 'en' ? 'Music · Transmedia' : 'Música · Transmedia'}
+        accent="cyan"
+        href={localizedPath('/works/kaela-inferna', lang)}
+      />
+      <WorkCard
+        title="CONTRABAND: Edge of the Fold"
+        subtitle={lang === 'en' ? '300+ scenes · 140 achievements · Steam PC' : '300+ escenas · 140 logros · Steam PC'}
+        tag={lang === 'en' ? 'Games · Narrative' : 'Juegos · Narrativa'}
+        accent="violet"
+        href={localizedPath('/works/contraband', lang)}
+      />
+      <WorkCard
+        title={lang === 'en' ? 'Future Projects' : 'Proyectos Futuros'}
+        subtitle={lang === 'en' ? 'Transmedia releases under the Martinez AI Studios label' : 'Lanzamientos transmedia bajo el sello Martinez AI Studios'}
+        tag={lang === 'en' ? 'Coming' : 'Próximamente'}
+        accent="gold"
+        href={localizedPath('/contact', lang)}
+      />
+    </div>
+  </section>
+</BaseLayout>

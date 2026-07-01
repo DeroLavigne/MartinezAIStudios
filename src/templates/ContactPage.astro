@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Lang } from '../i18n/utils';
+import { t, getPageMeta, OFFICIAL } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('contact', lang);
+const c = t(lang).contact;
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/contact">
+  <div class="page-hero container">
+    <h1>{meta.h1}</h1>
+    <p class="lead">{c.intro}</p>
+  </div>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div class="card">
+        <h2>{lang === 'en' ? 'Location' : 'Ubicación'}</h2>
+        <p>{c.location}</p>
+        <h3>{lang === 'en' ? 'Email' : 'Correo'}</h3>
+        <p><a href={`mailto:${c.email}`}>{c.email}</a></p>
+        <p class="note">{c.emailNote}</p>
+      </div>
+      <div class="card">
+        <h2>{c.communityTitle}</h2>
+        <ul class="link-list">
+          <li><a href={OFFICIAL.steamMartinez} target="_blank" rel="noopener noreferrer">Martinez AI Studios — Steam Group</a></li>
+          <li><a href={OFFICIAL.steamDero} target="_blank" rel="noopener noreferrer">Dero Lavigne — Steam Group</a></li>
+          <li><a href={OFFICIAL.steamApp} target="_blank" rel="noopener noreferrer">CONTRABAND on Steam (App 4901100)</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.sisterTitle}</h2>
+      <ul class="link-list">
+        <li><a href={OFFICIAL.kaela} target="_blank" rel="noopener noreferrer">kaelainferna.com — Kaela Inferna</a></li>
+        <li><a href={OFFICIAL.contraband} target="_blank" rel="noopener noreferrer">edgeofthefold.com — CONTRABAND</a></li>
+        <li><a href={OFFICIAL.author} target="_blank" rel="noopener noreferrer">derolavigne.com — Dero Lavigne</a></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .link-list li {
+    margin-bottom: 0.75rem;
+  }
+
+  .note {
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+</style>

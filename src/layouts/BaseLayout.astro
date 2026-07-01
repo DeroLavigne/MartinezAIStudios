@@ -1,0 +1,96 @@
+---
+import type { Lang } from '../i18n/utils';
+import { pageAlternates } from '../i18n/utils';
+import { siteMeta, OFFICIAL } from '../i18n/translations';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  currentPath?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { lang, title, description, currentPath = '', jsonLd } = Astro.props;
+const site = Astro.site?.href?.replace(/\/$/, '') ?? 'https://martinezaistudios.com';
+const canonical = `${site}/${lang}${currentPath === '/' ? '/' : `${currentPath}/`}`;
+const alternates = pageAlternates(currentPath.replace(/^\//, ''), site);
+const ogImage = `${site}/og-image.jpg`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.lang} href={alt.href} />
+    ))}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_ES'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600&family=Orbitron:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(
+        Array.isArray(jsonLd) ? jsonLd : jsonLd
+      )} />
+    )}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Martinez AI Studios',
+      url: site,
+      logo: `${site}/logo.png`,
+      description: siteMeta[lang].orgDescription,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Dallas',
+        addressRegion: 'TX',
+        addressCountry: 'US',
+      },
+      sameAs: [
+        OFFICIAL.steamMartinez,
+        OFFICIAL.steamDero,
+        OFFICIAL.kaela,
+        OFFICIAL.contraband,
+        OFFICIAL.author,
+      ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Martinez AI Studios',
+      url: site,
+      inLanguage: ['en', 'es'],
+      publisher: { '@type': 'Organization', name: 'Martinez AI Studios' },
+    })} />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">{lang === 'en' ? 'Skip to content' : 'Saltar al contenido'}</a>
+    <Header lang={lang} currentPath={currentPath} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

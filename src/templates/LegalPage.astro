@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Lang } from '../i18n/utils';
+import { t, getPageMeta } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('legal', lang);
+const c = t(lang).legal;
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/legal">
+  <div class="page-hero container">
+    <h1>{meta.h1}</h1>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h2>{lang === 'en' ? 'Privacy Policy' : 'Política de Privacidad'}</h2>
+      <p>{c.privacy}</p>
+      <p style="margin-top: 2rem;">{c.copyright}</p>
+      <p>{lang === 'en' ? 'Steamworks Partner ID: 410350' : 'Steamworks Partner ID: 410350'}</p>
+    </div>
+  </section>
+</BaseLayout>

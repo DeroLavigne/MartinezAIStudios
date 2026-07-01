@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkCard from '../components/WorkCard.astro';
+import type { Lang } from '../i18n/utils';
+import { localizedPath } from '../i18n/utils';
+import { t, getPageMeta, OFFICIAL } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('kaela', lang);
+const c = t(lang).kaela;
+const site = Astro.site?.href?.replace(/\/$/, '') ?? 'https://martinezaistudios.com';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  name: 'Kaela Inferna',
+  genre: 'Dark electronic pop',
+  url: OFFICIAL.kaela,
+  description: meta.description,
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'Martinez AI Studios',
+    url: site,
+  },
+  sameAs: [OFFICIAL.kaela],
+};
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/works/kaela-inferna" jsonLd={jsonLd}>
+  <div class="page-hero container">
+    <p class="tagline">Kaela Inferna · Martinez AI Studios</p>
+    <h1>{meta.h1}</h1>
+    <p class="lead">{c.tagline}</p>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2>{lang === 'en' ? 'Discography' : 'Discografía'}</h2>
+          <p><strong>{c.genre}</strong> — {c.stats}</p>
+          <p>{c.albums}</p>
+          <p><a href={OFFICIAL.kaela} class="btn btn-primary" target="_blank" rel="noopener noreferrer">{c.cta}</a></p>
+        </div>
+        <div class="card">
+          <h3>{c.transmediaTitle}</h3>
+          <p>{c.transmedia}</p>
+          <p class="directive"><em>{c.directive}</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{lang === 'en' ? 'Related Works' : 'Obras Relacionadas'}</h2>
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <WorkCard
+          title="CONTRABAND: Edge of the Fold"
+          subtitle={lang === 'en' ? 'Kaela appears as Operations Mode AI' : 'Kaela aparece como nave IA en Operations Mode'}
+          tag="Games"
+          accent="violet"
+          href={localizedPath('/works/contraband', lang)}
+        />
+        <WorkCard
+          title={lang === 'en' ? 'Music & Sound' : 'Música y Sonido'}
+          subtitle={lang === 'en' ? '21-track OST and voice pipeline' : 'OST de 21 temas y pipeline de voces'}
+          tag="Music"
+          accent="gold"
+          href={localizedPath('/music', lang)}
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .directive {
+    color: var(--accent-cyan);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+</style>

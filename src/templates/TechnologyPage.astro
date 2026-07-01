@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Lang } from '../i18n/utils';
+import { t, getPageMeta } from '../i18n/translations';
+
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+const meta = getPageMeta('technology', lang);
+const c = t(lang).technology;
+---
+
+<BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/technology">
+  <div class="page-hero container">
+    <h1>{meta.h1}</h1>
+    <p class="lead">{c.intro}</p>
+  </div>
+
+  <section class="section">
+    <div class="container grid-2">
+      {c.items.map((item) => (
+        <article class="card">
+          <h2>{item.title}</h2>
+          <p>{item.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <p class="avoid-note"><em>{c.avoid}</em></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .avoid-note {
+    opacity: 0.75;
+    max-width: 65ch;
+  }
+</style>
