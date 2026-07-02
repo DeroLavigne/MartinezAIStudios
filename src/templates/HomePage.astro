@@ -101,7 +101,7 @@ const c = t(lang);
     align-items: flex-start;
     justify-content: center;
     text-align: center;
-    padding: clamp(1.5rem, 5vh, 3rem) 0 clamp(3rem, 7vh, 5rem);
+    padding: 2.5rem 0 4rem;
   }
 
   .hero-content {
@@ -109,8 +109,8 @@ const c = t(lang);
     z-index: 2;
     display: grid;
     justify-items: center;
-    grid-template-rows: clamp(300px, 32vw, 430px) auto;
-    row-gap: clamp(3rem, 7vh, 5rem);
+    grid-template-rows: min(27rem, 46vh) auto;
+    row-gap: 3.5rem;
     width: min(var(--max-width), 92vw);
     margin-inline: auto;
     padding: 0;
@@ -147,13 +147,13 @@ const c = t(lang);
   @media (max-width: 700px) {
     .home-hero {
       min-height: auto;
-      padding: clamp(1rem, 4vh, 1.5rem) 0 3rem;
+      padding: 1.5rem 0 3rem;
     }
 
     .hero-content {
       width: min(100% - 2rem, 42rem);
-      grid-template-rows: clamp(220px, 68vw, 290px) auto;
-      row-gap: clamp(2rem, 6vh, 3rem);
+      grid-template-rows: min(16rem, 82vw, 40vh) auto;
+      row-gap: 2rem;
       padding: 0;
     }
 

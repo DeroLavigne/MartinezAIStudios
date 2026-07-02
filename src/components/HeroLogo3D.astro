@@ -11,8 +11,8 @@
 <style>
   .hero-logo-3d {
     position: relative;
-    width: clamp(300px, 32vw, 430px);
-    height: clamp(300px, 32vw, 430px);
+    width: min(27rem, 46vh);
+    height: min(27rem, 46vh);
     margin: 0 auto;
     z-index: 1;
     display: grid;
@@ -22,8 +22,8 @@
 
   @media (max-width: 700px) {
     .hero-logo-3d {
-      width: clamp(220px, 68vw, 290px);
-      height: clamp(220px, 68vw, 290px);
+      width: min(16rem, 82vw, 40vh);
+      height: min(16rem, 82vw, 40vh);
     }
   }
 
@@ -48,6 +48,22 @@
   .hero-logo-3d.is-ready .hero-logo-fallback {
     opacity: 0;
     visibility: hidden;
+  }
+
+  /* Smartphone: static logo, gentle float for life */
+  .hero-logo-3d.is-static .hero-logo-fallback {
+    animation: hero-logo-float 6s ease-in-out infinite;
+  }
+
+  @keyframes hero-logo-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-logo-3d.is-static .hero-logo-fallback {
+      animation: none;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -120,8 +136,22 @@
     model.position.sub(center.multiplyScalar(scale));
   }
 
+  function isPhone() {
+    const narrow = window.matchMedia('(max-width: 767px)').matches;
+    const coarse = window.matchMedia('(pointer: coarse)').matches;
+    const uaMobile = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    return narrow || (coarse && uaMobile);
+  }
+
   function initHeroLogo() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // On smartphones, skip WebGL and keep the lightweight static logo (looks crisp,
+    // loads fast, stays centered). The .hero-logo-fallback image remains visible.
+    if (isPhone()) {
+      document.getElementById('hero-logo-3d')?.classList.add('is-static');
+      return;
+    }
 
     const container = document.getElementById('hero-logo-3d');
     if (!container || instances.has(container)) return;
