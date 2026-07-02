@@ -11,13 +11,20 @@
 <style>
   .hero-logo-3d {
     position: relative;
-    width: min(484px, 90vw);
-    height: min(484px, 90vw);
+    width: clamp(300px, 32vw, 430px);
+    height: clamp(300px, 32vw, 430px);
     margin: 0 auto;
-    margin-bottom: clamp(4rem, 9vh, 6rem);
-    z-index: 3;
+    z-index: 1;
     display: grid;
     place-items: center;
+    overflow: hidden;
+  }
+
+  @media (max-width: 700px) {
+    .hero-logo-3d {
+      width: clamp(220px, 68vw, 290px);
+      height: clamp(220px, 68vw, 290px);
+    }
   }
 
   .hero-logo-3d canvas {
@@ -69,7 +76,6 @@
 
   const instances = new WeakMap<HTMLElement, LogoState>();
   const GLB_PATH = '/logo-martinez.glb';
-  const ROTATION_SPEED = 0.22; // radians/sec — full 360° in ~28s
 
   function disposeLogo(container: HTMLElement) {
     const state = instances.get(container);
@@ -104,7 +110,7 @@
     });
   }
 
-  function fitModelToView(model: THREE.Object3D, targetSize = 2.31) {
+  function fitModelToView(model: THREE.Object3D, targetSize = 2.05) {
     const box = new THREE.Box3().setFromObject(model, true);
     const size = box.getSize(new THREE.Vector3());
     const center = box.getCenter(new THREE.Vector3());
@@ -125,10 +131,12 @@
 
   function startHeroLogo(container: HTMLElement) {
     disposeLogo(container);
+    container.querySelectorAll('canvas').forEach((c) => c.remove());
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
     camera.position.set(0, 0, 5.2);
+    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
@@ -162,6 +170,12 @@
 
     scene.add(new THREE.AmbientLight(0x1a1030, 0.5));
 
+    // Calibrated transform (source of truth for both normal + calibration mode).
+    const HERO_TRANSFORM = { rx: 0, ry: -3.142, rz: 0, px: -0.305, py: 0.38, pz: 0.15, scale: 1.11 };
+    const CALIBRATE = new URLSearchParams(window.location.search).has('calibrate');
+    logoGroup.rotation.set(HERO_TRANSFORM.rx, HERO_TRANSFORM.ry, HERO_TRANSFORM.rz);
+    logoGroup.scale.setScalar(HERO_TRANSFORM.scale);
+
     const loader = new GLTFLoader();
     loader.load(
       GLB_PATH,
@@ -178,6 +192,8 @@
 
     let raf = 0;
     let lastTime = performance.now();
+    let spin = 0;
+    const ROTATION_SPEED = 0.35; // rad/s — full turn ~18s
 
     function resize() {
       const w = container.clientWidth;
@@ -192,7 +208,10 @@
     function animate(now: number) {
       const dt = Math.min((now - lastTime) / 1000, 0.05);
       lastTime = now;
-      logoGroup.rotation.y += dt * ROTATION_SPEED;
+      if (!CALIBRATE) spin += dt * ROTATION_SPEED;
+      logoGroup.rotation.set(HERO_TRANSFORM.rx, HERO_TRANSFORM.ry + spin, HERO_TRANSFORM.rz);
+      logoGroup.scale.setScalar(HERO_TRANSFORM.scale);
+      logoGroup.position.set(HERO_TRANSFORM.px, HERO_TRANSFORM.py, HERO_TRANSFORM.pz);
       renderer.render(scene, camera);
       raf = requestAnimationFrame(animate);
     }
@@ -203,6 +222,127 @@
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
     instances.set(container, { raf, renderer, resizeObserver, scene });
+
+    if (CALIBRATE) setupCalibrationUI(HERO_TRANSFORM);
+  }
+
+  function setupCalibrationUI(tf: Record<string, number>) {
+    if (document.getElementById('glb-cal-panel')) return;
+
+    // Grid + center guides overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'glb-cal-grid';
+    overlay.style.cssText =
+      'position:fixed;inset:0;z-index:9996;pointer-events:none;' +
+      'background-image:linear-gradient(rgba(176,133,255,0.10) 1px,transparent 1px),' +
+      'linear-gradient(90deg,rgba(176,133,255,0.10) 1px,transparent 1px);' +
+      'background-size:40px 40px;';
+    const vLine = document.createElement('div');
+    vLine.style.cssText = 'position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(248,216,120,0.65);';
+    const hLine = document.createElement('div');
+    hLine.style.cssText = 'position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(248,216,120,0.65);';
+    overlay.append(vLine, hLine);
+    document.body.appendChild(overlay);
+
+    // Control panel
+    const panel = document.createElement('div');
+    panel.id = 'glb-cal-panel';
+    panel.style.cssText =
+      'position:fixed;top:80px;left:16px;z-index:9997;width:270px;padding:14px 16px;' +
+      'background:rgba(12,7,24,0.92);backdrop-filter:blur(12px);border:1px solid rgba(176,133,255,0.3);' +
+      'border-radius:8px;color:#fff;font:12px system-ui,sans-serif;';
+
+    const fields: Array<[string, number, number, number]> = [
+      ['rx', -3.1416, 3.1416, 0.01],
+      ['ry', -3.1416, 3.1416, 0.01],
+      ['rz', -3.1416, 3.1416, 0.01],
+      ['px', -2, 2, 0.005],
+      ['py', -2, 2, 0.005],
+      ['pz', -2, 2, 0.005],
+      ['scale', 0.4, 2.2, 0.01],
+    ];
+    const labels: Record<string, string> = {
+      rx: 'Rot X', ry: 'Rot Y', rz: 'Rot Z', px: 'Pos X', py: 'Pos Y', pz: 'Pos Z', scale: 'Escala',
+    };
+
+    let rows = '<div style="font-weight:700;letter-spacing:0.06em;margin-bottom:8px;">GLB CALIBRATION</div>';
+    for (const [k, min, max, step] of fields) {
+      rows +=
+        `<div style="display:grid;grid-template-columns:46px 1fr 56px;gap:6px;align-items:center;margin-bottom:6px;">` +
+        `<span style="opacity:.8">${labels[k]}</span>` +
+        `<input type="range" data-k="${k}" min="${min}" max="${max}" step="${step}" value="${tf[k]}" style="width:100%;accent-color:#b085ff">` +
+        `<input type="number" data-n="${k}" step="${step}" value="${tf[k]}" style="width:100%;background:rgba(0,0,0,.4);border:1px solid rgba(176,133,255,.3);color:#fff;border-radius:4px;padding:2px 4px;">` +
+        `</div>`;
+    }
+    rows +=
+      '<div style="display:flex;gap:6px;margin-top:8px;">' +
+      '<button id="glb-cal-reset" style="flex:1;cursor:pointer;background:rgba(176,133,255,.15);border:1px solid rgba(176,133,255,.3);color:#fff;padding:6px;border-radius:5px;">Reset</button>' +
+      '<button id="glb-cal-copy" style="flex:1;cursor:pointer;background:rgba(248,216,120,.16);border:1px solid rgba(248,216,120,.4);color:#fff;padding:6px;border-radius:5px;">Copiar JSON</button>' +
+      '</div>' +
+      '<div id="glb-cal-status" style="color:#f8d878;min-height:14px;margin-top:6px;"></div>' +
+      '<textarea id="glb-cal-out" readonly style="width:100%;height:120px;margin-top:8px;background:rgba(0,0,0,.5);border:1px solid rgba(176,133,255,.3);color:#5ed7ff;border-radius:5px;padding:6px;font:11px monospace;"></textarea>';
+    panel.innerHTML = rows;
+    document.body.appendChild(panel);
+
+    const defaults = { ...tf };
+    const round = (v: number) => Math.round(v * 1000) / 1000;
+    const out = panel.querySelector('#glb-cal-out') as HTMLTextAreaElement;
+
+    function updateOut() {
+      out.value = JSON.stringify(
+        {
+          rotation: { x: round(tf.rx), y: round(tf.ry), z: round(tf.rz) },
+          position: { x: round(tf.px), y: round(tf.py), z: round(tf.pz) },
+          scaleMultiplier: round(tf.scale),
+          camera: { fov: 35, z: 5.2 },
+        },
+        null,
+        2,
+      );
+    }
+    function sync(k: string) {
+      const r = panel.querySelector(`input[data-k="${k}"]`) as HTMLInputElement | null;
+      const n = panel.querySelector(`input[data-n="${k}"]`) as HTMLInputElement | null;
+      if (r) r.value = String(tf[k]);
+      if (n) n.value = String(tf[k]);
+    }
+
+    panel.querySelectorAll('input[data-k]').forEach((el) => {
+      el.addEventListener('input', () => {
+        const input = el as HTMLInputElement;
+        tf[input.dataset.k as string] = parseFloat(input.value);
+        sync(input.dataset.k as string);
+        updateOut();
+      });
+    });
+    panel.querySelectorAll('input[data-n]').forEach((el) => {
+      el.addEventListener('input', () => {
+        const input = el as HTMLInputElement;
+        const v = parseFloat(input.value);
+        if (!Number.isNaN(v)) {
+          tf[input.dataset.n as string] = v;
+          sync(input.dataset.n as string);
+          updateOut();
+        }
+      });
+    });
+    (panel.querySelector('#glb-cal-reset') as HTMLButtonElement).addEventListener('click', () => {
+      Object.assign(tf, defaults);
+      Object.keys(tf).forEach(sync);
+      updateOut();
+    });
+    (panel.querySelector('#glb-cal-copy') as HTMLButtonElement).addEventListener('click', async () => {
+      updateOut();
+      const status = panel.querySelector('#glb-cal-status') as HTMLDivElement;
+      try {
+        await navigator.clipboard.writeText(out.value);
+        status.textContent = 'JSON copiado.';
+      } catch {
+        status.textContent = 'Copialo manualmente del cuadro.';
+      }
+    });
+
+    updateOut();
   }
 
   initHeroLogo();
