@@ -255,6 +255,7 @@ export const content = {
       subtitle:
         'Texas-based publisher and creative label. We release music, games, and transmedia created by Dero Lavigne.',
       ctaWorks: 'Explore Published Works',
+      ctaDero: 'Dero Lavigne — Full Portfolio',
       ctaSteam: 'CONTRABAND on Steam',
       ctaKaela: 'Listen to Kaela',
     },
@@ -273,6 +274,294 @@ export const content = {
       ecosystemTitle: 'How the roles connect',
       ecosystemCreator: 'Dero Lavigne — creates',
       ecosystemPublisher: 'Martinez AI Studios — publishes',
+      creatorTitle: 'One creator behind every release',
+      creatorBody:
+        'Dero Lavigne is the developer, composer, writer, and creative director of everything under this label — the music, the games, the websites, the 3D, the video, and the narrative. Martinez AI Studios exists to publish and distribute that work to the world.',
+      pipelineTitle: 'How the work is made',
+      pipelineIntro:
+        'Every release is created by Dero Lavigne on a high-end, locally-run production pipeline, then published and distributed under the Martinez AI Studios imprint. AI is a tool under human direction — the message stays human.',
+      pipelineNote: 'Created by Dero Lavigne · Published & distributed by Martinez AI Studios',
+      pipelineGroups: [
+        {
+          title: 'AI Visual & Video',
+          items: [
+            'Locally-run ComfyUI pipelines for characters, cinematics, and key art',
+            'Diffusion and video models (SDXL, WAN, LTX) for stills and motion',
+            'Frame interpolation and 4K upscaling for clean, cinematic output',
+            'Talking-head and lip-sync passes for performer visuals',
+            'Editorial assembly, cut, and color in Filmora',
+          ],
+        },
+        {
+          title: 'Music & Audio',
+          items: [
+            'Songwriting and composition workflows with Suno',
+            'Voice and narration with ElevenLabs',
+            'Kaela Inferna catalog — 4 albums, 41 tracks',
+            'Original game soundtracks and cinematic scoring',
+            'Distribution to Spotify, Apple Music, and YouTube Music',
+          ],
+        },
+        {
+          title: 'Games & Interactive',
+          items: [
+            'CONTRABAND: Edge of the Fold — branching space RPG',
+            'HTML5 / JavaScript engine, Electron packaging for Steam',
+            'Steamworks: achievements, cloud saves, store presence',
+            '3D assets authored in Blender and exported as GLB',
+          ],
+        },
+        {
+          title: 'Web & Brand',
+          items: [
+            'Bilingual sites built with Astro, Next.js, and HTML5',
+            'Real-time 3D on the web with Three.js / WebGL',
+            'Technical SEO, structured data, and performance',
+            'Transmedia lore hubs and interconnected sister sites',
+          ],
+        },
+      ],
+      catalogTitle: 'Full creative catalog',
+      catalogBody:
+        'Dero Lavigne develops music, games, websites, and transmedia narrative. Martinez AI Studios publishes and distributes those works. For the complete, always-updated portfolio of everything created — visit derolavigne.com.',
+      catalogCta: 'View full catalog at derolavigne.com',
+      servicesTitle: 'Creative production, end to end',
+      servicesIntro:
+        'Martinez AI Studios is a Dallas, Texas creative production studio and label. Every project is created and directed by Dero Lavigne — from first concept to final master — on a modern, human-directed AI pipeline. We take music, video, games, and websites from idea to published, distributed, and live.',
+      services: [
+        {
+          title: 'AI Music & Audio Production',
+          body:
+            'Original songs, scores, and voices built for release. We write, produce, and master music across dark electronic, pop, R&B, cumbia, reggaetón, and cinematic scoring — then distribute to every major platform.',
+          items: [
+            'Original songwriting, composition, and production',
+            'Character and brand voices with ElevenLabs',
+            'Game and film scoring, stingers, and sound design',
+            'Mixing, mastering, and release-ready deliverables',
+            'Distribution to Spotify, Apple Music, and YouTube Music',
+          ],
+        },
+        {
+          title: 'AI Video & Cinematics',
+          body:
+            'Cinematic clips, music videos, trailers, and social content produced on a locally-run pipeline — full creative control, no per-render limits.',
+          items: [
+            'Music videos, lyric visuals, and Spotify Canvas loops',
+            'Game trailers, teasers, and store capsules',
+            'Talking-head and lip-sync performer content',
+            '4K upscaling, frame interpolation, and color',
+            'Editorial cut and finishing in Filmora',
+          ],
+        },
+        {
+          title: 'Game Development & Steam Publishing',
+          body:
+            'From branching narrative RPGs to store-ready launches. We design, build, and ship PC games, then handle Steam publishing end to end.',
+          items: [
+            'Narrative, systems, and gameplay design',
+            'HTML5 / JavaScript engines, Electron packaging',
+            'Steamworks: achievements, cloud saves, store setup',
+            'Store art, capsules, and marketing assets',
+            'Launch, community, and post-release support',
+          ],
+        },
+        {
+          title: 'Web Development & Real-time 3D',
+          body:
+            'Fast, bilingual, SEO-ready websites with cinematic motion and real-time 3D — built to rank in Dallas and convert visitors into customers.',
+          items: [
+            'Marketing sites, landing pages, and web apps',
+            'Real-time 3D and WebGL with Three.js',
+            'Technical SEO, structured data, and Core Web Vitals',
+            'Bilingual English / Spanish builds',
+            'Analytics, tracking, and performance tuning',
+          ],
+        },
+        {
+          title: 'Branding, Characters & Visual Identity',
+          body:
+            'Logos, characters, key art, and complete visual systems — including consistent AI-born artists and brand characters across every channel.',
+          items: [
+            'Logos, wordmarks, and brand systems',
+            'Character design and consistent AI-born identities',
+            'Album covers, posters, and social art',
+            'Steam and streaming profile assets',
+            'Ultra-wide 21:9 and 32:9 key art',
+          ],
+        },
+        {
+          title: 'Transmedia & Distribution',
+          body:
+            'One story across music, games, video, and web — released and distributed under one publisher, in English and Spanish.',
+          items: [
+            'Cross-platform release strategy',
+            'Lore hubs and interconnected sister sites',
+            'Multi-channel publishing and scheduling',
+            'Bilingual audience reach',
+            'Rights-clean, transparent AI credits',
+          ],
+        },
+      ],
+      processTitle: 'How we work',
+      processIntro: 'A clear, collaborative path from first call to public launch.',
+      processSteps: [
+        { title: 'Discovery', body: 'We learn your goals, audience, budget, and timeline before anything is produced.' },
+        { title: 'Creative direction', body: 'Dero Lavigne sets the concept, references, and direction so every asset stays on-brand.' },
+        { title: 'Production', body: 'Music, video, art, code, or game systems are built on our high-end local pipeline with fast iteration.' },
+        { title: 'Publishing', body: 'We prepare release-ready masters, store pages, and metadata under the Martinez AI Studios imprint.' },
+        { title: 'Distribution & support', body: 'We ship to Steam, streaming, and the web, then support the launch and everything after.' },
+      ],
+      whyTitle: 'Why Martinez AI Studios',
+      whyIntro: 'A studio built for the way media is actually made in 2026 — fast, transparent, and human-directed.',
+      whyPoints: [
+        { title: 'End to end, one roof', body: 'Music, video, games, and web in one studio. No handoffs, no mismatched vendors.' },
+        { title: 'Human-directed AI', body: 'AI is a tool. Dero Lavigne directs every creative decision — the message stays human.' },
+        { title: 'Our own local pipeline', body: 'A high-end workstation and local models mean speed, privacy, and no per-render ceilings.' },
+        { title: 'Bilingual by default', body: 'Native English and Spanish across every deliverable — built for Texas and beyond.' },
+        { title: 'Transparent & rights-clean', body: 'Clear credits and an honest process. No "100% generated" claims, no AAA-team fiction.' },
+        { title: 'Publisher-grade delivery', body: 'We do not just create — we publish and distribute to Steam and streaming platforms.' },
+      ],
+      industriesTitle: 'Who we work with',
+      industriesIntro: 'Artists, studios, and businesses that want standout media without a bloated agency.',
+      industries: [
+        { title: 'Musicians & labels', body: 'Releases, scores, and visuals ready for streaming and social.' },
+        { title: 'Indie game developers', body: 'Design, build, and Steam publishing for PC titles.' },
+        { title: 'Small & midsize businesses', body: 'Websites that rank in Dallas and convert visitors into customers.' },
+        { title: 'Content creators & streamers', body: 'Channel art, intros, music, and short-form video.' },
+        { title: 'Startups & brands', body: 'Identity, key art, and launch campaigns across channels.' },
+        { title: 'Nonprofits & local orgs', body: 'Bilingual sites and media that reach the whole community.' },
+      ],
+      localTitle: 'Based in Dallas, Texas — working worldwide',
+      localBody:
+        'Martinez AI Studios operates from Dallas, Texas (DFW), serving clients across Texas and around the world. Whether you are a Dallas–Fort Worth musician who needs a release, an indie developer shipping to Steam, or a local business that needs a website that ranks and converts, we bring cinematic, AI-accelerated production to your project — in English and Spanish.',
+      localPoints: [
+        'Dallas–Fort Worth (DFW) and all of Texas',
+        'Remote collaboration worldwide',
+        'Native English and Spanish',
+        'Fast turnaround on a local production pipeline',
+      ],
+      faqTitle: 'Common questions',
+      faqIntro: 'Quick answers for creators, businesses, and partners.',
+      faqItems: [
+        { q: 'Are you a studio for hire or a label?', a: 'Both. Martinez AI Studios publishes its own works (Kaela Inferna, CONTRABAND) and produces music, video, games, and websites for clients.' },
+        { q: 'Where are you located?', a: 'Dallas, Texas, USA (DFW). We work with clients across Texas and worldwide, in English and Spanish.' },
+        { q: 'Do you really use AI for everything?', a: 'AI is a tool under human direction. Dero Lavigne writes, directs, and finishes every project — the message stays human.' },
+        { q: 'Can you distribute my music?', a: 'Yes. We deliver release-ready masters and distribute to Spotify, Apple Music, and YouTube Music.' },
+        { q: 'Can you publish my game on Steam?', a: 'Yes. We handle Steamworks setup, store pages, achievements, cloud saves, and launch.' },
+        { q: 'How do we start?', a: 'Reach out through the contact page with your goals and timeline, and we will map the fastest path to launch.' },
+      ],
+      ctaBandTitle: 'Have a project in mind?',
+      ctaBandBody: 'Music, video, a game, or a website — let us build something worth publishing.',
+      ctaBandPrimary: 'Start a project',
+      ctaBandSecondary: 'See the full portfolio',
+      statsTitle: 'The label by the numbers',
+      statsIntro: 'A snapshot of what has already shipped under Martinez AI Studios.',
+      stats: [
+        { value: '2', label: 'Original brands published' },
+        { value: '4', label: 'Albums released' },
+        { value: '41', label: 'Tracks distributed' },
+        { value: '300+', label: 'Game scenes written' },
+        { value: '4+1', label: 'Endings in CONTRABAND' },
+        { value: 'EN/ES', label: 'Native bilingual output' },
+      ],
+      worksDeepTitle: 'Selected work',
+      worksDeepIntro:
+        'Two flagship IPs and a connected network of sites — all created by Dero Lavigne and published under Martinez AI Studios.',
+      worksDeep: [
+        {
+          tag: 'Music',
+          title: 'Kaela Inferna',
+          body:
+            'An AI-born dark electronic pop artist with a fully defined canon — voice, look, and message. Four albums and forty-one tracks, with cinematic visuals and a presence across every major streaming platform.',
+          points: [
+            '4 albums · 41 tracks',
+            'Dark electronic pop with soul',
+            'Music videos & Spotify Canvas loops',
+            'Streaming on Spotify, Apple Music, YouTube Music',
+          ],
+        },
+        {
+          tag: 'Games',
+          title: 'CONTRABAND: Edge of the Fold',
+          body:
+            'A branching space RPG built in HTML5/JavaScript and packaged for Steam. Reactive factions, ghost timelines, real combat, and multiple endings across 300+ narrative scenes.',
+          points: [
+            'Branching narrative · 300+ scenes',
+            '4 endings plus a Walk Away path',
+            'Steamworks: achievements & cloud saves',
+            'Original score and Blender-authored 3D assets',
+          ],
+        },
+        {
+          tag: 'Web',
+          title: 'The transmedia network',
+          body:
+            'A connected set of bilingual sites — the label, the artist, and the game universe — sharing lore, design language, and real-time 3D on the web.',
+          points: [
+            'martinezaistudios.com — the label',
+            'kaelainferna.com — the artist',
+            'edgeofthefold.com — the game universe',
+            'derolavigne.com — the full portfolio',
+          ],
+        },
+      ],
+      stackTitle: 'Tools & platforms',
+      stackIntro: 'A modern, mostly locally-run stack — chosen for control, speed, and cinematic quality.',
+      stackGroups: [
+        {
+          title: 'Visual & Video AI',
+          tools: ['ComfyUI', 'WAN', 'LTX-Video', 'SDXL', 'Flux', 'RealVis XL', 'Juggernaut XL', 'UltimateSD Upscale', 'FILM VFI', 'Wav2Lip', 'SadTalker'],
+        },
+        { title: 'Music & Voice', tools: ['Suno', 'ElevenLabs'] },
+        { title: '3D & Games', tools: ['Blender', 'HTML5 / JavaScript', 'Electron', 'Steamworks', 'GLB export'] },
+        { title: 'Web & Real-time', tools: ['Astro', 'Next.js', 'Three.js / WebGL', 'HTML5 / CSS / JS'] },
+        { title: 'Post & Editorial', tools: ['Filmora', '4K upscaling', 'Frame interpolation', 'Color & finishing'] },
+        { title: 'Distribution', tools: ['Steam', 'Spotify', 'Apple Music', 'YouTube Music'] },
+      ],
+      approachTitle: 'Human-directed AI',
+      approachBody:
+        'AI is the microphone, the synthesizer, the copilot, and the compiler — not the author. Every song, scene, frame, and line is directed and finished by Dero Lavigne. We do not sell "100% generated" novelty or pretend to be a hundred-person studio. We use the best modern tools to move fast, then apply human taste, editing, and intent so the final work carries a real message.',
+      approachPoints: [
+        'A human writes, directs, and signs off on every deliverable',
+        'AI accelerates production — it does not replace judgment',
+        'Transparent credits and an honest process',
+        'Cinematic quality over volume for its own sake',
+      ],
+      genresTitle: 'Music we produce',
+      genresIntro: 'Original composition and voice across a wide stylistic range.',
+      genres: ['Dark electronic pop', 'Cinematic pop', 'R&B', 'Cumbia', 'Reggaetón', 'Emotional & ambient', 'Commercial & ad music', 'Original game scores'],
+      deliverablesTitle: 'What you receive',
+      deliverablesIntro: 'Release-ready deliverables in the formats modern platforms and stores actually need.',
+      deliverables: [
+        'Release-ready audio masters for streaming',
+        '4K / HDR video and cinematic clips',
+        'Vertical short-form for Shorts, Reels, and TikTok',
+        '8-second Spotify Canvas loops',
+        'Ultra-wide 21:9 and 32:9 key art',
+        'Steam store capsules and marketing assets',
+        'Optimized GLB 3D assets for the web',
+        'Bilingual English / Spanish copy',
+      ],
+      engagementTitle: 'Ways to work together',
+      engagementIntro: 'Flexible engagements sized to your goals and budget.',
+      engagementModels: [
+        { title: 'Per project', body: 'A defined scope with clear deliverables and timeline — ideal for a single release, site, or campaign.' },
+        { title: 'Per release', body: 'Recurring support for artists and devs shipping music, updates, or content on a schedule.' },
+        { title: 'Ongoing partnership', body: 'An extension of your team for continuous production across music, video, web, and games.' },
+        { title: 'White-label', body: 'Production capacity for other studios and agencies that need cinematic AI output under their own brand.' },
+      ],
+      serviceAreasTitle: 'Serving Dallas–Fort Worth & beyond',
+      serviceAreasBody:
+        'Based in Dallas, Texas, we work with clients across the DFW metroplex and the entire state — and remotely with partners worldwide.',
+      serviceAreas: ['Dallas', 'Fort Worth', 'Arlington', 'Plano', 'Irving', 'Frisco', 'Garland', 'McKinney', 'Denton', 'Richardson', 'Deep Ellum', 'Bishop Arts District'],
+      faqExtraItems: [
+        { q: 'What does an AI-directed production actually mean?', a: 'A human writes and directs the work; AI tools accelerate production. Dero Lavigne makes every creative decision and finishes every deliverable.' },
+        { q: 'Do you work in Spanish?', a: 'Yes. Every deliverable can be produced natively in English, Spanish, or both — ideal for the Texas market.' },
+        { q: 'Can you build my website and make it rank?', a: 'Yes. We build fast, SEO-ready sites with structured data and strong Core Web Vitals, and we can add real-time 3D and cinematic motion.' },
+        { q: 'Do you offer 3D and WebGL?', a: 'Yes. We author 3D in Blender, optimize GLB assets, and bring them to the web with Three.js / WebGL.' },
+        { q: 'What formats do you deliver?', a: 'Streaming-ready masters, 4K/HDR video, vertical short-form, Spotify Canvas loops, ultra-wide key art, and Steam store assets.' },
+        { q: 'How fast can you turn work around?', a: 'Our local pipeline enables fast iteration. Timelines depend on scope, but we move quickly without per-render limits.' },
+      ],
     },
     studio: {
       intro:
@@ -543,6 +832,7 @@ export const content = {
       subtitle:
         'Publisher y sello creativo en Texas. Publicamos música, juegos y transmedia creados por Dero Lavigne.',
       ctaWorks: 'Explorar Obras Publicadas',
+      ctaDero: 'Dero Lavigne — Portfolio Completo',
       ctaSteam: 'CONTRABAND en Steam',
       ctaKaela: 'Escuchar a Kaela',
     },
@@ -561,6 +851,294 @@ export const content = {
       ecosystemTitle: 'Cómo se conectan los roles',
       ecosystemCreator: 'Dero Lavigne — crea',
       ecosystemPublisher: 'Martinez AI Studios — publica',
+      creatorTitle: 'Un solo creador detrás de cada lanzamiento',
+      creatorBody:
+        'Dero Lavigne es el developer, compositor, escritor y director creativo de todo lo que hay bajo este sello — la música, los juegos, las webs, el 3D, el video y la narrativa. Martinez AI Studios existe para publicar y distribuir ese trabajo al mundo.',
+      pipelineTitle: 'Cómo se hace cada obra',
+      pipelineIntro:
+        'Cada lanzamiento es creado por Dero Lavigne en un pipeline de producción local de alto rendimiento, y luego publicado y distribuido bajo el sello Martinez AI Studios. La IA es una herramienta bajo dirección humana — el mensaje sigue siendo humano.',
+      pipelineNote: 'Creado por Dero Lavigne · Publicado y distribuido por Martinez AI Studios',
+      pipelineGroups: [
+        {
+          title: 'Visual y Video con IA',
+          items: [
+            'Pipelines locales en ComfyUI para personajes, cinemáticas y key art',
+            'Modelos de difusión y video (SDXL, WAN, LTX) para imágenes y movimiento',
+            'Interpolación de frames y upscaling 4K para un acabado cinematográfico',
+            'Pases de talking-head y lip-sync para visuales de personajes',
+            'Ensamblado editorial, corte y color en Filmora',
+          ],
+        },
+        {
+          title: 'Música y Audio',
+          items: [
+            'Composición y escritura de canciones con Suno',
+            'Voz y narración con ElevenLabs',
+            'Catálogo Kaela Inferna — 4 álbumes, 41 pistas',
+            'Bandas sonoras originales y scoring cinematográfico',
+            'Distribución a Spotify, Apple Music y YouTube Music',
+          ],
+        },
+        {
+          title: 'Juegos e Interactivo',
+          items: [
+            'CONTRABAND: Edge of the Fold — RPG espacial ramificado',
+            'Motor HTML5 / JavaScript, empaquetado Electron para Steam',
+            'Steamworks: logros, cloud saves, presencia en store',
+            'Assets 3D creados en Blender y exportados como GLB',
+          ],
+        },
+        {
+          title: 'Web y Marca',
+          items: [
+            'Sitios bilingües con Astro, Next.js y HTML5',
+            '3D en tiempo real en la web con Three.js / WebGL',
+            'SEO técnico, datos estructurados y performance',
+            'Lore hubs transmedia y sister sites interconectadas',
+          ],
+        },
+      ],
+      catalogTitle: 'Catálogo creativo completo',
+      catalogBody:
+        'Dero Lavigne desarrolla música, juegos, webs y narrativa transmedia. Martinez AI Studios publica y distribuye esas obras. Para el portfolio completo y siempre actualizado de todo lo creado — visitá derolavigne.com.',
+      catalogCta: 'Ver catálogo completo en derolavigne.com',
+      servicesTitle: 'Producción creativa, de principio a fin',
+      servicesIntro:
+        'Martinez AI Studios es un estudio de producción creativa y sello con base en Dallas, Texas. Cada proyecto es creado y dirigido por Dero Lavigne —desde el primer concepto hasta el máster final— sobre un pipeline de IA moderno y dirigido por humanos. Llevamos música, video, videojuegos y sitios web de la idea a publicado, distribuido y en vivo.',
+      services: [
+        {
+          title: 'Producción de Música y Audio con IA',
+          body:
+            'Canciones, bandas sonoras y voces originales listas para lanzamiento. Escribimos, producimos y masterizamos música en electrónica oscura, pop, R&B, cumbia, reggaetón y scoring cinematográfico — y la distribuimos a todas las plataformas.',
+          items: [
+            'Composición, letra y producción original',
+            'Voces de personaje y de marca con ElevenLabs',
+            'Scoring para juegos y cine, stingers y diseño sonoro',
+            'Mezcla, masterización y entregables listos para publicar',
+            'Distribución a Spotify, Apple Music y YouTube Music',
+          ],
+        },
+        {
+          title: 'Video y Cinemáticas con IA',
+          body:
+            'Clips cinematográficos, videoclips, tráilers y contenido social producidos en un pipeline local — control creativo total, sin límites por render.',
+          items: [
+            'Videoclips, visuales de letra y loops para Spotify Canvas',
+            'Tráilers de juegos, teasers y cápsulas de tienda',
+            'Contenido con talking-head y lip-sync',
+            'Reescalado 4K, interpolación de frames y color',
+            'Ensamblaje editorial y finishing en Filmora',
+          ],
+        },
+        {
+          title: 'Desarrollo de Videojuegos y Publicación en Steam',
+          body:
+            'Desde RPG narrativos ramificados hasta lanzamientos listos para tienda. Diseñamos, construimos y publicamos juegos de PC, y gestionamos Steam de punta a punta.',
+          items: [
+            'Diseño narrativo, de sistemas y de jugabilidad',
+            'Motores en HTML5 / JavaScript, empaquetado en Electron',
+            'Steamworks: logros, guardado en la nube, ficha de tienda',
+            'Arte de tienda, cápsulas y assets de marketing',
+            'Lanzamiento, comunidad y soporte post-lanzamiento',
+          ],
+        },
+        {
+          title: 'Desarrollo Web y 3D en Tiempo Real',
+          body:
+            'Sitios web rápidos, bilingües y optimizados para SEO, con movimiento cinematográfico y 3D en tiempo real — hechos para posicionar en Dallas y convertir visitantes en clientes.',
+          items: [
+            'Sitios de marketing, landing pages y web apps',
+            '3D en tiempo real y WebGL con Three.js',
+            'SEO técnico, datos estructurados y Core Web Vitals',
+            'Builds bilingües en inglés / español',
+            'Analítica, tracking y optimización de rendimiento',
+          ],
+        },
+        {
+          title: 'Marca, Personajes e Identidad Visual',
+          body:
+            'Logos, personajes, key art y sistemas visuales completos — incluyendo artistas nacidos de la IA y personajes de marca consistentes en cada canal.',
+          items: [
+            'Logos, wordmarks y sistemas de marca',
+            'Diseño de personajes e identidades IA consistentes',
+            'Portadas de álbum, pósters y arte social',
+            'Assets de perfil para Steam y streaming',
+            'Key art ultra-wide 21:9 y 32:9',
+          ],
+        },
+        {
+          title: 'Transmedia y Distribución',
+          body:
+            'Una historia a través de música, juegos, video y web — lanzada y distribuida bajo un solo sello, en inglés y español.',
+          items: [
+            'Estrategia de lanzamiento multiplataforma',
+            'Hubs de lore y sitios hermanos interconectados',
+            'Publicación y calendarización multicanal',
+            'Alcance de audiencia bilingüe',
+            'Créditos de IA transparentes y sin conflictos de derechos',
+          ],
+        },
+      ],
+      processTitle: 'Cómo trabajamos',
+      processIntro: 'Un camino claro y colaborativo, desde la primera llamada hasta el lanzamiento público.',
+      processSteps: [
+        { title: 'Descubrimiento', body: 'Entendemos tus objetivos, audiencia, presupuesto y tiempos antes de producir nada.' },
+        { title: 'Dirección creativa', body: 'Dero Lavigne define el concepto, las referencias y la dirección para que todo quede en línea con la marca.' },
+        { title: 'Producción', body: 'Música, video, arte, código o sistemas de juego se construyen en nuestro pipeline local de alto rendimiento, con iteración rápida.' },
+        { title: 'Publicación', body: 'Preparamos másteres listos para lanzar, fichas de tienda y metadatos bajo el sello Martinez AI Studios.' },
+        { title: 'Distribución y soporte', body: 'Publicamos en Steam, streaming y la web, y damos soporte al lanzamiento y a todo lo que sigue.' },
+      ],
+      whyTitle: 'Por qué Martinez AI Studios',
+      whyIntro: 'Un estudio pensado para cómo se hace realmente el contenido en 2026 — rápido, transparente y dirigido por humanos.',
+      whyPoints: [
+        { title: 'De principio a fin, bajo un techo', body: 'Música, video, juegos y web en un solo estudio. Sin traspasos ni proveedores desalineados.' },
+        { title: 'IA dirigida por humanos', body: 'La IA es una herramienta. Dero Lavigne dirige cada decisión creativa — el mensaje sigue siendo humano.' },
+        { title: 'Pipeline local propio', body: 'Una workstation de alto rendimiento y modelos locales significan velocidad, privacidad y cero límites por render.' },
+        { title: 'Bilingüe por defecto', body: 'Inglés y español nativos en cada entregable — hecho para Texas y más allá.' },
+        { title: 'Transparente y sin conflictos de derechos', body: 'Créditos claros y un proceso honesto. Sin afirmaciones de "100% generado" ni ficción de equipos AAA.' },
+        { title: 'Entrega a nivel publisher', body: 'No solo creamos — publicamos y distribuimos en Steam y plataformas de streaming.' },
+      ],
+      industriesTitle: 'Con quién trabajamos',
+      industriesIntro: 'Artistas, estudios y negocios que quieren contenido destacado sin una agencia inflada.',
+      industries: [
+        { title: 'Músicos y sellos', body: 'Lanzamientos, bandas sonoras y visuales listos para streaming y redes.' },
+        { title: 'Desarrolladores indie', body: 'Diseño, desarrollo y publicación en Steam para títulos de PC.' },
+        { title: 'Pequeñas y medianas empresas', body: 'Sitios web que posicionan en Dallas y convierten visitantes en clientes.' },
+        { title: 'Creadores de contenido y streamers', body: 'Arte de canal, intros, música y video de formato corto.' },
+        { title: 'Startups y marcas', body: 'Identidad, key art y campañas de lanzamiento en todos los canales.' },
+        { title: 'ONGs y organizaciones locales', body: 'Sitios y contenido bilingüe que llegan a toda la comunidad.' },
+      ],
+      localTitle: 'Con base en Dallas, Texas — trabajando en todo el mundo',
+      localBody:
+        'Martinez AI Studios opera desde Dallas, Texas (DFW), atendiendo clientes en todo Texas y en el mundo. Ya seas un músico de Dallas–Fort Worth que necesita un lanzamiento, un desarrollador indie que va a Steam, o un negocio local que necesita un sitio que posicione y convierta, llevamos producción cinematográfica acelerada con IA a tu proyecto — en inglés y español.',
+      localPoints: [
+        'Dallas–Fort Worth (DFW) y todo Texas',
+        'Colaboración remota en todo el mundo',
+        'Inglés y español nativos',
+        'Entrega rápida con un pipeline de producción local',
+      ],
+      faqTitle: 'Preguntas frecuentes',
+      faqIntro: 'Respuestas rápidas para creadores, negocios y socios.',
+      faqItems: [
+        { q: '¿Son un estudio de contratación o un sello?', a: 'Ambos. Martinez AI Studios publica sus propias obras (Kaela Inferna, CONTRABAND) y produce música, video, juegos y sitios web para clientes.' },
+        { q: '¿Dónde están ubicados?', a: 'Dallas, Texas, EE. UU. (DFW). Trabajamos con clientes en todo Texas y el mundo, en inglés y español.' },
+        { q: '¿Realmente usan IA para todo?', a: 'La IA es una herramienta bajo dirección humana. Dero Lavigne escribe, dirige y finaliza cada proyecto — el mensaje sigue siendo humano.' },
+        { q: '¿Pueden distribuir mi música?', a: 'Sí. Entregamos másteres listos para lanzar y distribuimos a Spotify, Apple Music y YouTube Music.' },
+        { q: '¿Pueden publicar mi juego en Steam?', a: 'Sí. Gestionamos la configuración de Steamworks, la ficha de tienda, logros, guardado en la nube y el lanzamiento.' },
+        { q: '¿Cómo empezamos?', a: 'Escríbenos desde la página de contacto con tus objetivos y tiempos, y trazamos el camino más rápido al lanzamiento.' },
+      ],
+      ctaBandTitle: '¿Tienes un proyecto en mente?',
+      ctaBandBody: 'Música, video, un juego o un sitio web — construyamos algo que valga la pena publicar.',
+      ctaBandPrimary: 'Iniciar un proyecto',
+      ctaBandSecondary: 'Ver el portafolio completo',
+      statsTitle: 'El sello en números',
+      statsIntro: 'Un vistazo a lo que ya se ha publicado bajo Martinez AI Studios.',
+      stats: [
+        { value: '2', label: 'Marcas propias publicadas' },
+        { value: '4', label: 'Álbumes lanzados' },
+        { value: '41', label: 'Pistas distribuidas' },
+        { value: '300+', label: 'Escenas de juego escritas' },
+        { value: '4+1', label: 'Finales en CONTRABAND' },
+        { value: 'EN/ES', label: 'Salida bilingüe nativa' },
+      ],
+      worksDeepTitle: 'Trabajo seleccionado',
+      worksDeepIntro:
+        'Dos IPs insignia y una red conectada de sitios — todos creados por Dero Lavigne y publicados bajo Martinez AI Studios.',
+      worksDeep: [
+        {
+          tag: 'Música',
+          title: 'Kaela Inferna',
+          body:
+            'Una artista de dark electronic pop nacida de la IA, con un canon totalmente definido — voz, imagen y mensaje. Cuatro álbumes y cuarenta y una pistas, con visuales cinematográficos y presencia en todas las plataformas de streaming.',
+          points: [
+            '4 álbumes · 41 pistas',
+            'Dark electronic pop con alma',
+            'Videoclips y loops para Spotify Canvas',
+            'Streaming en Spotify, Apple Music, YouTube Music',
+          ],
+        },
+        {
+          tag: 'Juegos',
+          title: 'CONTRABAND: Edge of the Fold',
+          body:
+            'Un RPG espacial ramificado hecho en HTML5/JavaScript y empaquetado para Steam. Facciones reactivas, líneas temporales fantasma, combate real y múltiples finales a lo largo de más de 300 escenas narrativas.',
+          points: [
+            'Narrativa ramificada · 300+ escenas',
+            '4 finales más un camino de "Walk Away"',
+            'Steamworks: logros y guardado en la nube',
+            'Banda sonora original y assets 3D en Blender',
+          ],
+        },
+        {
+          tag: 'Web',
+          title: 'La red transmedia',
+          body:
+            'Un conjunto conectado de sitios bilingües — el sello, la artista y el universo del juego — que comparten lore, lenguaje de diseño y 3D en tiempo real en la web.',
+          points: [
+            'martinezaistudios.com — el sello',
+            'kaelainferna.com — la artista',
+            'edgeofthefold.com — el universo del juego',
+            'derolavigne.com — el portafolio completo',
+          ],
+        },
+      ],
+      stackTitle: 'Herramientas y plataformas',
+      stackIntro: 'Un stack moderno, mayormente local — elegido por control, velocidad y calidad cinematográfica.',
+      stackGroups: [
+        {
+          title: 'IA Visual y Video',
+          tools: ['ComfyUI', 'WAN', 'LTX-Video', 'SDXL', 'Flux', 'RealVis XL', 'Juggernaut XL', 'UltimateSD Upscale', 'FILM VFI', 'Wav2Lip', 'SadTalker'],
+        },
+        { title: 'Música y Voz', tools: ['Suno', 'ElevenLabs'] },
+        { title: '3D y Juegos', tools: ['Blender', 'HTML5 / JavaScript', 'Electron', 'Steamworks', 'Exportación GLB'] },
+        { title: 'Web y Tiempo Real', tools: ['Astro', 'Next.js', 'Three.js / WebGL', 'HTML5 / CSS / JS'] },
+        { title: 'Post y Edición', tools: ['Filmora', 'Reescalado 4K', 'Interpolación de frames', 'Color y finishing'] },
+        { title: 'Distribución', tools: ['Steam', 'Spotify', 'Apple Music', 'YouTube Music'] },
+      ],
+      approachTitle: 'IA dirigida por humanos',
+      approachBody:
+        'La IA es el micrófono, el sintetizador, el copiloto y el compilador — no el autor. Cada canción, escena, frame y línea es dirigida y finalizada por Dero Lavigne. No vendemos la novedad del "100% generado" ni fingimos ser un estudio de cien personas. Usamos las mejores herramientas modernas para ir rápido, y luego aplicamos criterio, edición e intención humana para que la obra final lleve un mensaje real.',
+      approachPoints: [
+        'Un humano escribe, dirige y aprueba cada entregable',
+        'La IA acelera la producción — no reemplaza el criterio',
+        'Créditos transparentes y un proceso honesto',
+        'Calidad cinematográfica por encima del volumen por el volumen',
+      ],
+      genresTitle: 'Música que producimos',
+      genresIntro: 'Composición y voz original en un amplio rango estilístico.',
+      genres: ['Dark electronic pop', 'Pop cinematográfico', 'R&B', 'Cumbia', 'Reggaetón', 'Emocional y ambient', 'Música comercial y publicitaria', 'Bandas sonoras originales'],
+      deliverablesTitle: 'Lo que recibes',
+      deliverablesIntro: 'Entregables listos para lanzar, en los formatos que las plataformas y tiendas realmente necesitan.',
+      deliverables: [
+        'Másteres de audio listos para streaming',
+        'Video 4K / HDR y clips cinematográficos',
+        'Formato vertical para Shorts, Reels y TikTok',
+        'Loops de 8 segundos para Spotify Canvas',
+        'Key art ultra-wide 21:9 y 32:9',
+        'Cápsulas de tienda y assets de marketing para Steam',
+        'Assets 3D GLB optimizados para la web',
+        'Copy bilingüe en inglés / español',
+      ],
+      engagementTitle: 'Formas de trabajar juntos',
+      engagementIntro: 'Colaboraciones flexibles según tus objetivos y presupuesto.',
+      engagementModels: [
+        { title: 'Por proyecto', body: 'Un alcance definido con entregables y tiempos claros — ideal para un lanzamiento, sitio o campaña puntual.' },
+        { title: 'Por lanzamiento', body: 'Soporte recurrente para artistas y devs que publican música, actualizaciones o contenido de forma periódica.' },
+        { title: 'Alianza continua', body: 'Una extensión de tu equipo para producción continua en música, video, web y juegos.' },
+        { title: 'White-label', body: 'Capacidad de producción para otros estudios y agencias que necesitan salida cinematográfica con IA bajo su propia marca.' },
+      ],
+      serviceAreasTitle: 'Atendiendo a Dallas–Fort Worth y más allá',
+      serviceAreasBody:
+        'Con base en Dallas, Texas, trabajamos con clientes en todo el metroplex DFW y en todo el estado — y de forma remota con socios en el mundo.',
+      serviceAreas: ['Dallas', 'Fort Worth', 'Arlington', 'Plano', 'Irving', 'Frisco', 'Garland', 'McKinney', 'Denton', 'Richardson', 'Deep Ellum', 'Bishop Arts District'],
+      faqExtraItems: [
+        { q: '¿Qué significa realmente una producción dirigida por IA?', a: 'Un humano escribe y dirige la obra; las herramientas de IA aceleran la producción. Dero Lavigne toma cada decisión creativa y finaliza cada entregable.' },
+        { q: '¿Trabajan en español?', a: 'Sí. Cada entregable puede producirse de forma nativa en inglés, español o ambos — ideal para el mercado de Texas.' },
+        { q: '¿Pueden construir mi sitio web y hacer que posicione?', a: 'Sí. Construimos sitios rápidos y optimizados para SEO, con datos estructurados y buenos Core Web Vitals, y podemos añadir 3D en tiempo real y movimiento cinematográfico.' },
+        { q: '¿Ofrecen 3D y WebGL?', a: 'Sí. Creamos 3D en Blender, optimizamos assets GLB y los llevamos a la web con Three.js / WebGL.' },
+        { q: '¿Qué formatos entregan?', a: 'Másteres listos para streaming, video 4K/HDR, formato vertical, loops de Spotify Canvas, key art ultra-wide y assets de tienda de Steam.' },
+        { q: '¿Qué tan rápido pueden entregar?', a: 'Nuestro pipeline local permite iteración rápida. Los tiempos dependen del alcance, pero avanzamos rápido y sin límites por render.' },
+      ],
     },
     studio: {
       intro:

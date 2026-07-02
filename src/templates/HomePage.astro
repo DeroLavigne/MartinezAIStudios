@@ -26,7 +26,7 @@ const c = t(lang);
         <h1>{meta.h1}</h1>
         <p class="lead hero-sub">{c.hero.subtitle}</p>
         <div class="hero-ctas">
-          <a href={localizedPath('/works', lang)} class="btn btn-primary">{c.hero.ctaWorks}</a>
+          <a href={OFFICIAL.author} class="btn btn-primary" target="_blank" rel="noopener noreferrer">{c.hero.ctaDero}</a>
           <a href={OFFICIAL.steamApp} class="btn btn-gold" target="_blank" rel="noopener noreferrer">{c.hero.ctaSteam}</a>
           <a href={OFFICIAL.kaela} class="btn" target="_blank" rel="noopener noreferrer">{c.hero.ctaKaela}</a>
         </div>
@@ -66,10 +66,253 @@ const c = t(lang);
 
   <section class="section">
     <div class="container">
+      <h2>{c.home.statsTitle}</h2>
+      <p class="lead">{c.home.statsIntro}</p>
+      <div class="stats-grid">
+        {c.home.stats.map((stat) => (
+          <div class="stat">
+            <span class="stat-value">{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="creator-band">
+        <p class="credit-line">{c.creditLine}</p>
+        <h2>{c.home.creatorTitle}</h2>
+        <p class="lead">{c.home.creatorBody}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.home.worksDeepTitle}</h2>
+      <p class="lead">{c.home.worksDeepIntro}</p>
+      <div class="service-grid">
+        {c.home.worksDeep.map((work) => (
+          <article class="service-card">
+            <span class="work-tag">{work.tag}</span>
+            <h3>{work.title}</h3>
+            <p>{work.body}</p>
+            <ul>
+              {work.points.map((pt) => <li>{pt}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.home.pipelineTitle}</h2>
+      <p class="lead">{c.home.pipelineIntro}</p>
+      <div class="pipeline-grid">
+        {c.home.pipelineGroups.map((group) => (
+          <div class="pipeline-card">
+            <h3>{group.title}</h3>
+            <ul>
+              {group.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <p class="credit-line pipeline-note">{c.home.pipelineNote}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.home.stackTitle}</h2>
+      <p class="lead">{c.home.stackIntro}</p>
+      <div class="why-grid">
+        {c.home.stackGroups.map((group) => (
+          <div class="why-card">
+            <h3>{group.title}</h3>
+            <div class="tool-tags">
+              {group.tools.map((tool) => <span>{tool}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.home.servicesTitle}</h2>
+      <p class="lead">{c.home.servicesIntro}</p>
+      <div class="service-grid">
+        {c.home.services.map((service) => (
+          <article class="service-card">
+            <h3>{service.title}</h3>
+            <p>{service.body}</p>
+            <ul>
+              {service.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.home.genresTitle}</h2>
+      <p class="lead">{c.home.genresIntro}</p>
+      <div class="tool-tags genre-tags">
+        {c.home.genres.map((g) => <span>{g}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.home.processTitle}</h2>
+      <p class="lead">{c.home.processIntro}</p>
+      <ol class="process-list">
+        {c.home.processSteps.map((step, i) => (
+          <li class="process-step">
+            <span class="process-num">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.home.deliverablesTitle}</h2>
+      <p class="lead">{c.home.deliverablesIntro}</p>
+      <ul class="capability-list two-col">
+        {c.home.deliverables.map((d) => <li>{d}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.home.whyTitle}</h2>
+      <p class="lead">{c.home.whyIntro}</p>
+      <div class="why-grid">
+        {c.home.whyPoints.map((point) => (
+          <div class="why-card">
+            <h3>{point.title}</h3>
+            <p>{point.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="approach-band">
+        <div>
+          <h2>{c.home.approachTitle}</h2>
+          <p class="lead">{c.home.approachBody}</p>
+        </div>
+        <ul class="capability-list">
+          {c.home.approachPoints.map((pt) => <li>{pt}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.home.industriesTitle}</h2>
+      <p class="lead">{c.home.industriesIntro}</p>
+      <div class="industry-grid">
+        {c.home.industries.map((industry) => (
+          <div class="industry-card">
+            <h3>{industry.title}</h3>
+            <p>{industry.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.home.engagementTitle}</h2>
+      <p class="lead">{c.home.engagementIntro}</p>
+      <div class="industry-grid">
+        {c.home.engagementModels.map((m) => (
+          <div class="industry-card">
+            <h3>{m.title}</h3>
+            <p>{m.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="local-band">
+        <div class="local-copy">
+          <h2>{c.home.localTitle}</h2>
+          <p class="lead">{c.home.localBody}</p>
+        </div>
+        <ul class="local-points">
+          {c.home.localPoints.map((point) => <li>{point}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{c.home.serviceAreasTitle}</h2>
+      <p class="lead">{c.home.serviceAreasBody}</p>
+      <div class="tool-tags area-tags">
+        {c.home.serviceAreas.map((area) => <span>{area}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{c.home.faqTitle}</h2>
+      <p class="lead">{c.home.faqIntro}</p>
+      <div class="home-faq">
+        {[...c.home.faqItems, ...c.home.faqExtraItems].map((item) => (
+          <details class="faq-item">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
       <h2>{c.home.capabilitiesTitle}</h2>
       <ul class="capability-list">
         {c.home.capabilities.map((item) => <li>{item}</li>)}
       </ul>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="catalog-band">
+        <h2>{c.home.catalogTitle}</h2>
+        <p class="lead">{c.home.catalogBody}</p>
+        <a href={OFFICIAL.author} class="btn btn-primary" target="_blank" rel="noopener noreferrer">{c.home.catalogCta}</a>
+      </div>
     </div>
   </section>
 
@@ -86,6 +329,19 @@ const c = t(lang);
           <a href={localizedPath('/works/kaela-inferna', lang)}>Kaela Inferna</a>
           <a href={localizedPath('/works/contraband', lang)}>CONTRABAND</a>
           <a href={OFFICIAL.author} target="_blank" rel="noopener noreferrer">derolavigne.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <h2>{c.home.ctaBandTitle}</h2>
+        <p class="lead">{c.home.ctaBandBody}</p>
+        <div class="cta-band-actions">
+          <a href={localizedPath('/contact', lang)} class="btn btn-primary">{c.home.ctaBandPrimary}</a>
+          <a href={OFFICIAL.author} class="btn" target="_blank" rel="noopener noreferrer">{c.home.ctaBandSecondary}</a>
         </div>
       </div>
     </div>
@@ -203,6 +459,80 @@ const c = t(lang);
     margin-top: 0.5rem;
   }
 
+  .creator-band .credit-line {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .pipeline-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    margin-top: 2rem;
+  }
+
+  .pipeline-card {
+    background: var(--glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+
+  .pipeline-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-violet);
+    box-shadow: 0 8px 32px rgba(176, 133, 255, 0.15);
+  }
+
+  .pipeline-card h3 {
+    margin: 0 0 0.9rem;
+    color: var(--accent-cyan);
+    font-size: 1.05rem;
+  }
+
+  .pipeline-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pipeline-card li {
+    position: relative;
+    padding: 0.35rem 0 0.35rem 1.1rem;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.45;
+  }
+
+  .pipeline-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-violet);
+  }
+
+  .pipeline-note {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .catalog-band {
+    text-align: center;
+    max-width: 46rem;
+    margin-inline: auto;
+  }
+
+  .catalog-band .lead {
+    margin-inline: auto;
+    margin-bottom: 1.75rem;
+  }
+
   .eco-diagram {
     margin-top: 2rem;
     text-align: center;
@@ -246,5 +576,322 @@ const c = t(lang);
     padding: 0.75rem 1.5rem;
     border: 1px solid var(--border-subtle);
     background: var(--glass);
+  }
+
+  .service-grid,
+  .why-grid,
+  .industry-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .industry-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .service-card,
+  .why-card,
+  .industry-card {
+    background: var(--glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 1.5rem;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .service-card:hover,
+  .why-card:hover,
+  .industry-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 8px 32px rgba(122, 226, 240, 0.12);
+  }
+
+  .service-card h3,
+  .why-card h3,
+  .industry-card h3 {
+    margin: 0 0 0.6rem;
+    color: var(--accent-cyan);
+    font-size: 1.1rem;
+  }
+
+  .service-card p,
+  .why-card p,
+  .industry-card p {
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  .service-card ul {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+
+  .service-card li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.1rem;
+    font-size: 0.92rem;
+    opacity: 0.85;
+    line-height: 1.4;
+  }
+
+  .service-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+  }
+
+  .process-list {
+    list-style: none;
+    counter-reset: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.25rem 1.5rem;
+    background: var(--glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+  }
+
+  .process-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--accent-violet);
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  .process-step h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+  }
+
+  .process-step p {
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  .local-band {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .local-copy .lead {
+    margin-bottom: 0;
+  }
+
+  .local-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .local-points li {
+    padding: 0.7rem 0 0.7rem 1.5rem;
+    border-left: 2px solid var(--accent-gold);
+    margin-bottom: 0.6rem;
+    opacity: 0.9;
+  }
+
+  .home-faq {
+    margin-top: 2rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: var(--glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 0 1.5rem;
+  }
+
+  .faq-item summary {
+    cursor: pointer;
+    padding: 1.1rem 0;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    list-style: none;
+    position: relative;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    color: var(--accent-cyan);
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  .faq-item[open] summary::after {
+    content: '−';
+  }
+
+  .faq-item p {
+    margin: 0 0 1.2rem;
+    opacity: 0.9;
+    line-height: 1.55;
+  }
+
+  .cta-band {
+    text-align: center;
+    max-width: 42rem;
+    margin-inline: auto;
+    padding: 2.5rem 1.5rem;
+    border: 1px solid var(--accent-gold);
+    border-radius: 8px;
+    background: var(--glass);
+    box-shadow: 0 0 40px rgba(248, 216, 120, 0.1);
+  }
+
+  .cta-band .lead {
+    margin-inline: auto;
+    margin-bottom: 1.75rem;
+  }
+
+  .cta-band-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: var(--glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--accent-gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
+  .work-tag {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-violet);
+    border: 1px solid var(--accent-violet);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+  }
+
+  .tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tool-tags span {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    background: var(--glass);
+    opacity: 0.9;
+  }
+
+  .genre-tags,
+  .area-tags {
+    margin-top: 2rem;
+  }
+
+  .genre-tags span,
+  .area-tags span {
+    border-color: var(--accent-cyan);
+  }
+
+  .approach-band {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .approach-band .lead {
+    margin-bottom: 0;
+  }
+
+  .capability-list.two-col {
+    columns: 2;
+    column-gap: 2rem;
+  }
+
+  .capability-list.two-col li {
+    break-inside: avoid;
+  }
+
+  @media (max-width: 700px) {
+    .local-band {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .approach-band {
+      grid-template-columns: 1fr;
+    }
+
+    .capability-list.two-col {
+      columns: 1;
+    }
   }
 </style>
