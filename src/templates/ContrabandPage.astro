@@ -1,15 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WorkCard from '../components/WorkCard.astro';
+import MediaFrame from '../components/MediaFrame.astro';
+import Gallery from '../components/Gallery.astro';
 import type { Lang } from '../i18n/utils';
 import { localizedPath } from '../i18n/utils';
 import { t, getPageMeta, OFFICIAL } from '../i18n/translations';
 
+import heroBlackhole from '../assets/contraband/hero-blackhole.png';
+import keyart from '../assets/contraband/keyart-poster.png';
+import soundtrack from '../assets/contraband/soundtrack-controlroom.png';
+import charSolaris from '../assets/contraband/char-solaris.png';
+import charTerminal from '../assets/contraband/char-terminal.png';
+import charThornapex from '../assets/contraband/char-thornapex.png';
+import charVeldt from '../assets/contraband/char-veldt.png';
+import charVolt from '../assets/contraband/char-volt.png';
+import charWeft from '../assets/contraband/char-weft.png';
+import charDeadPilot from '../assets/contraband/char-dead-pilot.png';
+import charOracle from '../assets/contraband/char-oracle.png';
+import charScourge from '../assets/contraband/char-scourge.png';
+import charWeaver from '../assets/contraband/char-weaver.png';
+import screenGalaxy from '../assets/contraband/screen-galaxy-map.png';
+import screenDashboard from '../assets/contraband/screen-pilot-dashboard.png';
+import screenKaelaOps from '../assets/contraband/screen-kaela-ops.png';
+import screenShipyard from '../assets/contraband/screen-shipyard.png';
+import screenFlight from '../assets/contraband/screen-flight-verge.png';
+
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
+const en = lang === 'en';
 const meta = getPageMeta('contraband', lang);
 const c = t(lang).contraband;
 const site = Astro.site?.href?.replace(/\/$/, '') ?? 'https://martinezaistudios.com';
+
+const charactersTitle = en ? 'Characters of the Fold' : 'Personajes de the Fold';
+const charactersIntro = en
+  ? 'Faction leaders, ghosts, and defectors you meet across the rift. Every character is authored and rendered on the studio pipeline.'
+  : 'Líderes de facción, fantasmas y desertores que encuentras a lo largo del rift. Cada personaje es creado y renderizado en el pipeline del estudio.';
+
+const characters = [
+  { src: charSolaris, alt: en ? 'Solaris, the Radiant Apex' : 'Solaris, la Ápice Radiante', caption: en ? 'Solaris · Radiant Apex' : 'Solaris · Ápice Radiante' },
+  { src: charTerminal, alt: en ? 'Terminal, the Twin Path' : 'Terminal, la Vía Gemela', caption: en ? 'Terminal · Twin Path' : 'Terminal · Vía Gemela' },
+  { src: charThornapex, alt: en ? 'Thornapex, the Thorn Apex' : 'Thornapex, el Ápice de Espinas', caption: en ? 'Thornapex · Thorn Apex' : 'Thornapex · Ápice de Espinas' },
+  { src: charVeldt, alt: en ? 'Veldt, the Reclaimer' : 'Veldt, el Reclamador', caption: en ? 'Veldt · Reclaimer' : 'Veldt · Reclamador' },
+  { src: charVolt, alt: en ? 'Volt, the Storm' : 'Volt, la Tormenta', caption: en ? 'Volt · Storm' : 'Volt · Tormenta' },
+  { src: charWeft, alt: en ? 'Weft, the Timekeeper' : 'Weft, el Guardián del Tiempo', caption: en ? 'Weft · Timekeeper' : 'Weft · Guardián del Tiempo' },
+  { src: charOracle, alt: en ? 'The Oracle Fragment' : 'El Fragmento Oráculo', caption: en ? 'The Oracle' : 'El Oráculo' },
+  { src: charWeaver, alt: en ? 'The Weaver ghost' : 'La Tejedora fantasma', caption: en ? 'The Weaver' : 'La Tejedora' },
+  { src: charScourge, alt: en ? 'The Scourge Defector' : 'El Desertor del Azote', caption: en ? 'The Defector' : 'El Desertor' },
+  { src: charDeadPilot, alt: en ? 'A ghost-timeline pilot' : 'Un piloto de línea fantasma', caption: en ? 'Ghost Timeline' : 'Línea Fantasma' },
+];
+
+const screensTitle = en ? 'Inside the game' : 'Dentro del juego';
+const screensIntro = en
+  ? 'A living galaxy map, a reactive pilot HUD, a full shipyard, and real-time flight — all running in the browser.'
+  : 'Un mapa galáctico vivo, un HUD de piloto reactivo, un astillero completo y vuelo en tiempo real — todo corriendo en el navegador.';
+
+const screenshots = [
+  { src: screenGalaxy, alt: en ? 'CONTRABAND galaxy map' : 'Mapa galáctico de CONTRABAND', caption: en ? 'Galaxy map' : 'Mapa galáctico' },
+  { src: screenFlight, alt: en ? 'Real-time system flight' : 'Vuelo en tiempo real por el sistema', caption: en ? 'System flight' : 'Vuelo por el sistema' },
+  { src: screenDashboard, alt: en ? 'Pilot dashboard and stats' : 'Panel y estadísticas del piloto', caption: en ? 'Pilot dashboard' : 'Panel del piloto' },
+  { src: screenShipyard, alt: en ? 'Shipyard and ship browser' : 'Astillero y catálogo de naves', caption: en ? 'Shipyard' : 'Astillero' },
+  { src: screenKaelaOps, alt: en ? 'Kaela Inferna as Operations Mode AI' : 'Kaela Inferna como IA en Modo Operaciones', caption: en ? 'Kaela · Operations Mode' : 'Kaela · Modo Operaciones' },
+];
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -33,45 +86,94 @@ const jsonLd = {
 <BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/works/contraband" jsonLd={jsonLd}>
   <div class="page-hero container">
     <p class="tagline">{c.pitch}</p>
-    <h1>{meta.h1}</h1>
+    <h1 class="fx-gradient-text">{meta.h1}</h1>
     <p class="lead">{c.devPub}</p>
   </div>
 
+  <section class="hero-banner-section">
+    <div class="container">
+      <MediaFrame src={heroBlackhole} alt={en ? 'CONTRABAND ship approaching the Fold' : 'Nave de CONTRABAND acercándose a the Fold'} ratio="16 / 9" kenBurns overlay loading="eager" zoom>
+        <span>{en ? 'Edge of the Fold — where every choice bends the timeline' : 'Edge of the Fold — donde cada decisión dobla la línea temporal'}</span>
+      </MediaFrame>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
-      <p>{c.long}</p>
-      <div class="stat-grid" style="margin: 2rem 0;">
-        {c.stats.map((s) => (
-          <div class="stat">
-            <div class="stat-value">{s.value}</div>
-            <div class="stat-label">{s.label}</div>
+      <div class="intro-grid">
+        <div class="poster" data-reveal="left">
+          <MediaFrame src={keyart} alt={en ? 'CONTRABAND: Edge of the Fold key art' : 'Arte principal de CONTRABAND: Edge of the Fold'} ratio="2 / 3" zoom />
+        </div>
+        <div class="intro-copy" data-reveal="right">
+          <p>{c.long}</p>
+          <div class="stat-grid" style="margin: 2rem 0;">
+            {c.stats.map((s) => (
+              <div class="stat">
+                <div class="stat-value">{s.value}</div>
+                <div class="stat-label">{s.label}</div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <ul class="pillars">
-        {c.pillars.map((p) => <li>{p}</li>)}
-      </ul>
-      <div class="cta-row">
-        <a href={OFFICIAL.contraband} class="btn btn-primary" target="_blank" rel="noopener noreferrer">{c.ctaGame}</a>
-        <a href={OFFICIAL.steamApp} class="btn btn-gold" target="_blank" rel="noopener noreferrer">{c.ctaWishlist}</a>
+          <ul class="pillars">
+            {c.pillars.map((p) => <li>{p}</li>)}
+          </ul>
+          <div class="cta-row">
+            <a href={OFFICIAL.contraband} class="btn btn-primary" target="_blank" rel="noopener noreferrer">{c.ctaGame}</a>
+            <a href={OFFICIAL.steamApp} class="btn btn-gold" target="_blank" rel="noopener noreferrer">{c.ctaWishlist}</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
-      <h2>{lang === 'en' ? 'Related Works' : 'Obras Relacionadas'}</h2>
+      <h2 data-reveal>{charactersTitle}</h2>
+      <p class="lead" data-reveal>{charactersIntro}</p>
+      <Gallery items={characters} min={200} ratio="3 / 4" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 data-reveal>{screensTitle}</h2>
+      <p class="lead" data-reveal>{screensIntro}</p>
+      <Gallery items={screenshots} min={340} ratio="16 / 9" />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="ost-grid">
+        <div data-reveal="left">
+          <MediaFrame src={soundtrack} alt={en ? 'CONTRABAND original soundtrack — control room' : 'Banda sonora original de CONTRABAND — sala de control'} ratio="16 / 9" kenBurns zoom />
+        </div>
+        <div class="ost-copy" data-reveal="right">
+          <p class="tagline">{en ? 'Original soundtrack' : 'Banda sonora original'}</p>
+          <h2>{en ? 'Scored by the label' : 'Musicalizado por el sello'}</h2>
+          <p>{en
+            ? 'The CONTRABAND score is composed under the Martinez AI Studios label, with Kaela Inferna appearing in-game as the ship\u2019s Operations Mode AI. Music and game share one universe.'
+            : 'La banda sonora de CONTRABAND se compone bajo el sello Martinez AI Studios, con Kaela Inferna apareciendo en el juego como la IA en Modo Operaciones de la nave. Música y juego comparten un mismo universo.'}</p>
+          <a href={localizedPath('/works/kaela-inferna', lang)} class="btn btn-primary">{en ? 'Meet Kaela Inferna' : 'Conoce a Kaela Inferna'}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{en ? 'Related Works' : 'Obras Relacionadas'}</h2>
       <div class="grid-2" style="margin-top: 1.5rem;">
         <WorkCard
           title="Kaela Inferna"
-          subtitle={lang === 'en' ? '21-track OST · In-game Operations Mode' : 'OST 21 temas · Operations Mode in-game'}
+          subtitle={en ? '21-track OST · In-game Operations Mode' : 'OST 21 temas · Operations Mode in-game'}
           tag="Music"
           accent="cyan"
           href={localizedPath('/works/kaela-inferna', lang)}
         />
         <WorkCard
-          title={lang === 'en' ? 'Games' : 'Juegos'}
-          subtitle={lang === 'en' ? 'Steam publishing by Martinez AI Studios' : 'Publicación Steam por Martinez AI Studios'}
+          title={en ? 'Games' : 'Juegos'}
+          subtitle={en ? 'Steam publishing by Martinez AI Studios' : 'Publicación Steam por Martinez AI Studios'}
           tag="Publisher"
           accent="gold"
           href={localizedPath('/games', lang)}
@@ -82,6 +184,22 @@ const jsonLd = {
 </BaseLayout>
 
 <style>
+  .hero-banner-section {
+    padding: 1rem 0 0;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(240px, 340px) 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .poster {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+  }
+
   .pillars {
     list-style: none;
     padding: 0;
@@ -98,5 +216,30 @@ const jsonLd = {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .ost-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .ost-copy .tagline {
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 860px) {
+    .intro-grid,
+    .ost-grid {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .poster {
+      position: static;
+      max-width: 320px;
+      margin-inline: auto;
+    }
   }
 </style>

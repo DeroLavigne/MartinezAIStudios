@@ -1,0 +1,133 @@
+---
+// Ambient background VFX: drifting aurora blobs + floating particles.
+// Purely decorative, sits behind all content, and is disabled for
+// users who prefer reduced motion.
+const particles = Array.from({ length: 22 }, (_, i) => {
+  const seed = (i * 47) % 100;
+  return {
+    left: (seed * 1.0) % 100,
+    size: 1 + ((i * 13) % 3),
+    delay: -(i * 0.9),
+    duration: 16 + ((i * 7) % 18),
+    drift: ((i % 5) - 2) * 12,
+    opacity: 0.25 + ((i * 17) % 40) / 100,
+  };
+});
+---
+
+<div class="fx-ambient" aria-hidden="true">
+  <div class="fx-aurora fx-aurora-1"></div>
+  <div class="fx-aurora fx-aurora-2"></div>
+  <div class="fx-aurora fx-aurora-3"></div>
+  <div class="fx-particles">
+    {particles.map((p) => (
+      <span
+        class="fx-particle"
+        style={`left:${p.left}%;width:${p.size}px;height:${p.size}px;--dur:${p.duration}s;--delay:${p.delay}s;--drift:${p.drift}px;--op:${p.opacity};`}
+      ></span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .fx-ambient {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .fx-aurora {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.5;
+    mix-blend-mode: screen;
+    will-change: transform;
+  }
+
+  .fx-aurora-1 {
+    width: 55vw;
+    height: 55vw;
+    top: -12vw;
+    left: -8vw;
+    background: radial-gradient(circle, rgba(176, 133, 255, 0.45), transparent 65%);
+    animation: fx-drift-1 26s ease-in-out infinite alternate;
+  }
+
+  .fx-aurora-2 {
+    width: 48vw;
+    height: 48vw;
+    bottom: -14vw;
+    right: -10vw;
+    background: radial-gradient(circle, rgba(94, 215, 255, 0.35), transparent 65%);
+    animation: fx-drift-2 32s ease-in-out infinite alternate;
+  }
+
+  .fx-aurora-3 {
+    width: 40vw;
+    height: 40vw;
+    top: 35%;
+    left: 45%;
+    background: radial-gradient(circle, rgba(248, 216, 120, 0.16), transparent 65%);
+    animation: fx-drift-3 38s ease-in-out infinite alternate;
+  }
+
+  @keyframes fx-drift-1 {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(8vw, 6vh, 0) scale(1.15); }
+  }
+
+  @keyframes fx-drift-2 {
+    from { transform: translate3d(0, 0, 0) scale(1.1); }
+    to { transform: translate3d(-7vw, -5vh, 0) scale(1); }
+  }
+
+  @keyframes fx-drift-3 {
+    from { transform: translate3d(0, 0, 0) scale(0.9); }
+    to { transform: translate3d(-6vw, 4vh, 0) scale(1.2); }
+  }
+
+  .fx-particles {
+    position: absolute;
+    inset: 0;
+  }
+
+  .fx-particle {
+    position: absolute;
+    bottom: -10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 6px rgba(148, 205, 255, 0.8);
+    opacity: 0;
+    animation: fx-float var(--dur) linear infinite;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes fx-float {
+    0% {
+      transform: translate3d(0, 0, 0);
+      opacity: 0;
+    }
+    10% { opacity: var(--op); }
+    90% { opacity: var(--op); }
+    100% {
+      transform: translate3d(var(--drift), -104vh, 0);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fx-aurora,
+    .fx-particle {
+      animation: none !important;
+    }
+    .fx-particle {
+      display: none;
+    }
+    .fx-aurora {
+      opacity: 0.35;
+    }
+  }
+</style>

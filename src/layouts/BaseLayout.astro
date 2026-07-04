@@ -4,6 +4,7 @@ import { pageAlternates } from '../i18n/utils';
 import { siteMeta, OFFICIAL } from '../i18n/translations';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import AmbientFX from '../components/AmbientFX.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -89,10 +90,72 @@ const ogImage = `${site}/og-image.jpg`;
   </head>
   <body>
     <a href="#main-content" class="skip-link">{lang === 'en' ? 'Skip to content' : 'Saltar al contenido'}</a>
+    <AmbientFX />
     <Header lang={lang} currentPath={currentPath} />
     <main id="main-content">
       <slot />
     </main>
     <Footer lang={lang} />
+
+    <div class="fx-lightbox" id="fx-lightbox" role="dialog" aria-modal="true" aria-label={lang === 'en' ? 'Image viewer' : 'Visor de imagen'}>
+      <button class="fx-lightbox-close" type="button" aria-label={lang === 'en' ? 'Close' : 'Cerrar'}>×</button>
+      <img src="" alt="" />
+    </div>
+
+    <script>
+      // Scroll-reveal via IntersectionObserver
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealEls = document.querySelectorAll('[data-reveal]');
+      if (prefersReduced) {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      } else if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+        );
+        revealEls.forEach((el) => io.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      // Global lightbox for [data-zoom] images
+      const lightbox = document.getElementById('fx-lightbox');
+      if (lightbox) {
+        const lbImg = lightbox.querySelector('img');
+        const closeBtn = lightbox.querySelector('.fx-lightbox-close');
+        const open = (src, alt) => {
+          if (!lbImg) return;
+          lbImg.src = src;
+          lbImg.alt = alt || '';
+          lightbox.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        };
+        const close = () => {
+          lightbox.classList.remove('is-open');
+          document.body.style.overflow = '';
+        };
+        document.addEventListener('click', (e) => {
+          const target = (e.target as HTMLElement)?.closest('[data-zoom]') as HTMLImageElement | null;
+          if (target) {
+            const src = target.currentSrc || target.src || target.getAttribute('data-full') || '';
+            open(src, target.alt);
+          }
+        });
+        closeBtn?.addEventListener('click', close);
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) close();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') close();
+        });
+      }
+    </script>
   </body>
 </html>

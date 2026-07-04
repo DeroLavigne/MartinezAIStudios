@@ -1,15 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WorkCard from '../components/WorkCard.astro';
+import MediaFrame from '../components/MediaFrame.astro';
+import Gallery from '../components/Gallery.astro';
 import type { Lang } from '../i18n/utils';
 import { localizedPath } from '../i18n/utils';
 import { t, getPageMeta, OFFICIAL } from '../i18n/translations';
 
+import kaelaHero from '../assets/kaela/kaela-hero-stage.png';
+import kaelaStory from '../assets/kaela/kaela-story-hero.png';
+import k1 from '../assets/kaela/kaela-1.png';
+import k2 from '../assets/kaela/kaela-2.png';
+import k3 from '../assets/kaela/kaela-3.png';
+import k4 from '../assets/kaela/kaela-4.png';
+import k5 from '../assets/kaela/kaela-5.png';
+import k6 from '../assets/kaela/kaela-6.png';
+import k7 from '../assets/kaela/kaela-7.png';
+import k8 from '../assets/kaela/kaela-8.png';
+import k10 from '../assets/kaela/kaela-10.png';
+import k11 from '../assets/kaela/kaela-11.png';
+import k12 from '../assets/kaela/kaela-12.png';
+import k13 from '../assets/kaela/kaela-13.png';
+
 interface Props { lang: Lang; }
 const { lang } = Astro.props;
+const en = lang === 'en';
 const meta = getPageMeta('kaela', lang);
 const c = t(lang).kaela;
 const site = Astro.site?.href?.replace(/\/$/, '') ?? 'https://martinezaistudios.com';
+
+const gallery = [k1, k10, k4, k11, k7, k2, k12, k5, k13, k3, k8, k6].map((src, i) => ({
+  src,
+  alt: en ? `Kaela Inferna — visual ${i + 1}` : `Kaela Inferna — visual ${i + 1}`,
+}));
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -30,23 +53,29 @@ const jsonLd = {
 <BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/works/kaela-inferna" jsonLd={jsonLd}>
   <div class="page-hero container">
     <p class="tagline">{c.credits}</p>
-    <h1>{meta.h1}</h1>
+    <h1 class="fx-gradient-text">{meta.h1}</h1>
     <p class="lead">{c.tagline}</p>
   </div>
 
+  <section class="hero-banner-section">
+    <div class="container">
+      <MediaFrame src={kaelaHero} alt={en ? 'Kaela Inferna on stage' : 'Kaela Inferna en el escenario'} ratio="16 / 9" kenBurns overlay loading="eager" zoom>
+        <span>{en ? 'AI-born. Human in message.' : 'Nacida de la IA. Humana en el mensaje.'}</span>
+      </MediaFrame>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
-      <div class="grid-2">
-        <div>
-          <h2>{lang === 'en' ? 'Discography' : 'Discografía'}</h2>
+      <div class="disco-grid">
+        <div data-reveal="left">
+          <h2>{en ? 'Discography' : 'Discografía'}</h2>
           <p><strong>{c.genre}</strong> — {c.stats}</p>
           <p>{c.albums}</p>
           <p><a href={OFFICIAL.kaela} class="btn btn-primary" target="_blank" rel="noopener noreferrer">{c.cta}</a></p>
         </div>
-        <div class="card">
-          <h3>{c.transmediaTitle}</h3>
-          <p>{c.transmedia}</p>
-          <p class="directive"><em>{c.directive}</em></p>
+        <div data-reveal="right">
+          <MediaFrame src={kaelaStory} alt={en ? 'Kaela Inferna performing with a microphone' : 'Kaela Inferna cantando con un micrófono'} ratio="16 / 9" zoom />
         </div>
       </div>
     </div>
@@ -54,18 +83,38 @@ const jsonLd = {
 
   <section class="section section-alt">
     <div class="container">
-      <h2>{lang === 'en' ? 'Related Works' : 'Obras Relacionadas'}</h2>
+      <div class="card transmedia-card" data-reveal>
+        <h3>{c.transmediaTitle}</h3>
+        <p>{c.transmedia}</p>
+        <p class="directive"><em>{c.directive}</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 data-reveal>{en ? 'Visual identity' : 'Identidad visual'}</h2>
+      <p class="lead" data-reveal>{en
+        ? 'A consistent, canonical look — authored on the studio pipeline for stages, streets, and album art.'
+        : 'Una imagen canónica y consistente — creada en el pipeline del estudio para escenarios, calles y portadas.'}</p>
+      <Gallery items={gallery} min={280} ratio="16 / 9" />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2>{en ? 'Related Works' : 'Obras Relacionadas'}</h2>
       <div class="grid-2" style="margin-top: 1.5rem;">
         <WorkCard
           title="CONTRABAND: Edge of the Fold"
-          subtitle={lang === 'en' ? 'Kaela appears as Operations Mode AI' : 'Kaela aparece como nave IA en Operations Mode'}
+          subtitle={en ? 'Kaela appears as Operations Mode AI' : 'Kaela aparece como nave IA en Operations Mode'}
           tag="Games"
           accent="violet"
           href={localizedPath('/works/contraband', lang)}
         />
         <WorkCard
-          title={lang === 'en' ? 'Music & Sound' : 'Música y Sonido'}
-          subtitle={lang === 'en' ? '21-track OST and voice pipeline' : 'OST de 21 temas y pipeline de voces'}
+          title={en ? 'Music & Sound' : 'Música y Sonido'}
+          subtitle={en ? '21-track OST and voice pipeline' : 'OST de 21 temas y pipeline de voces'}
           tag="Music"
           accent="gold"
           href={localizedPath('/music', lang)}
@@ -76,10 +125,33 @@ const jsonLd = {
 </BaseLayout>
 
 <style>
+  .hero-banner-section {
+    padding: 1rem 0 0;
+  }
+
+  .disco-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .transmedia-card {
+    max-width: 60rem;
+    margin-inline: auto;
+  }
+
   .directive {
     color: var(--accent-cyan);
     font-family: var(--font-display);
     font-size: 0.9rem;
     letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 860px) {
+    .disco-grid {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
   }
 </style>

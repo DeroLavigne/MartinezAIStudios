@@ -4,15 +4,28 @@ import HeroFold from '../components/HeroFold.astro';
 import HeroLogo3D from '../components/HeroLogo3D.astro';
 import GlitchIntro from '../components/GlitchIntro.astro';
 import WorkCard from '../components/WorkCard.astro';
+import MediaFrame from '../components/MediaFrame.astro';
 import type { Lang } from '../i18n/utils';
 import { localizedPath } from '../i18n/utils';
 import { t, getPageMeta, OFFICIAL, siteMeta } from '../i18n/translations';
+
+import kaelaHero from '../assets/kaela/kaela-hero-stage.png';
+import contrabandHero from '../assets/contraband/hero-blackhole.png';
+import deroPortrait from '../assets/creator/dero-portrait.png';
+import deroBanner from '../assets/creator/dero-banner.png';
 
 interface Props { lang: Lang; }
 
 const { lang } = Astro.props;
 const meta = getPageMeta('home', lang);
 const c = t(lang);
+
+const worksDeepImages = [kaelaHero, contrabandHero, deroBanner];
+const worksDeepAlts = [
+  lang === 'en' ? 'Kaela Inferna on stage' : 'Kaela Inferna en el escenario',
+  lang === 'en' ? 'CONTRABAND ship approaching the Fold' : 'Nave de CONTRABAND acercándose a the Fold',
+  lang === 'en' ? 'Dero Lavigne, creator and creative director' : 'Dero Lavigne, creador y director creativo',
+];
 ---
 
 <BaseLayout lang={lang} title={meta.title} description={meta.description} currentPath="/">
@@ -52,6 +65,8 @@ const c = t(lang);
           tag="Music"
           accent="cyan"
           href={localizedPath('/works/kaela-inferna', lang)}
+          image={kaelaHero}
+          imageAlt={lang === 'en' ? 'Kaela Inferna on stage' : 'Kaela Inferna en el escenario'}
         />
         <WorkCard
           title="CONTRABAND: Edge of the Fold"
@@ -59,6 +74,8 @@ const c = t(lang);
           tag="Games"
           accent="violet"
           href={localizedPath('/works/contraband', lang)}
+          image={contrabandHero}
+          imageAlt={lang === 'en' ? 'CONTRABAND ship approaching the Fold' : 'Nave de CONTRABAND acercándose a the Fold'}
         />
       </div>
     </div>
@@ -70,7 +87,7 @@ const c = t(lang);
       <p class="lead">{c.home.statsIntro}</p>
       <div class="stats-grid">
         {c.home.stats.map((stat) => (
-          <div class="stat">
+          <div class="stat" data-reveal="zoom">
             <span class="stat-value">{stat.value}</span>
             <span class="stat-label">{stat.label}</span>
           </div>
@@ -81,21 +98,29 @@ const c = t(lang);
 
   <section class="section section-alt">
     <div class="container">
-      <div class="creator-band">
-        <p class="credit-line">{c.creditLine}</p>
-        <h2>{c.home.creatorTitle}</h2>
-        <p class="lead">{c.home.creatorBody}</p>
+      <div class="creator-band creator-band--media">
+        <div class="creator-portrait" data-reveal="left">
+          <MediaFrame src={deroPortrait} alt={lang === 'en' ? 'Dero Lavigne, creator and creative director' : 'Dero Lavigne, creador y director creativo'} ratio="4 / 5" zoom />
+        </div>
+        <div class="creator-copy" data-reveal="right">
+          <p class="credit-line">{c.creditLine}</p>
+          <h2>{c.home.creatorTitle}</h2>
+          <p class="lead">{c.home.creatorBody}</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <h2>{c.home.worksDeepTitle}</h2>
-      <p class="lead">{c.home.worksDeepIntro}</p>
+      <h2 data-reveal>{c.home.worksDeepTitle}</h2>
+      <p class="lead" data-reveal>{c.home.worksDeepIntro}</p>
       <div class="service-grid">
-        {c.home.worksDeep.map((work) => (
-          <article class="service-card">
+        {c.home.worksDeep.map((work, i) => (
+          <article class="service-card service-card--media" data-reveal="zoom" style={`--reveal-delay:${i * 0.08}s;`}>
+            <div class="service-card-media">
+              <MediaFrame src={worksDeepImages[i]} alt={worksDeepAlts[i]} ratio="16 / 9" zoom />
+            </div>
             <span class="work-tag">{work.tag}</span>
             <h3>{work.title}</h3>
             <p>{work.body}</p>
@@ -114,7 +139,7 @@ const c = t(lang);
       <p class="lead">{c.home.pipelineIntro}</p>
       <div class="pipeline-grid">
         {c.home.pipelineGroups.map((group) => (
-          <div class="pipeline-card">
+          <div class="pipeline-card" data-reveal>
             <h3>{group.title}</h3>
             <ul>
               {group.items.map((item) => <li>{item}</li>)}
@@ -132,7 +157,7 @@ const c = t(lang);
       <p class="lead">{c.home.stackIntro}</p>
       <div class="why-grid">
         {c.home.stackGroups.map((group) => (
-          <div class="why-card">
+          <div class="why-card" data-reveal>
             <h3>{group.title}</h3>
             <div class="tool-tags">
               {group.tools.map((tool) => <span>{tool}</span>)}
@@ -149,7 +174,7 @@ const c = t(lang);
       <p class="lead">{c.home.servicesIntro}</p>
       <div class="service-grid">
         {c.home.services.map((service) => (
-          <article class="service-card">
+          <article class="service-card" data-reveal>
             <h3>{service.title}</h3>
             <p>{service.body}</p>
             <ul>
@@ -205,7 +230,7 @@ const c = t(lang);
       <p class="lead">{c.home.whyIntro}</p>
       <div class="why-grid">
         {c.home.whyPoints.map((point) => (
-          <div class="why-card">
+          <div class="why-card" data-reveal>
             <h3>{point.title}</h3>
             <p>{point.body}</p>
           </div>
@@ -234,7 +259,7 @@ const c = t(lang);
       <p class="lead">{c.home.industriesIntro}</p>
       <div class="industry-grid">
         {c.home.industries.map((industry) => (
-          <div class="industry-card">
+          <div class="industry-card" data-reveal>
             <h3>{industry.title}</h3>
             <p>{industry.body}</p>
           </div>
@@ -249,7 +274,7 @@ const c = t(lang);
       <p class="lead">{c.home.engagementIntro}</p>
       <div class="industry-grid">
         {c.home.engagementModels.map((m) => (
-          <div class="industry-card">
+          <div class="industry-card" data-reveal>
             <h3>{m.title}</h3>
             <p>{m.body}</p>
           </div>
@@ -462,6 +487,47 @@ const c = t(lang);
   .creator-band .credit-line {
     margin-top: 0;
     margin-bottom: 0.75rem;
+  }
+
+  .creator-band--media {
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    text-align: left;
+    max-width: none;
+  }
+
+  .creator-band--media .lead {
+    margin-bottom: 0;
+  }
+
+  .service-card--media {
+    padding-top: 0;
+    overflow: hidden;
+  }
+
+  .service-card-media {
+    margin: -1.5rem -1.5rem 1.25rem;
+  }
+
+  .service-card-media :global(.media-frame) {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  @media (max-width: 760px) {
+    .creator-band--media {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .creator-portrait {
+      max-width: 300px;
+      margin-inline: auto;
+    }
   }
 
   .pipeline-grid {

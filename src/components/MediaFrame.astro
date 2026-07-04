@@ -1,0 +1,108 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  ratio?: string;
+  kenBurns?: boolean;
+  zoom?: boolean;
+  loading?: 'eager' | 'lazy';
+  class?: string;
+  overlay?: boolean;
+}
+
+const {
+  src,
+  alt,
+  ratio = '16 / 9',
+  kenBurns = false,
+  zoom = false,
+  loading = 'lazy',
+  class: className = '',
+  overlay = false,
+} = Astro.props;
+---
+
+<figure class={`media-frame ${kenBurns ? 'ken-burns' : ''} ${className}`} style={`--ratio:${ratio};`}>
+  <Image
+    src={src}
+    alt={alt}
+    widths={[480, 800, 1200, 1600]}
+    sizes="(max-width: 700px) 94vw, (max-width: 1100px) 60vw, 1100px"
+    loading={loading}
+    data-zoom={zoom ? '' : undefined}
+  />
+  {overlay && <span class="media-overlay" aria-hidden="true"></span>}
+  <span class="media-corner tl" aria-hidden="true"></span>
+  <span class="media-corner tr" aria-hidden="true"></span>
+  <span class="media-corner bl" aria-hidden="true"></span>
+  <span class="media-corner br" aria-hidden="true"></span>
+  <div class="media-caption"><slot /></div>
+</figure>
+
+<style>
+  .media-frame {
+    position: relative;
+    aspect-ratio: var(--ratio);
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-space);
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.45),
+      inset 0 0 0 1px rgba(248, 216, 120, 0.05);
+    isolation: isolate;
+  }
+
+  .media-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .media-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, transparent 40%, rgba(5, 4, 12, 0.75) 100%),
+      radial-gradient(circle at 50% 120%, rgba(176, 133, 255, 0.2), transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .media-corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  .media-corner.tl { top: 8px; left: 8px; border-top: 2px solid var(--accent-cyan); border-left: 2px solid var(--accent-cyan); }
+  .media-corner.tr { top: 8px; right: 8px; border-top: 2px solid var(--accent-gold); border-right: 2px solid var(--accent-gold); }
+  .media-corner.bl { bottom: 8px; left: 8px; border-bottom: 2px solid var(--accent-gold); border-left: 2px solid var(--accent-gold); }
+  .media-corner.br { bottom: 8px; right: 8px; border-bottom: 2px solid var(--accent-cyan); border-right: 2px solid var(--accent-cyan); }
+
+  .media-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 1.5rem 1.25rem 1rem;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+  }
+
+  .media-caption:empty {
+    display: none;
+  }
+</style>
