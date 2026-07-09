@@ -13,6 +13,8 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      // Root / redirects to /en/ — exclude it so Google indexes destinations only.
+      filter: (page) => page !== 'https://martinezaistudios.com/',
       i18n: {
         defaultLocale: 'en',
         locales: {
